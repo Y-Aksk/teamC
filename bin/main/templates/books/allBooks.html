@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <form
+      action="#"
+      th:action="@{/books/save}"
+      th:object="${form}"
+      method="post"
+    >
+      <fieldset>
+        <input type="submit" id="submitButton" th:value="Save" />
+        <input type="reset" id="resetButton" name="reset" th:value="Reset" />
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>価格</th>
+              <th>注文個数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="book, itemStat : *{books}">
+              <td>
+                <div th:text="${book.title}" />
+              </td>
+              <td>
+                <div th:text="${book.author}" />
+              </td>
+              <td>
+                <div th:text="${book.price}" />
+              </td>
+              <td>
+                <input type="hidden" th:field="*{books[__${itemStat.index}__].id}" />
+                <input type="hidden" th:field="*{books[__${itemStat.index}__].title}" />
+                <input type="hidden" th:field="*{books[__${itemStat.index}__].author}" />
+                <input type="hidden" th:field="*{books[__${itemStat.index}__].price}" />
+                <input type="text" th:field="*{books[__${itemStat.index}__].count}" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+    </form>
+  </body>
+</html>
