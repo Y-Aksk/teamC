@@ -1,0 +1,13 @@
+2022-06-06 16:25:34.762  INFO 19992 --- [restartedMain] solekia.demo.DemoApplication             : Starting DemoApplication on S2200063 with PID 19992 (C:\Users\2940\Documents\新人研修\teamC\bin\main started by 2940 in c:\Users\2940\Documents\新人研修\teamC)
+2022-06-06 16:25:34.764  INFO 19992 --- [restartedMain] solekia.demo.DemoApplication             : No active profile set, falling back to default profiles: default
+2022-06-06 16:25:34.807  INFO 19992 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-06 16:25:34.817  INFO 19992 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-06 16:25:35.791  INFO 19992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-06 16:25:35.801  INFO 19992 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-06 16:25:35.802  INFO 19992 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2022-06-06 16:25:35.893  INFO 19992 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-06 16:25:35.893  INFO 19992 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1076 ms
+2022-06-06 16:25:36.080  INFO 19992 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-06-06 16:25:36.270  INFO 19992 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-06-06 16:25:36.385  INFO 19992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-06 16:25:36.396  INFO 19992 --- [restartedMain] solekia.demo.DemoApplication             : Started DemoApplication in 1.957 seconds (JVM running for 2.757)

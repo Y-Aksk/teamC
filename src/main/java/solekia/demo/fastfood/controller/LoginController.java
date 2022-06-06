@@ -17,7 +17,7 @@ public class LoginController {
     public String search(@RequestParam("name")int customer_id, String password, Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
-        page.title = "顧客一覧画面(Java)";
+        page.title = "ログイン画面(Java)";
 
         //リスト初期化(IDとパスワード分けないといけないかも)
         page.list = LoginMapper.findAccount(customer_id, password);
