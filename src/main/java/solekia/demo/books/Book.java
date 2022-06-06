@@ -1,4 +1,4 @@
-package com.example.demo;
+package solekia.demo.books;
 
 public class Book {
     
