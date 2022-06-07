@@ -11,7 +11,7 @@
     <!-- post：入力したデータを送信  action：送信するURL（追加されたらmypageページに飛ぶ） object：外部リソース？？-->
     <form method="post" action="/fastfood/mypage/{id}/{login}" th:action="@{/fastfood/mypage{id}/{login}}" th:object="${page}">
         <!--文字幅調整とかはCSSで行う-->
-        <h1>新規従業員登録</h1>
+        <h1>新規従業員登録 </h1>
         <label>姓</label><input type="text" th:field="${page.first_name}" required><br>
         <label>名</label><input type="text" th:field="${page.last_name}" required><br>
         <label>電話番号</label><input type="tel" pattern="\d{2,4}-\d{3,4}-\d{3,4}" th:field="${page.tell_no}" required><br>
