@@ -33,28 +33,32 @@
             <td>メール</td>
             <td th:text = "${item.mail}}">mail</td>
         </tr>
-
+        
         <tr th:each = "item : ${page.list}">
-            <td>お気に入り店舗の状況</td>
-            <!--変えるとこ-->
+            <td>お気に入り店舗</td>
             <td th:text = "${item.shop_name}}">shop</td>
         </tr>
-        
+
+        <tr>
+            <!--henkouは仮名-->
+            <a th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})} " href = "#">
+                登録情報の変更
+            </a>
+        </tr>
+
+        <tr>
+            <!--chuumonは仮名-->
+            <a th:href = "@{'/fastfood/chuumon/'} " href = "#">
+                ハンバーガーの受け取り注文はこちら！！
+            </a>
+        </tr>
+
+        <tr>
+            <!--kakuninは仮名-->
+            <a th:href = "@{'/fastfood/kakunin/{id}'(id = ${item.customer_id})} " href = "#">
+                注文状況確認画面
+            </a>
+        </tr>
     </table>
-
-    <!--changeは仮-->
-    <a href="/customer/change" th:href="@{/customer/change}">
-        登録情報の変更
-    </a>
-
-    <!--orderは仮-->
-    <a href="/customer/order" th:href="@{/customer/order}">
-        ハンバーガーの受け取り注文はこちら！！
-    </a>
-
-    <!--kakuninは仮-->
-    <a href="/customer/kakunin" th:href="@{/customer/kakunin}">
-        注文状況確認画面
-    </a>
 </body>
 </html>
