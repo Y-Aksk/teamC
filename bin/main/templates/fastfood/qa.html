@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>お問い合わせ</title>
+</head>
+
+<body>
+    <!-- post：入力したデータを送信  action：送信するURL（追加されたらqaページに飛ぶ）-->
+    <form method="post" action="/fastfood/qa" th:action="@{/fastfood/qa}" th:object="${page}">
+        <h1>お問い合わせ</h1>
+        <input type="hidden" th:field="${page.qa_id}" required><br>
+        <label>姓</label><input type="text" th:field="${page.first_name}" required><br>
+        <label>名</label><input type="text" th:field="${page.last_name}" required><br>
+        <label>メールアドレス</label><input type="text" th:field="${page.mail}" required><br>
+        <label>お問い合わせ内容</label><br>
+        <input type="text" th:field="${page.last_name}" required><br>
+        <button type="submit">送信</button>
+    </form>
+</body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登録情報編集</title>
+</head>
+
+<body>
+    <!-- post：入力したデータを送信  action：送信するURL（追加されたらmypageページに飛ぶ） object：外部リソース？？-->
+    <form method="post" action="/fastfood/mypage/{id}/{login}" th:action="@{/fastfood/mypage{id}/{login}}" th:object="${page}">
+        <h1>登録情報の変更</h1>
+        <label>姓</label><input type="text" th:field="${page.first_name}"><br>
+        <label>名</label><input type="text" th:field="${page.last_name}"><br>
+        <label>電話番号</label><input type="text" th:field="${page.tell_no}"><br>
+        <label>メールアドレス</label><input type="text" th:field="${page.mail}"><br>
+        <!--プルダウンメニュー-->
+        <label>お気に入り店</label>
+        <select name="shop_name" th:field="${page.shop_name}">
+            <option value="">お気に入り店の選択</option>
+            <option value="東京店">東京店</option>
+            <option value="宮城店">宮城店</option>
+            <option value="群馬店">群馬店</option>
+            <option value="埼玉店">埼玉店</option>
+            <option value="長野店">長野店</option>
+        </select><br>
+    
+        <!--パスワード確認-->
+        <div class="form_group">
+            <label>パスワード</label>
+            <input type="password" class="form_control" name="password" id="password" th:field="${page.password}">
+        </div>
+        <div class="form_group">
+            <label>パスワード (再確認)</label>
+            <input type="password" class="form_control" name="confirm" oninput="CheckPassword(this)">
+        </div>
+        
+        <input type="hidden" th:field="${page.customer_id}">
+        <input type="hidden" th:field="${page.login}">
+        <input type="hidden" th:field="${page.authority}">
+        <button type="submit">登録</button>
+    </form>
+
+    <!--JavaSctipt(パスワード確認)-->
+    <script>
+        function CheckPassword(confirm){
+            // 入力値取得
+            var input1 = password.value;
+            var input2 = confirm.value;
+            // パスワード比較
+            if(input1 != input2){
+                confirm.setCustomValidity("入力値が一致しません。");
+            }else{
+                confirm.setCustomValidity('');
+            }
+        }
+    </script>
+
+</body>
