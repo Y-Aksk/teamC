@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>メニュー</title>
+</head>
+
+<body>
+
+    <div id="container">
+    
+    <h1 th:text = "${page.web_title}">メニュー一覧</h1>
+    
+    <!--メインメニュー-->
+    <nav id="menubar">
+    <ul>
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="productlist.html">メニュー</a></li>
+    <li><a href="shoplist.html">店舗紹介</a></li>
+    <li><a href="contact.html">アレルギー情報</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="contact.html">ログイン</a></li>
+    </ul>
+    </nav>
+    
+    <main>
+    
+    <section>
+    
+    <h2>メニュー一覧</h2>
+    
+    <table class="ta1">
+        <caption>バーガー, ドリンク, サイドメニュー</caption>
+        <tr th:each = "item : ${page.productlist}">
+            <td th:text = "${item.product_link}">商品画像</td>
+            <!--画像を押すとログインページに飛ぶ？-->
+            <td th:text = "${item.product_name}">メニュー名</td>
+            <td th:text = "${item.price}">価格</td>
+            <td>
+            </td>
+        </tr>
+    </table>
+   </section>
+   </main>
+  <footer>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+  </footer>
+</div>
+    <!--ページの上部へ戻るボタンとスクリプト-->
+    <p class="pagetop"><a href="#">↑</a></p>
+    <script src="js/openclose_tp.js"></script>
+</body>
+</html>
