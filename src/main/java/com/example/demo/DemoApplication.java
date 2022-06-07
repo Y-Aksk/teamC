@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan("com.example.demo.fastfood.repository")
+@MapperScan("solekia.demo.fastfood.repository")
 public class DemoApplication {
 
 	public static void main(String[] args) {
