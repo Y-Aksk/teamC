@@ -21,7 +21,7 @@ public interface LoginMapper {
 );
 
     @Select("select * from registered where customer_id = #{customer_id}")
-    public void showMypage(int customer_id);
+    public List<LoginModel> showMypage(int customer_id);
     /* 
     @Select("select * from actor where first_name || last_name like #{name}")
     public List<ActorModel> findName(String name);

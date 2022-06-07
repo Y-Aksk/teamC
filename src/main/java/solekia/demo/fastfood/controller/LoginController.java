@@ -18,7 +18,7 @@ public class LoginController {
 
     //顧客ログイン
     @PostMapping("login")
-    public String search(@RequestParam("name")int customer_id, String password, Model model){
+    public String login(@RequestParam("name")int customer_id, String password, Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
         page.title = "ログイン画面(Java)";
@@ -50,7 +50,7 @@ public class LoginController {
 
 //従業員ログイン
 @PostMapping("login_emp")
-public String search(@RequestParam("name")int customer_id, String password, Model model){
+public String login_emp(@RequestParam("name")int customer_id, String password, Model model){
     //ページインスタンスを作って、タイトルを設定
     LoginPageModel page = new LoginPageModel();
     page.title = "ログイン画面(Java)";
