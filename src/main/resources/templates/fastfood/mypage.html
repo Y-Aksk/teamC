@@ -7,6 +7,11 @@
     <title>マイページ</title>
 </head>
 <body>
+    <!-- 
+        <a href="hrnkou.html"
+         th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})}"
+         th:if="${item.login == 1}">ログイン</a>
+    -->
     <table>
         <tr th:each = "item : ${page.list}">
             <td>ID</td>
@@ -44,6 +49,7 @@
         <tr>
             <!--henkouは仮名-->
             <a style="display: block; width: 100%; height: 100%"
+            href = "henkou.html"
             th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})} " href = "#">
                 登録情報の変更
             </a>
@@ -52,6 +58,7 @@
         <tr>
             <!--chuumonは仮名-->
             <a style="display: block; width: 100%; height: 100%"
+            href = "chuumon.html"
             th:href = "@{'/fastfood/chuumon/'} " href = "#">
                 ハンバーガーの受け取り注文はこちら！！
             </a>
@@ -60,6 +67,7 @@
         <tr>
             <!--kakuninは仮名-->
             <a style="display: block; width: 100%; height: 100%"
+            href = "kakunin.html"
             th:href = "@{'/fastfood/kakunin/{id}'(id = ${item.customer_id})} " href = "#">
                 注文状況確認画面
             </a>
