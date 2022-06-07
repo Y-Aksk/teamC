@@ -8,7 +8,7 @@
 </head>
 <body>
     <form method = "post" action = "/fastfood/login" th:object = "${page}">
-        <p><span th:text = "*{message}"></p>
+        <p text = "message" th:text = "*{message}">テキスト</p>
         <input type = "text" id = "customer_id" name = "customer_id">
         <input type = "text" id = "password" name = "password">
         <button type = "submit">ログイン</button>

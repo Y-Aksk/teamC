@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>マイページ</title>
+</head>
+<body>
+    <table>
+        <tr th:each = "item : ${page.list}">
+            <td>ID</td>
+            <td th:text = "${item.customer_id}">ID</td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td>パスワード</td>
+            <td th:text = "${item.password}">ID</td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td>氏名</td>
+            <td th:text = "${item.first_name}}">first_name</td>
+            <td th:text = "${item.last_name}}">last_name</td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td>電話番号</td>
+            <td th:text = "${item.tell_No}}">tell</td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td>メール</td>
+            <td th:text = "${item.mail}}">mail</td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td>所属店舗</td>
+            <td th:text = "${item.shop_name}}">shop</td>
+        </tr>
+        
+    </table>
+
+    <!--changeは仮-->
+    <a href="/customer/change" th:href="@{/customer/change}">
+        登録情報の変更
+    </a>
+    
+    <!--kakuninは仮-->
+    <a href="/customer/kakunin" th:href="@{/customer/kakunin}">
+        注文状況確認画面
+    </a>
+</body>
+</html>

@@ -13,7 +13,8 @@ import solekia.demo.fastfood.repository.*;
 @RequestMapping("registered")
 public class LoginController {
 
-    @PostMapping("search")
+    //顧客ログイン
+    @PostMapping("login")
     public String search(@RequestParam("name")int customer_id, String password, Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
@@ -21,17 +22,21 @@ public class LoginController {
 
         //リスト初期化(IDとパスワード分けないといけないかも)
         page.list = LoginMapper.findAccount(customer_id, password);
+
+        //addition参照、遷移するタイミングで
+        page.authority = LoginMapper.ditectAuth(customer_id);
         
         //page.hold_id = customer_id;
 
 
-        if(!(page.list == null)){
-            int login = 1;
-            page.login = LoginMapper.login_out(customer_id, login);
-            //モデルにページインスタンスを設定
-            model.addAttribute("page", page);
-            return "fastfood/mypage";
-        }
+        if(!(page.list == null) && page.authority == 0){
+                int login = 1;
+                page.login = LoginMapper.login_out(customer_id, login);
+                //モデルにページインスタンスを設定
+                model.addAttribute("page", page);
+                return "fastfood/mypage";
+            }
+        
 
         else{
             page.message = "IDかパスワードが違います";
@@ -39,4 +44,71 @@ public class LoginController {
             return "fastfood/login";
     }
 }
+
+//従業員ログイン
+@PostMapping("login_emp")
+public String search(@RequestParam("name")int customer_id, String password, Model model){
+    //ページインスタンスを作って、タイトルを設定
+    LoginPageModel page = new LoginPageModel();
+    page.title = "ログイン画面(Java)";
+
+    //リスト初期化(IDとパスワード分けないといけないかも)
+    page.list = LoginMapper.findAccount(customer_id, password);
+
+    //addition参照、遷移するタイミングで
+    page.authority = LoginMapper.ditectAuth(customer_id);
+    
+    //page.hold_id = customer_id;
+
+
+    if(!(page.list == null) && page.authority == 1){
+            int login = 1;
+            page.login = LoginMapper.login_out(customer_id, login);
+            //モデルにページインスタンスを設定
+            model.addAttribute("page", page);
+            return "fastfood/mypage_emp";
+        }
+    
+
+    else{
+        page.message = "IDかパスワードが違います";
+        model.addAttribute("page", page);
+        return "fastfood/login";
+}
+}
+
+@Transactional
+    @GetMapping("mypage/{id}")
+    public String mypage(@PathVariable("id") int customer_id, Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+
+        //リスト初期化
+        page.list = LoginMapper.showMypage(customer_id);
+        
+        //モデルにページインスタンスを設定
+        model.addAttribute("page", page);
+        
+
+        //テンプレートファイルを指定
+        return "fastfood/mypage";
+
+    }
+
+    @GetMapping("mypage_emp/{id}")
+    public String mypage_emp(@PathVariable("id") int customer_id, Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+
+        //リスト初期化
+        page.list = LoginMapper.showMypage(customer_id);
+        
+        //モデルにページインスタンスを設定
+        model.addAttribute("page", page);
+        
+
+        //テンプレートファイルを指定
+        return "fastfood/mypage_emp";
+
+    }
 }

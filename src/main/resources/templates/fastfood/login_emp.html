@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ログイン画面</title>
+    <title>ログイン画面(従業員用)</title>
 </head>
 <body>
     <form method = "post" action = "/fastfood/login" th:object = "${page}">
-        <p text = "message" th:text = "*{message}">テキスト</p>
+        <p text = "message" th:text = "*{message}">従業員</p>
         <input type = "text" id = "customer_id" name = "customer_id">
         <input type = "text" id = "password" name = "password">
         <button type = "submit">ログイン</button>
