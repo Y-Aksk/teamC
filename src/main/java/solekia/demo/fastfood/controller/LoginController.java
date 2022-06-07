@@ -34,7 +34,7 @@ public class LoginController {
 
         if(!(page.list == null) && page.authority == 0){
                 int login = 1;
-                page.login = LoginMapper.login_out(customer_id, login);
+                LoginMapper.login_out(customer_id, login);
                 //モデルにページインスタンスを設定
                 model.addAttribute("page", page);
                 return "fastfood/mypage";
@@ -66,7 +66,7 @@ public String search(@RequestParam("name")int customer_id, String password, Mode
 
     if(!(page.list == null) && page.authority == 1){
             int login = 1;
-            page.login = LoginMapper.login_out(customer_id, login);
+            LoginMapper.login_out(customer_id, login);
             //モデルにページインスタンスを設定
             model.addAttribute("page", page);
             return "fastfood/mypage_emp";
