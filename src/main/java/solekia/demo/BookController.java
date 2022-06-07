@@ -1,4 +1,4 @@
-package solekia.demo.books;
+package solekia.demo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

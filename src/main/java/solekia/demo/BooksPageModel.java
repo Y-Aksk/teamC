@@ -1,4 +1,4 @@
-package solekia.demo.books;
+package solekia.demo;
 
 import java.util.ArrayList;
 import java.util.List;
