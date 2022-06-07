@@ -14,7 +14,7 @@
         <h1>新規従業員登録</h1>
         <label>姓</label><input type="text" th:field="${page.first_name}" required><br>
         <label>名</label><input type="text" th:field="${page.last_name}" required><br>
-        <label>電話番号</label><input type="text" th:field="${page.tell_no}" required><br>
+        <label>電話番号</label><input type="tel" pattern="\d{2,4}-\d{3,4}-\d{3,4}" th:field="${page.tell_no}" required><br>
         <label>メールアドレス</label><input type="text" th:field="${page.mail}" required><br>
         <!--プルダウンメニュー-->
         <label>所属店舗</label>

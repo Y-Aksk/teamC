@@ -14,7 +14,7 @@
         <h1>登録情報の変更</h1>
         <label>姓</label><input type="text" th:field="${page.first_name}"><br>
         <label>名</label><input type="text" th:field="${page.last_name}"><br>
-        <label>電話番号</label><input type="text" th:field="${page.tell_no}"><br>
+        <label>電話番号</label><input type="tel" pattern="\d{2,4}-\d{3,4}-\d{3,4}" th:field="${page.tell_no}"><br>
         <label>メールアドレス</label><input type="text" th:field="${page.mail}"><br>
         <!--プルダウンメニュー-->
         <label>お気に入り店</label>

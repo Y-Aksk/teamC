@@ -50,8 +50,6 @@ public class RegisterController{
     }
 
 
-
-
     //新規会員登録画面
     @GetMapping("registercust")
     public String register(Model model){
