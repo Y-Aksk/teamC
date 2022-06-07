@@ -4,11 +4,7 @@ plugins {
 	id 'java'
 }
 
-<<<<<<< HEAD
 group = 'solekia'
-=======
-group = 'solekia.demo.fastfood'
->>>>>>> fe9739c4012f1cebf2325e0949f70a321e551755
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 

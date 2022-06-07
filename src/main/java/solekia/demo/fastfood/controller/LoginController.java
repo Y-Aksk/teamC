@@ -13,6 +13,9 @@ import solekia.demo.fastfood.repository.*;
 @RequestMapping("registered")
 public class LoginController {
 
+    @Autowired
+    LoginMapper LoginMapper;
+
     //顧客ログイン
     @PostMapping("login")
     public String search(@RequestParam("name")int customer_id, String password, Model model){
