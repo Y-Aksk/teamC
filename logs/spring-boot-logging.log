@@ -29,3 +29,61 @@
 2022-06-07 11:05:11.364  INFO 17096 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-06-07 11:05:11.364  INFO 17096 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-06-07 11:05:11.365  INFO 17096 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-06-07 11:21:14.419  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.3 on S2200066 with PID 17096 (C:\GroupC\teamC\bin\main started by 2943 in c:\GroupC\teamC)
+2022-06-07 11:21:14.429  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2022-06-07 11:21:14.764  WARN 17096 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[solekia.demo.fastfood.]' package. Please check your configuration.
+2022-06-07 11:21:14.836  INFO 17096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-07 11:21:14.839  INFO 17096 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-07 11:21:14.840  INFO 17096 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-07 11:21:14.876  INFO 17096 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-07 11:21:14.876  INFO 17096 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 441 ms
+2022-06-07 11:21:15.048  INFO 17096 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-06-07 11:21:15.084  INFO 17096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-07 11:21:15.090  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.721 seconds (JVM running for 1319.64)
+2022-06-07 11:21:15.093  INFO 17096 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+    None
+
+
+Negative matches:
+-----------------
+
+   MybatisAutoConfiguration.MapperScannerRegistrarNotFoundConfiguration:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.mybatis.spring.mapper.MapperFactoryBean,org.mybatis.spring.mapper.MapperScannerConfigurer; SearchStrategy: all) found beans of type 'org.mybatis.spring.mapper.MapperScannerConfigurer' com.example.demo.DemoApplication#MapperScannerRegistrar#0 (OnBeanCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2022-06-07 11:21:16.578  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.3 on S2200066 with PID 17096 (C:\GroupC\teamC\bin\main started by 2943 in c:\GroupC\teamC)
+2022-06-07 11:21:16.580  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2022-06-07 11:21:16.907  WARN 17096 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[solekia.demo.fastfood.]' package. Please check your configuration.
+2022-06-07 11:21:16.965  INFO 17096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-07 11:21:16.966  INFO 17096 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-07 11:21:16.967  INFO 17096 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-07 11:21:17.008  INFO 17096 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-07 11:21:17.008  INFO 17096 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 417 ms
+2022-06-07 11:21:17.166  INFO 17096 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-06-07 11:21:17.192  INFO 17096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-07 11:21:17.196  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 0.655 seconds (JVM running for 1321.746)
+2022-06-07 11:21:17.198  INFO 17096 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
