@@ -149,3 +149,5 @@
 2022-06-08 14:33:16.015  INFO 14496 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2022-06-08 14:33:16.087  INFO 14496 --- [restartedMain] s.demo.fastfood.FastfoodApplication      : Started FastfoodApplication in 7.032 seconds (JVM running for 8.937)
 2022-06-08 14:34:07.089  INFO 14496 --- [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-08 14:34:07.090  INFO 14496 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-08 14:34:07.092  INFO 14496 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
