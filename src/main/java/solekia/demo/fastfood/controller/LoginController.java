@@ -17,7 +17,7 @@ public class LoginController {
     LoginMapper LoginMapper;
 
     //顧客用ログインページへの遷移(ボタン)
-    @GetMapping("Login")
+    @GetMapping("login")
     public String Login(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
@@ -63,7 +63,7 @@ public class LoginController {
     }
 
     //従業員用ログインページへの遷移(ボタン)
-    @GetMapping("Login_emp")
+    @GetMapping("login_emp")
     public String Login_emp(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
@@ -89,7 +89,7 @@ public class LoginController {
         //addition参照、遷移するタイミングで
         page.authority = LoginMapper.ditectAuth(customer_id);
     
-        //page.hold_id = customer_id;
+        page.hold_id = customer_id;
 
 
         if(!(page.list == null) && page.authority == 1){
