@@ -15,6 +15,8 @@ public class LoginPageModel {
     public String message;
     public List<LoginModel> list;
 
+    public int count;
+
 
     public int getCustomer_id(){
         return customer_id;

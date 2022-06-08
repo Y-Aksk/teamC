@@ -8,6 +8,11 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * ActorMapper
  */
 public interface LoginMapper {
+    /*//確認
+    @Select("select * from registered order by customer_id")
+    public List<LoginModel> findAll();
+    */
+
     @Select("select * from registered where (customer_id = #{customer_id}) and (password = #{password})")
     public List<LoginModel> findAccount(int customer_id, String password);
 
@@ -22,4 +27,7 @@ public interface LoginMapper {
 
     @Select("select * from registered where customer_id = #{customer_id}")
     public List<LoginModel> showMypage(int customer_id);
+
+    @Select("select count(*) from cart where order_id is not null")
+    public int countOrder();
 }

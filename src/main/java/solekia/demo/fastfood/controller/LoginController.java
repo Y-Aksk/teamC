@@ -10,7 +10,7 @@ import solekia.demo.fastfood.model.*;
 import solekia.demo.fastfood.repository.*;
 
 @Controller
-@RequestMapping("registered")
+@RequestMapping("fastfood")//URLのパス名をここに書く(http://localhost:8080/○○)
 public class LoginController {
 
     @Autowired
@@ -46,11 +46,15 @@ public class LoginController {
         page.hold_id = customer_id;
 
 
+        //ログインボタンを押したときの画面遷移の条件分岐
         if(!(page.list == null) && page.authority == 0){
                 int login = 1;
                 LoginMapper.login_out(customer_id, login);
+
+                page.count = LoginMapper.countOrder();
                 //モデルにページインスタンスを設定
                 model.addAttribute("page", page);
+                model.addAttribute("page.count", page.count);
                 return "fastfood/mypage";
         }
         

@@ -46,8 +46,9 @@
         </tr>
         
         <tr th:each = "item : ${page.list}">
-            <td>お気に入り店舗</td>
+            <td>お気に入り店舗状況</td>
             <td th:text = "${item.shop_name}}">shop</td>
+            <td th:text = "${page.count}}">countOrder</td>
         </tr>
     </table>
 
