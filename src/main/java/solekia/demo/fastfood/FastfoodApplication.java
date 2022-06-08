@@ -1,4 +1,4 @@
-package solekia.demo;
+package solekia.demo.fastfood;
 
 import org.mybatis.spring.annotation.*;
 import org.springframework.boot.SpringApplication;
