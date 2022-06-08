@@ -1,71 +1,17 @@
-<<<<<<< HEAD
-2022-06-06 16:25:34.762  INFO 19992 --- [restartedMain] solekia.demo.DemoApplication             : Starting DemoApplication on S2200063 with PID 19992 (C:\Users\2940\Documents\新人研修\teamC\bin\main started by 2940 in c:\Users\2940\Documents\新人研修\teamC)
-2022-06-06 16:25:34.764  INFO 19992 --- [restartedMain] solekia.demo.DemoApplication             : No active profile set, falling back to default profiles: default
-2022-06-06 16:25:34.807  INFO 19992 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-06-06 16:25:34.817  INFO 19992 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-06-06 16:25:35.791  INFO 19992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-06-06 16:25:35.801  INFO 19992 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-06-06 16:25:35.802  INFO 19992 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
-2022-06-06 16:25:35.893  INFO 19992 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-06-06 16:25:35.893  INFO 19992 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1076 ms
-2022-06-06 16:25:36.080  INFO 19992 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-06-06 16:25:36.270  INFO 19992 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-06-06 16:25:36.385  INFO 19992 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-06-06 16:25:36.396  INFO 19992 --- [restartedMain] solekia.demo.DemoApplication             : Started DemoApplication in 1.957 seconds (JVM running for 2.757)
-=======
-2022-06-07 10:59:17.218  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.3 on S2200066 with PID 17096 (C:\GroupC\teamC\bin\main started by 2943 in c:\GroupC\teamC)
-2022-06-07 10:59:17.220  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
-2022-06-07 10:59:17.334  INFO 17096 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-06-07 10:59:17.355  INFO 17096 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-06-07 10:59:18.619  WARN 17096 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[solekia.demo.fastfood.]' package. Please check your configuration.
-2022-06-07 10:59:19.466  INFO 17096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-06-07 10:59:19.487  INFO 17096 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-06-07 10:59:19.488  INFO 17096 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
-2022-06-07 10:59:19.622  INFO 17096 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-06-07 10:59:19.622  INFO 17096 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2252 ms
-2022-06-07 10:59:20.708  INFO 17096 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-06-07 10:59:20.823  INFO 17096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-06-07 10:59:20.844  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 4.401 seconds (JVM running for 5.394)
-2022-06-07 10:59:29.035  INFO 17096 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-06-07 10:59:29.035  INFO 17096 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-06-07 10:59:29.038  INFO 17096 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2022-06-07 11:05:04.057  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.3 on S2200066 with PID 17096 (C:\GroupC\teamC\bin\main started by 2943 in c:\GroupC\teamC)
-2022-06-07 11:05:04.058  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
-2022-06-07 11:05:04.521  WARN 17096 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[solekia.demo.fastfood.]' package. Please check your configuration.
-2022-06-07 11:05:04.640  INFO 17096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-06-07 11:05:04.641  INFO 17096 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-06-07 11:05:04.642  INFO 17096 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
-2022-06-07 11:05:04.688  INFO 17096 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-06-07 11:05:04.689  INFO 17096 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 622 ms
-2022-06-07 11:05:05.027  INFO 17096 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-06-07 11:05:05.076  INFO 17096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-06-07 11:05:05.084  INFO 17096 --- [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 1.122 seconds (JVM running for 349.634)
-2022-06-07 11:05:05.089  INFO 17096 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-2022-06-07 11:05:11.364  INFO 17096 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-06-07 11:05:11.364  INFO 17096 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-06-07 11:05:11.365  INFO 17096 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
->>>>>>> fe9739c4012f1cebf2325e0949f70a321e551755
-2022-06-07 16:37:41.466  INFO 20664 --- [restartedMain] solekia.demo.DemoApplication             : Starting DemoApplication using Java 17.0.3 on S2200063 with PID 20664 (C:\Users\2940\Documents\teamC\bin\main started by 2940 in C:\Users\2940\Documents\teamC)
-2022-06-07 16:37:41.468  INFO 20664 --- [restartedMain] solekia.demo.DemoApplication             : No active profile set, falling back to 1 default profile: "default"
-2022-06-07 16:37:41.521  INFO 20664 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-06-07 16:37:41.522  INFO 20664 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-06-07 16:37:42.619  INFO 20664 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-06-07 16:37:42.634  INFO 20664 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-06-07 16:37:42.635  INFO 20664 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
-2022-06-07 16:37:42.728  INFO 20664 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-06-07 16:37:42.729  INFO 20664 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1205 ms
-2022-06-07 16:37:43.307  INFO 20664 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-06-07 16:37:43.378  INFO 20664 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-06-07 16:37:43.390  INFO 20664 --- [restartedMain] solekia.demo.DemoApplication             : Started DemoApplication in 2.28 seconds (JVM running for 3.163)
-2022-06-07 16:45:59.195  INFO 4048 --- [restartedMain] solekia.demo.DemoApplication             : Starting DemoApplication using Java 17.0.3 on S2200063 with PID 4048 (C:\Users\2940\Documents\teamC\bin\main started by 2940 in C:\Users\2940\Documents\teamC)
-2022-06-07 16:45:59.200  INFO 4048 --- [restartedMain] solekia.demo.DemoApplication             : No active profile set, falling back to 1 default profile: "default"
-2022-06-07 16:45:59.338  INFO 4048 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2022-06-07 16:45:59.342  INFO 4048 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2022-06-07 16:46:02.344  INFO 4048 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2022-06-07 16:46:02.379  INFO 4048 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-06-07 16:46:02.390  INFO 4048 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
-2022-06-07 16:46:02.635  INFO 4048 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-06-07 16:46:02.637  INFO 4048 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3293 ms
-2022-06-07 16:46:04.894  INFO 4048 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2022-06-07 16:46:05.199  INFO 4048 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2022-06-07 16:46:05.235  INFO 4048 --- [restartedMain] solekia.demo.DemoApplication             : Started DemoApplication in 6.858 seconds (JVM running for 8.52)
+2022-06-08 10:30:42.909  INFO 3496 --- [restartedMain] solekia.demo.DemoApplication             : Starting DemoApplication using Java 17.0.3 on S2200063 with PID 3496 (C:\Users\2940\Documents\teamC\bin\main started by 2940 in C:\Users\2940\Documents\teamC)
+2022-06-08 10:30:42.925  INFO 3496 --- [restartedMain] solekia.demo.DemoApplication             : No active profile set, falling back to 1 default profile: "default"
+2022-06-08 10:30:43.133  INFO 3496 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-08 10:30:43.147  INFO 3496 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-08 10:30:45.824  WARN 3496 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'loginMapper' and 'solekia.demo.fastfood.repository.LoginMapper' mapperInterface. Bean already defined with the same name!
+2022-06-08 10:30:45.827  WARN 3496 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[solekia.demo.fastfood.repository]' package. Please check your configuration.
+2022-06-08 10:30:47.426  INFO 3496 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-08 10:30:47.490  INFO 3496 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-08 10:30:47.494  INFO 3496 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-08 10:30:47.776  INFO 3496 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-08 10:30:47.779  INFO 3496 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4626 ms
+2022-06-08 10:30:49.851  INFO 3496 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-06-08 10:30:50.097  INFO 3496 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-08 10:30:50.142  INFO 3496 --- [restartedMain] solekia.demo.DemoApplication             : Started DemoApplication in 7.953 seconds (JVM running for 10.015)
+2022-06-08 10:30:54.876  INFO 3496 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-08 10:30:54.878  INFO 3496 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-08 10:30:54.882  INFO 3496 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms

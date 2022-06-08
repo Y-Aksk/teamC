@@ -8,9 +8,9 @@
 </head>
 <body>
     <!-- 
-        <a href="hrnkou.html"
-         th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})}"
-         th:if="${item.login == 1}">ログイン</a>
+        <a href="mypage.html"
+         th:href = "@{'/fastfood/mypage/{id}'(id = ${item.customer_id})}"
+         th:if="${item.login == 1}">ログイン中</a>
     -->
     <table>
         <tr th:each = "item : ${page.list}">
