@@ -16,7 +16,21 @@ public class LoginController {
     @Autowired
     LoginMapper LoginMapper;
 
-    //顧客ログイン
+    //顧客用ログインページへの遷移(ボタン)
+    @GetMapping("Login")
+    public String Login(Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+        page.title = "ログイン画面（確認）";
+
+        //モデルページにインスタンスを生成
+        model.addAttribute("page", page);
+
+        //テンプレートファイルを指定
+        return "fastfood/login";
+    }
+
+    //顧客ログイン画面
     @PostMapping("login")
     public String login(@RequestParam("name")int customer_id, String password, Model model){
         //ページインスタンスを作って、タイトルを設定
@@ -29,7 +43,7 @@ public class LoginController {
         //addition参照、遷移するタイミングで
         page.authority = LoginMapper.ditectAuth(customer_id);
         
-        //page.hold_id = customer_id;
+        page.hold_id = customer_id;
 
 
         if(!(page.list == null) && page.authority == 0){
@@ -38,33 +52,47 @@ public class LoginController {
                 //モデルにページインスタンスを設定
                 model.addAttribute("page", page);
                 return "fastfood/mypage";
-            }
+        }
         
 
         else{
             page.message = "IDかパスワードが違います";
             model.addAttribute("page", page);
             return "fastfood/login";
+        }
     }
-}
 
-//従業員ログイン
-@PostMapping("login_emp")
-public String login_emp(@RequestParam("name")int customer_id, String password, Model model){
-    //ページインスタンスを作って、タイトルを設定
-    LoginPageModel page = new LoginPageModel();
-    page.title = "ログイン画面(Java)";
+    //従業員用ログインページへの遷移(ボタン)
+    @GetMapping("Login_emp")
+    public String Login_emp(Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+        page.title = "ログイン画面（確認）";
 
-    //リスト初期化(IDとパスワード分けないといけないかも)
-    page.list = LoginMapper.findAccount(customer_id, password);
+        //モデルページにインスタンスを生成
+        model.addAttribute("page", page);
 
-    //addition参照、遷移するタイミングで
-    page.authority = LoginMapper.ditectAuth(customer_id);
+        //テンプレートファイルを指定
+        return "fastfood/login";
+    }
+
+    //従業員ログイン画面
+    @PostMapping("login_emp")
+    public String login_emp(@RequestParam("name")int customer_id, String password, Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+        page.title = "ログイン画面(Java)";
+
+        //リスト初期化(IDとパスワード分けないといけないかも)
+        page.list = LoginMapper.findAccount(customer_id, password);
+
+        //addition参照、遷移するタイミングで
+        page.authority = LoginMapper.ditectAuth(customer_id);
     
-    //page.hold_id = customer_id;
+        //page.hold_id = customer_id;
 
 
-    if(!(page.list == null) && page.authority == 1){
+        if(!(page.list == null) && page.authority == 1){
             int login = 1;
             LoginMapper.login_out(customer_id, login);
             //モデルにページインスタンスを設定
@@ -73,12 +101,12 @@ public String login_emp(@RequestParam("name")int customer_id, String password, M
         }
     
 
-    else{
-        page.message = "IDかパスワードが違います";
-        model.addAttribute("page", page);
-        return "fastfood/login";
-}
-}
+        else{
+            page.message = "IDかパスワードが違います";
+            model.addAttribute("page", page);
+            return "fastfood/login";
+        }
+    }
 
 @Transactional
     @GetMapping("mypage/{id}")

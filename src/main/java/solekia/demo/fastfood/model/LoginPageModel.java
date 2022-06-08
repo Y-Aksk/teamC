@@ -5,15 +5,16 @@ import solekia.demo.fastfood.repository.LoginModel;
 
 public class LoginPageModel {
     public String title;
-    public String hold_id;
+    public int hold_id;
 
 
-    public int login;
-    public String message;
-    public List<LoginModel> list;
-    public int authority;
     public int customer_id;
     public String password;
+    public int login;
+    public int authority;
+    public String message;
+    public List<LoginModel> list;
+
 
     public int getCustomer_id(){
         return customer_id;
@@ -45,5 +46,13 @@ public class LoginPageModel {
 
     public void setAuthority(int authority){
         this.authority = authority;
+    }
+
+    public String getMessage(){
+        return message;
+    }
+
+    public void setMessage(String message){
+        this.message = message;
     }
 }

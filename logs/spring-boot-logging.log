@@ -15,3 +15,37 @@
 2022-06-08 10:30:54.876  INFO 3496 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-06-08 10:30:54.878  INFO 3496 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-06-08 10:30:54.882  INFO 3496 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-06-08 13:29:20.548  INFO 7848 --- [restartedMain] solekia.demo.FastfoodApplication         : Starting FastfoodApplication using Java 17.0.3 on S2200063 with PID 7848 (C:\Users\2940\Documents\teamC\bin\main started by 2940 in C:\Users\2940\Documents\teamC)
+2022-06-08 13:29:20.554  INFO 7848 --- [restartedMain] solekia.demo.FastfoodApplication         : No active profile set, falling back to 1 default profile: "default"
+2022-06-08 13:29:20.678  INFO 7848 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-08 13:29:20.680  INFO 7848 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-08 13:29:22.834  WARN 7848 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'loginMapper' and 'solekia.demo.fastfood.repository.LoginMapper' mapperInterface. Bean already defined with the same name!
+2022-06-08 13:29:22.837  WARN 7848 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[solekia.demo.fastfood.repository]' package. Please check your configuration.
+2022-06-08 13:29:23.949  INFO 7848 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-08 13:29:23.971  INFO 7848 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-08 13:29:23.974  INFO 7848 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-08 13:29:24.174  INFO 7848 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-08 13:29:24.179  INFO 7848 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3495 ms
+2022-06-08 13:29:27.344  INFO 7848 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-06-08 13:29:27.652  INFO 7848 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-08 13:29:27.699  INFO 7848 --- [restartedMain] solekia.demo.FastfoodApplication         : Started FastfoodApplication in 8.124 seconds (JVM running for 10.87)
+2022-06-08 13:29:53.696  INFO 7848 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-08 13:29:53.697  INFO 7848 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-08 13:29:53.701  INFO 7848 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-06-08 13:35:28.217  INFO 11000 --- [restartedMain] solekia.demo.FastfoodApplication         : Starting FastfoodApplication using Java 17.0.3 on S2200063 with PID 11000 (C:\Users\2940\Documents\teamC\bin\main started by 2940 in C:\Users\2940\Documents\teamC)
+2022-06-08 13:35:28.226  INFO 11000 --- [restartedMain] solekia.demo.FastfoodApplication         : No active profile set, falling back to 1 default profile: "default"
+2022-06-08 13:35:28.403  INFO 11000 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-06-08 13:35:28.404  INFO 11000 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-06-08 13:35:30.719  WARN 11000 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : Skipping MapperFactoryBean with name 'loginMapper' and 'solekia.demo.fastfood.repository.LoginMapper' mapperInterface. Bean already defined with the same name!
+2022-06-08 13:35:30.725  WARN 11000 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[solekia.demo.fastfood.repository]' package. Please check your configuration.
+2022-06-08 13:35:32.242  INFO 11000 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-08 13:35:32.281  INFO 11000 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-08 13:35:32.284  INFO 11000 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-08 13:35:32.611  INFO 11000 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-08 13:35:32.614  INFO 11000 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4204 ms
+2022-06-08 13:35:34.529  INFO 11000 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-06-08 13:35:34.705  INFO 11000 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-06-08 13:35:34.743  INFO 11000 --- [restartedMain] solekia.demo.FastfoodApplication         : Started FastfoodApplication in 7.36 seconds (JVM running for 9.24)
+2022-06-08 13:35:35.008  INFO 11000 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-08 13:35:35.012  INFO 11000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-08 13:35:35.016  INFO 11000 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms

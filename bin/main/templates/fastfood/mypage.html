@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>マイページ</title>
+    <title>マイページ(顧客)</title>
 </head>
 <body>
     <!-- 
         <a href="mypage.html"
          th:href = "@{'/fastfood/mypage/{id}'(id = ${item.customer_id})}"
-         th:if="${item.login == 1}">ログイン中</a>
+         th:if="${item.login == 0}">ログイン</a>
+    -->
+
+    <!-- 
+        <a href="mypage.html"
+         th:href = "@{'/fastfood/mypage/{id}'(id = ${item.customer_id})}"
+         th:if="${item.login == 1}">ログアウト</a>
     -->
     <table>
         <tr th:each = "item : ${page.list}">
