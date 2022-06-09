@@ -2883,3 +2883,4 @@ org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property o
 2022-06-09 15:26:59.071  INFO 4564 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-06-09 15:26:59.073  INFO 4564 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 2022-06-09 15:27:02.764  INFO 4564 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2022-06-09 15:27:02.896  INFO 4564 --- [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
