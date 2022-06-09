@@ -4,7 +4,6 @@ public class LoginModel {
 /**
  * LoginModel
  */
-public class ActorModel {
     public int customer_id;
     public String password;
     public String first_name;
@@ -13,5 +12,4 @@ public class ActorModel {
     public String mail;
     public String shop_name;
 
-}
 }

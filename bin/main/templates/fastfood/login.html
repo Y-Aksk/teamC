@@ -7,33 +7,26 @@
     <title>ログイン画面</title>
 </head>
 <body>
-    
-    <form method = "post" action = "/fastfood/login" th:object = "${page}">
-        <p text = "message" th:text = "*{message}">テキスト</p>
+        <p text = "message" th:text = "${page.message}">テキスト</p>
+        
+        <form method = "post" action = "/fastfood/login"><!--th:action = "@{/fastfood/login}" th:object = "${page}">-->
+
+            ID:<input type = "text" id = "customer_id" name = "customer_id"><br>
+            パスワード:<input type = "text" id = "password" name = "password"><br>
+            
+            <button type = "submit">ログイン</button>
+        </form>
+
         <table>
             <tr>
-                <th>ID</th>
-                <td><input type = "text" id = "customer_id" name = "customer_id"></td>
-            </tr>
-
-            <tr>
-                <th>パスワード</th>
-                <td><input type = "text" id = "password" name = "password"></td>
-            </tr>
-
-            <tr>
-                <td><button type = "submit">ログイン</button></td>
-            </tr>
-<!--  
-            <tr>
                 <td>
-                    <a href = "sinki.html" th:href = "@{'/fastfood/shinki/'}" href = "#">
+                    
+                    <a href = "sinki.html" th:href = "@{'/fastfood/shinki/'}">
                         新規登録はコチラ
                     </a>
                 </td>
-            </tr> -->
+            </tr> 
         </table>
-    </form>
 
 </body>
 </html>

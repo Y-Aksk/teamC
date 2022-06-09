@@ -8,26 +8,29 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * ActorMapper
  */
 public interface LoginMapper {
-    /*//確認
-    @Select("select * from registered order by customer_id")
-    public List<LoginModel> findAll();
-    */
+    //ok
+    @Select("select * from registered where (customer_id = #{customer_id}) and (password = #{password});")
+    public List<LoginModel> findAccount(
+        @Param("customer_id")int customer_id,
+        @Param("password")String password
+    );
 
-    @Select("select * from registered where (customer_id = #{customer_id}) and (password = #{password})")
-    public List<LoginModel> findAccount(int customer_id, String password);
-
-    @Select("select authority from registered where customer_id = #{customer_id}")
+    //ok
+    @Select("select authority from registered where customer_id = #{customer_id};")
     public int ditectAuth(int customer_id);
 
-    @Update("update registered set login = #{login} where customer_id = #{customer_id} ")
+    //sql文はok パラメータのやり取りは調査中
+    @Update("update registered set login = #{login} where customer_id = #{customer_id};")
     public void login_out(
     @Param("customer_id")int customer_id,
     @Param("login")int login  
     );
 
-    @Select("select * from registered where customer_id = #{customer_id}")
+    //ok
+    @Select("select * from registered where customer_id = #{customer_id};")
     public List<LoginModel> showMypage(int customer_id);
 
-    @Select("select count(*) from cart where order_id is not null")
+    //ok
+    @Select("select count(*) from cart where order_id is not null;")
     public int countOrder();
 }
