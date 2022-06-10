@@ -7,6 +7,23 @@
     <title>ログイン画面(従業員用)</title>
 </head>
 <body>
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">メニュー</a></li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="mypage">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>マイページ</h1>
+
     <form method = "post" action = "/fastfood/login" th:object = "${page}">
         <p text = "message" th:text = "*{message}">従業員</p>
         <table>
@@ -26,7 +43,7 @@
 
             <tr>
                 <td>
-                    <a href = "sinki.html" th:href = "@{'/fastfood/shinki/'}">
+                    <a href = "sinki.html" ><!--th:href = "@{'/fastfood/shinki/'}">-->
                         新規登録はコチラ
                     </a>
                 </td>

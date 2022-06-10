@@ -7,6 +7,21 @@
     <title>ログイン画面</title>
 </head>
 <body>
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">メニュー</a></li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="mypage">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+
         <p text = "message" th:text = "${page.message}">テキスト</p>
         
         <form method = "post" action = "/fastfood/login"><!--th:action = "@{/fastfood/login}" th:object = "${page}">-->

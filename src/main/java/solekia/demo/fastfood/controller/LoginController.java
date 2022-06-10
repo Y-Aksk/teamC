@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpSession;
 
 import solekia.demo.fastfood.model.*;
 import solekia.demo.fastfood.repository.*;
@@ -15,6 +16,8 @@ public class LoginController {
 
     @Autowired
     LoginMapper LoginMapper;
+    @Autowired
+    HttpSession session;
 
     //顧客用ログインページへの遷移(ボタン)
     @GetMapping("login")
@@ -34,7 +37,7 @@ public class LoginController {
     @PostMapping("login")
     public String login(
         @RequestParam("customer_id") int customer_id, 
-        @RequestParam("password") String password, 
+        @RequestParam("password") String password,
         Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
@@ -50,7 +53,6 @@ public class LoginController {
 
         model.addAttribute("page", page);
         //model.addAttribute("page.count", page.count);
-        //return "fastfood/mypage";
 
 
         //ログインボタンを押したときの画面遷移の条件分岐
@@ -61,6 +63,8 @@ public class LoginController {
             page.count = LoginMapper.countOrder();
             //モデルにページインスタンスを設定
             model.addAttribute("page", page);
+
+            session.setAttribute("user", page.getCustomer_id());
             //model.addAttribute("page.count", page.count);
             return "fastfood/mypage";
         }
@@ -76,7 +80,8 @@ public class LoginController {
 
     //従業員用ログインページへの遷移(ボタン)
     @GetMapping("login_emp")
-    public String Login_emp(Model model){
+    public String Login_emp(
+        Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
         page.title = "ログイン画面（確認）";
@@ -90,21 +95,24 @@ public class LoginController {
 
     //従業員ログイン画面
     @PostMapping("login_emp")
-    public String login_emp(@RequestParam("nam")int customer_id, String password, Model model){
+    public String login_emp(
+        @RequestParam("customer_id") int customer_id, 
+        @RequestParam("password") String password, 
+        Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
         page.title = "ログイン画面(Java)";
 
         //リスト初期化(IDとパスワード分けないといけないかも)
-        //page.list = LoginMapper.findAccount(customer_id, password);
+        page.list = LoginMapper.findAccount(customer_id, password);
 
         //addition参照、遷移するタイミングで
-        page.authority = LoginMapper.ditectAuth(customer_id);
+        //page.authority = LoginMapper.ditectAuth(customer_id);
     
         page.hold_id = customer_id;
 
 
-        if(!(page.list == null) && page.authority == 1){
+        if(!(page.list.size() == 0) && page.authority == 1){
             int login = 1;
             LoginMapper.login_out(customer_id, login);
             //モデルにページインスタンスを設定
@@ -131,6 +139,9 @@ public class LoginController {
         
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+
+        //遷移先のページでセッションから値を取得する
+        String name = (String)session.getAttribute("user");
         
 
         //テンプレートファイルを指定

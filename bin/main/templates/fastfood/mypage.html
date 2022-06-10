@@ -8,17 +8,42 @@
 </head>
 
 <body>
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">メニュー</a></li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="#">ログイン</a></li>
+                <!--
+                <li><a th:each = "item : ${page.list}"
+                     href = "${item.login == 0} ? # : #"
+                     text = "${item.login == 0} ? ログイン : ログアウト">
+                     ログイン
+                    </a>
+                -->
+                </li>
+            </ul>
+        </nav>
+    </header>
    <!-- 
-        <a href="mypage.html"
+        <a href="mypage"
          th:href = "@{'/fastfood/mypage/{id}'(id = ${item.customer_id})}"
          th:if="${item.login == 0}">ログイン</a>
     --
 
     <!-
-        <a href="mypage.html"
+        <a href="mypage"
          th:href = "@{'/fastfood/mypage/{id}'(id = ${item.customer_id})}"
          th:if="${item.login == 1}">ログアウト</a>
    -->
+
+   <h1>マイページ</h1>
+
     <table>
         
         <tr th:each = "item : ${page.list}">
@@ -35,21 +60,6 @@
                     ID
                 </span>
             </td>
-            
-            <!--
-                <script>
-                   let a = document.getElementById("password").getAttribute("th:text");
-                   //let text = document.getElementById('password').innerText;
-                   let i = 0;
-                   var maru = '';
-                   while(i < a.length){
-                       maru = maru.concat('●');
-                       i++;
-                   }
-                   document.getElementById('password').innerText = maru;
-                </script>
-            -->
-        </tr>
 
         <tr th:each = "item : ${page.list}">
             <td>氏名</td>
