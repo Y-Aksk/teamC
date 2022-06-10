@@ -21,7 +21,7 @@ public class LoginController {
     public String Login(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
-        page.message = "ログイン画面（確認）";
+        page.message = "";
 
         //モデルページにインスタンスを生成
         model.addAttribute("page", page);
@@ -44,9 +44,9 @@ public class LoginController {
         page.list = LoginMapper.findAccount(customer_id, password);
 
         //addition参照、遷移するタイミングで
-        page.authority = LoginMapper.ditectAuth(customer_id);
+        //page.authority = LoginMapper.ditectAuth(customer_id);
         
-        page.hold_id = customer_id;
+        //page.hold_id = customer_id;
 
         model.addAttribute("page", page);
         //model.addAttribute("page.count", page.count);

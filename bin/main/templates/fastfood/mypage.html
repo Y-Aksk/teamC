@@ -28,13 +28,35 @@
 
         <tr th:each = "item : ${page.list}">
             <td>パスワード</td>
-            <td th:text = "${item.password}">ID</td>
+            
+            <td>
+                <span th:each="i : ${#numbers.sequence(1, #strings.length(item.password))}"
+                 th:text = "〇">
+                    ID
+                </span>
+            </td>
+            
+            <!--
+                <script>
+                   let a = document.getElementById("password").getAttribute("th:text");
+                   //let text = document.getElementById('password').innerText;
+                   let i = 0;
+                   var maru = '';
+                   while(i < a.length){
+                       maru = maru.concat('●');
+                       i++;
+                   }
+                   document.getElementById('password').innerText = maru;
+                </script>
+            -->
         </tr>
 
         <tr th:each = "item : ${page.list}">
             <td>氏名</td>
-            <td th:text = "${item.first_name}">first_name</td>
-            <td th:text = "${item.last_name}">last_name</td>
+            <td>
+            <span th:text = "${item.first_name}">first_name</span>
+            <span th:text = "${item.last_name}">last_name</span>
+            </td>
         </tr>
 
         <tr th:each = "item : ${page.list}">
@@ -48,41 +70,53 @@
         </tr>
         
         <tr th:each = "item : ${page.list}">
-            <td>お気に入り店舗状況</td>
+            <td>お気に入り店舗状況&emsp;</td>
             <td th:text = "${item.shop_name}">shop</td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td></td>
             <td th:text = "${page.count}">countOrder</td>
         </tr>
     </table>
 
-<!--
+
     <table>
         <tr>
-            <!-henkouは仮名->
-            <a style="display: block; width: 100%; height: 100%"
+            <!--henkouは仮名-->
+            <!--a style="display: block; width: 100%; height: 100%"
             href = "henkou.html"
-            th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})} ">
+            ↓ちゃんとしたURLじゃないとだめかもしれない
+            th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})} ">-->
+            <a style="display: block; width: 100%; height: 100%" href = "henkou.html">
                 登録情報の変更
             </a>
         </tr>
 
         <tr>
-            <!-chuumonは仮名->
+            <!--chuumonは仮名-->
             <a style="display: block; width: 100%; height: 100%"
-            href = "chuumon.html"
-            th:href = "@{'/fastfood/chuumon/'} ">
+            href = "chuumon.html">
+            <!--
+                ↓ちゃんとしたURLじゃないとだめかもしれない
+                th:href = "@{'/fastfood/chuumon/'} ">
+            -->
                 ハンバーガーの受け取り注文はこちら！！
             </a>
         </tr>
 
         <tr>
-            <!-kakuninは仮名->
+            <!--kakuninは仮名-->
             <a style="display: block; width: 100%; height: 100%"
-            href = "kakunin.html"
-            th:href = "@{'/fastfood/kakunin/{id}'(id = ${item.customer_id})}">
+            href = "kakunin.html">
+            <!--
+                ↓ちゃんとしたURLじゃないとだめかもしれない
+                th:href = "@{'/fastfood/kakunin/{id}'(id = ${item.customer_id})}">
+            -->
                 注文状況確認画面
             </a>
         </tr>
     </table>
--->
+
 </body>
 </html>
