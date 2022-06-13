@@ -10,6 +10,8 @@ public class LoginModel {
     public String last_name;
     public String tell_No;
     public String mail;
+    public int login;
+    public int authority;
     public String shop_name;
 
 }

@@ -47,7 +47,7 @@ public class LoginController {
         page.list = LoginMapper.findAccount(customer_id, password);
 
         //addition参照、遷移するタイミングで
-        //page.authority = LoginMapper.ditectAuth(customer_id);
+        page.authority = LoginMapper.ditectAuth(customer_id);
         
         //page.hold_id = customer_id;
 
@@ -108,16 +108,22 @@ public class LoginController {
         page.list = LoginMapper.findAccount(customer_id, password);
 
         //addition参照、遷移するタイミングで
-        //page.authority = LoginMapper.ditectAuth(customer_id);
-    
+        page.authority = LoginMapper.ditectAuth(customer_id);
+   
         page.hold_id = customer_id;
 
 
         if(!(page.list.size() == 0) && page.authority == 1){
             int login = 1;
-            LoginMapper.login_out(customer_id, login);
+            page.login = LoginMapper.login_out(customer_id, login);
+
+            page.count = LoginMapper.countOrder();
             //モデルにページインスタンスを設定
             model.addAttribute("page", page);
+
+            //idをセッションの値として格納
+            session.setAttribute("user_id", page.getCustomer_id());
+
             return "fastfood/mypage_emp";
         }
     
@@ -142,7 +148,7 @@ public class LoginController {
         model.addAttribute("page", page);
 
         //遷移先のページでセッションから値を取得する
-        String user_id = (String)session.getAttribute("user_id");
+        session.getAttribute("user_id");
         
 
         //テンプレートファイルを指定
@@ -160,6 +166,9 @@ public class LoginController {
         
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+
+        //遷移先のページでセッションから値を取得する
+        session.getAttribute("user_id");
         
 
         //テンプレートファイルを指定
@@ -167,7 +176,6 @@ public class LoginController {
 
     }
 
-    @Transactional
     @GetMapping("logout/{id}")
     public String logout(@PathVariable("id") int id, Model model){
         //ページインスタンスを作って、タイトルを設定
@@ -176,13 +184,31 @@ public class LoginController {
 
         //セッション終了
         session.invalidate();
-        
+
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
     
 
         //テンプレートファイルを指定
         return "fastfood/login";
+
+    }
+
+    @GetMapping("logout_emp/{id}")
+    public String logout_emp(@PathVariable("id") int id, Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+        page.message = "ログアウトしました";
+
+        //セッション終了
+        session.invalidate();
+
+        //モデルにページインスタンスを設定
+        model.addAttribute("page", page);
+    
+
+        //テンプレートファイルを指定
+        return "fastfood/login_emp";
 
     }
 }

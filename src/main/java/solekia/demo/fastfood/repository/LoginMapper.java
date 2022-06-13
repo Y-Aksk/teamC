@@ -21,7 +21,7 @@ public interface LoginMapper {
 
     //sql文はok パラメータのやり取りは調査中
     @Update("update registered set login = #{login} where customer_id = #{customer_id};")
-    public void login_out(
+    public int login_out(
     @Param("customer_id")int customer_id,
     @Param("login")int login  
     );
