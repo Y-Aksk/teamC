@@ -1,0 +1,41 @@
+<!--画面設計書33-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>管理者確認画面</title>
+</head>
+<body>
+
+    <td>
+        <a th:href="" href="#">
+            管理者マイページ
+        </a>
+    </td>
+
+    <h1 th:text = "${page.title}">現在の注文状況</h1>
+
+</body>
+
+<!--カート情報を表示-->
+<table>
+    <tr th:each = "item : ${page.list}">
+        <td th:text = "${item.customer_id}">お客様ID</td>
+        <td th:text = "${item.order_id}">注文ID</td>
+        <td th:text = "${item.product_name}">商品名</td>
+        <td th:text = "${item.number}">個数</td>
+        <td>
+            <!--完了した注文を非表示にする-->
+            <a th:href="" href="#">
+                完了
+            </a>
+        </td>
+    </tr>
+</table>
+
+<!--管理者マイページに戻る-->
+<button type="button">戻る</button>
+
+</html>

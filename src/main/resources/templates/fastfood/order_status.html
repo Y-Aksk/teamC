@@ -1,0 +1,43 @@
+<!--画面設計書28-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注文確認画面</title>
+</head>
+<body>
+
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">メニュー</a></li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a th:href="@{'/fastfood/allergy'}"href="#">アレルギー情報</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="#">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 th:text = "${page.title}">現在の注文状況</h1>
+
+    <!--待ち時間・受け取り可能表示-->
+    
+    <table>
+        <tr th:each = "item : ${page.list}">
+            <td img th:src = "${item.product_img}">商品画像</td>
+            <td th:text = "${item.product_name}">商品名</td>
+            <td th:text = "${item.number}">個数</td>
+            <td th:text = "${item.price}">価格</td>
+        </tr>
+    </table>
+
+    <button type="button" onclick="history.back()">戻る</button>
+    
+</body>
+</html>

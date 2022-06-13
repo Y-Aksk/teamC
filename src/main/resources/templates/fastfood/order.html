@@ -1,0 +1,48 @@
+<!--画面設計書25-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注文画面</title>
+</head>
+<body>
+
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">メニュー</a></li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="#">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 th:text = "${page.title}">メニュー</h1>
+    
+    <table>
+        <tr th:each = "item : ${page.list}">
+            <td  img th:src = "${item.product_img}">商品画像</td>
+            <td th:text = "${item.product_name}">商品名</td>
+            <td th:text = "${item.price}">価格</td>
+        </tr>
+    </table>
+   
+    <!--増減ボタン-->
+    <td><input type="number" min="0" max="10" value="0"></td>
+
+    <button type="button" onclick="history.back()">戻る</button>
+
+     <!--入力内容を保持したまま、確認画面に遷移-->
+     <a href="">
+    <button type="button">確認</button>
+     </a>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!--画面設計書27-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注文確定画面</title>
+</head>
+<body>
+
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">メニュー</a></li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="#">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1 th:text = "${page.title}">メニュー</h1>
+
+    <h3>注文が確定しました</h3>
+    <h3>ご利用ありがとうございます</h3>
+
+    <!--マイページに遷移-->
+    <a href="マイページのURL">
+        <button type="button">マイページに戻る</button>
+    </a>
+
+</body>
+</html>

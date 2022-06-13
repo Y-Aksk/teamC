@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>顧客一覧</title>
+</head>
+<body>
+    <h1 th:text="${page.title}">顧客一覧画面</h1>
+
+    <table>
+        <tr th:each="item : ${page.list}">
+            <td th:text="${item.product_id}">ID</td>
+            <td th:text="${item.first_name}">名前</td>
+            <td th:text="${item.last_name}">名前</td>
+            <td th:text="${item.email}">メール</td>
+            <td>
+                <a th:href="@{'/customer/delete/{id}'(id=${item.customer_id})}" href="#">
+                    削除
+                </a>
+                <a th:href="@{'/customer/edit/{id}'(id=${item.customer_id})}" href="#">
+                    編集
+                </a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

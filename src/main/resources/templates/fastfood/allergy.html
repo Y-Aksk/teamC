@@ -1,0 +1,102 @@
+<!--画面設計書19-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>アレルギー情報</title>
+</head>
+
+<h1 th:text = "${page.title}">アレルギー情報</h1>
+
+<header>
+    <!-- ナビゲーションメニュー（メニューバー） -->
+    <nav>
+        <ul>
+            <!--シャープ（#）をページのリンクに書き換える-->
+            <li><a href="#">ホーム</a></li>
+            <li><a href="#">メニュー</a></li>
+            <li><a href="#">店舗一覧</a></li>
+            <li><a href="#">アレルギー情報</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">ログイン</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+
+    <form action="/fastfood/search" method="post">    
+
+       <!-- <div>
+            <label for="product_name">アレルギー食品</label>
+            !--複数選択メニュー--
+            <select name="product_name"multiple>
+            <option value="flour">小麦</option>
+            <option value="egg">卵</option>
+            <option value="milk">乳</option>
+            <option value="shrimp">エビ</option>
+            <option value="crab">カニ</option>
+            <option value="peanut">落花生</option>
+            </select>
+        </div>
+    -->
+
+        <!-- classは単なる名前。わかりやすい名前に変更してください -->
+        <!-- idとnameはデータベースの列名に代えてください -->
+        <h4>※〇が含む,✕が含まれない</h4>
+    <tr>
+        <td><select class="product_control" id="product_name" name="product_name" required>
+            <option value="">商品を選択してください</option>
+            <div th:each="item:${page.list}">
+                <option th:value="${item.product_name}" th:text="${item.product_name}"></option>
+            </div>
+         </select></td>
+    </tr>
+    <button type="submit">検索</button>
+    </form>
+
+    
+
+    <!--アレルギー表示メニュー-->
+    <table border=1>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>小麦</th>
+        <th>卵</th>
+        <th>乳</th>
+        <th>エビ</th>
+        <th>カニ</th>
+        <th>落花生</th>
+        <tr th:each="item : ${page.list}">
+            <td th:text="${item.product_id}">商品ID</td>
+            <td th:text="${item.product_name}">商品名</td>
+            <!-- 小麦がTrueの場合 -->
+            <td th:if="${item.flour}">&#9675;</td>
+            <!-- 小麦がFalseの場合 -->
+            <td th:if="${!item.flour}">&#10005;</td>
+            <!-- 卵がTrueの場合 -->
+            <td th:if="${item.egg}">&#9675;</td>
+            <!-- 卵がFalseの場合 -->
+            <td th:if="${!item.egg}">&#10005;</td>
+            <!-- 乳がTrueの場合 -->
+            <td th:if="${item.milk}">&#9675;</td>
+            <!-- 乳がFalseの場合 -->
+            <td th:if="${!item.milk}">&#10005;</td>
+            <!-- エビがTrueの場合 -->
+            <td th:if="${item.shrimp}">&#9675;</td>
+            <!-- エビがFalseの場合 -->
+            <td th:if="${!item.shrimp}">&#10005;</td>
+            <!-- カニがTrueの場合 -->
+            <td th:if="${item.crab}">&#9675;</td>
+            <!-- カニがFalseの場合 -->
+            <td th:if="${!item.crab}">&#10005;</td>
+            <!-- 落花生がTrueの場合 -->
+            <td th:if="${item.peanut}">&#9675;</td>
+            <!-- 落花生がFalseの場合 -->
+            <td th:if="${!item.peanut}">&#10005;</td>
+        </tr>
+    </table>
+</body>
+</html>
