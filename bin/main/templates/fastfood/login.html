@@ -17,7 +17,17 @@
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
                 <li><a href="#">お問い合わせ</a></li>
-                <li><a href="mypage">ログイン</a></li>
+                
+                <li><a href="#">ログイン</a></li>
+                
+<!--
+                <li><a th:each = "item : ${page.list}"
+                    th:href = "${item.login == 0} ? # : #"
+                    th:text = "${item.login == 0} ? ログイン : ログアウト">
+                    ログイン
+                   </a>
+               </li>
+               -->
             </ul>
         </nav>
     </header>

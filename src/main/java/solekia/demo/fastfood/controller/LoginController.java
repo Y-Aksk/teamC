@@ -64,7 +64,8 @@ public class LoginController {
             //モデルにページインスタンスを設定
             model.addAttribute("page", page);
 
-            session.setAttribute("user", page.getCustomer_id());
+            //idをセッションの値として格納
+            session.setAttribute("user_id", page.getCustomer_id());
             //model.addAttribute("page.count", page.count);
             return "fastfood/mypage";
         }
@@ -141,7 +142,7 @@ public class LoginController {
         model.addAttribute("page", page);
 
         //遷移先のページでセッションから値を取得する
-        String name = (String)session.getAttribute("user");
+        String user_id = (String)session.getAttribute("user_id");
         
 
         //テンプレートファイルを指定
@@ -163,6 +164,25 @@ public class LoginController {
 
         //テンプレートファイルを指定
         return "fastfood/mypage_emp";
+
+    }
+
+    @Transactional
+    @GetMapping("logout/{id}")
+    public String logout(@PathVariable("id") int id, Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+        page.message = "ログアウトしました";
+
+        //セッション終了
+        session.invalidate();
+        
+        //モデルにページインスタンスを設定
+        model.addAttribute("page", page);
+    
+
+        //テンプレートファイルを指定
+        return "fastfood/login";
 
     }
 }

@@ -18,15 +18,19 @@
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
                 <li><a href="#">お問い合わせ</a></li>
-                <li><a href="#">ログイン</a></li>
+                <li th:each = "item : ${page.list}">
+                    <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="login">
+                        ログアウト
+                    </a>
+                </li>
                 <!--
                 <li><a th:each = "item : ${page.list}"
-                     href = "${item.login == 0} ? # : #"
-                     text = "${item.login == 0} ? ログイン : ログアウト">
-                     ログイン
+                    href = "${item.login == 0} ? # : #"
+                    text = "${item.login == 0} ? ログイン : ログアウト">
+                    ログイン
                     </a>
-                -->
                 </li>
+                -->
             </ul>
         </nav>
     </header>
@@ -84,10 +88,13 @@
             <td th:text = "${item.shop_name}">shop</td>
         </tr>
 
-        <tr th:each = "item : ${page.list}">
+        <tr>
             <td></td>
-            <td th:text = "${page.count}">countOrder</td>
+            <td th:text = "${page.count} <= 3 ? 'もうすぐ受け取りが可能です。' : (${page.count} <= 5 ? '5分以内に受け取りが可能です。' : 'もう少しお待ちください。')">
+                countOrder
+            </td>
         </tr>
+        
     </table>
 
 
