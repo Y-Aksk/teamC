@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ログイン画面(従業員用)</title>
 
-    <link rel = "stylesheet" type = "text/css" href = "./css/style.css">
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
 </head>
 <body>
     <header>
         <!-- ナビゲーションメニュー（メニューバー） -->
-        <nav>
+        <nav id="menubar">
             <ul>
                 <!--シャープ（#）をページのリンクに書き換える-->
                 <li><a href="#">ホーム</a></li>
@@ -19,17 +19,19 @@
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
                 <li><a href="#">お問い合わせ</a></li>
-                <li th:if="${page.login} == 0"><a href="#">ログイン!??!</a></li>
-                <li th:if="${page.login} == 1"><a href="#">ログインssssssssssss</a></li>
+                <li th:if="${page.login} == 0"><a href="#">ログイン</a></li>
+                <li th:if="${page.login} == 1"><a href="#">ログイン!?</a></li>
             </ul>
         </nav>
     </header>
 
+    <main>
     <h1>従業員用ログインページ</h1>
 
+       <!--<section></section>--> 
     <form method = "post" action = "/fastfood/login_emp">
         <p text = "message" th:text = "${page.message}">テキスト</p>
-        <table>
+        <table class="ta1">
             <tr>
                 <th>ID</th>
                 <td><input type = "text" id = "customer_id" name = "customer_id"></td>
@@ -53,5 +55,7 @@
             </tr>
         </table>
     </form>
+
+</main>
 </body>
 </html>

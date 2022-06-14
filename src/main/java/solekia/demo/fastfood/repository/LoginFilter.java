@@ -1,4 +1,4 @@
-package com.example.demo;
+package solekia.demo.fastfood.repository;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,15 +16,23 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class LoginFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("init!!");
+
         //☆☆ここにログインしていなくても開けるページ☆☆
-        urls.add("^/login");
-        urls.add("^/login/check");
+        urls.add("^/fastfood/login");
+        urls.add("^/fastfood/login_emp");
+        urls.add("^/fastfood/login/list");
+        urls.add("^/fastfood/login_emp/list");
+        urls.add("^/fastfood/logout/");
+        urls.add("^/fastfood/logout_emp");
+        urls.add("^/fastfood/list");
+        urls.add("^/fastfood/logout/list");
     }
 
     private List<String> urls = new  ArrayList<String>();

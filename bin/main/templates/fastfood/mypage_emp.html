@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>マイページ(従業員)</title>
 
-    <link rel = "stylesheet" type = "text/css" href = "./css/style.css">
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
 </head>
 <body>
 
     <header>
         <!-- ナビゲーションメニュー（メニューバー） -->
-        <nav>
+        <nav id="menubar">
             <ul>
                 <!--シャープ（#）をページのリンクに書き換える-->
                 <li><a href="#">ホーム</a></li>
@@ -35,9 +35,10 @@
         </nav>
     </header>
     
+    <main>
     <h1>従業員用マイページ</h1>
 
-    <table>
+    <table class="ta1">
         <tr th:each = "item : ${page.list}">
             <td>ID</td>
             <td th:text = "${item.customer_id}">ID</td>
@@ -94,5 +95,6 @@
         </tr>
     </table>
 
+</main>
 </body>
 </html>

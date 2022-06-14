@@ -5,32 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>マイページ(顧客)</title>
+
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
 </head>
 
 <body>
     <header>
         <!-- ナビゲーションメニュー（メニューバー） -->
         <nav>
-            <ul>
+            <ul id="menubar">
                 <!--シャープ（#）をページのリンクに書き換える-->
                 <li><a href="#">ホーム</a></li>
                 <li><a href="#">メニュー</a></li>
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
                 <li ><a href="#">お問い合わせ</a></li>
-                <li th:each = "item : ${page.list}">
-                    <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="login">
+                <li th:if="${page.login} == 1" th:each = "item : ${page.list}">
+                    <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="logout">
                         ログアウト
                     </a>
                 </li>
-                <!--
-                <li><a th:each = "item : ${page.list}"
-                    href = "${item.login == 0} ? # : #"
-                    text = "${item.login == 0} ? ログイン : ログアウト">
-                    ログイン
+
+                <li th:if="${page.login} == 0" th:each = "item : ${page.list}">
+                    <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="login">
+                        ログアウト!!!!!!!!!!!!!
                     </a>
                 </li>
-                -->
             </ul>
         </nav>
     </header>
@@ -46,9 +46,10 @@
          th:if="${item.login == 1}">ログアウト</a>
    -->
 
+   <main>
    <h1>マイページ</h1>
 
-    <table>
+    <table class="ta1">
         
         <tr th:each = "item : ${page.list}">
             <td>ID</td>
@@ -133,6 +134,6 @@
             </a>
         </tr>
     </table>
-
+</main>
 </body>
 </html>

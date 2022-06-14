@@ -54,11 +54,16 @@ public class LoginController {
         model.addAttribute("page", page);
         //model.addAttribute("page.count", page.count);
 
+        if(customer_id == page.getCustomer_id() && page.login == 1){
+            page.message = "すでに他の端末でログイン済みです";
+            model.addAttribute("page", page);
+            return "fastfood/login_emp";
+        }
 
         //ログインボタンを押したときの画面遷移の条件分岐
         if(!(page.list.size() == 0) && page.authority == 0){
-            int login = 1;
-            LoginMapper.login_out(customer_id, login);
+            page.login = 1;
+            //LoginMapper.login_out(customer_id, login);
 
             page.count = LoginMapper.countOrder();
             //モデルにページインスタンスを設定
@@ -67,9 +72,9 @@ public class LoginController {
             //idをセッションの値として格納
             session.setAttribute("user_id", page.getCustomer_id());
             //model.addAttribute("page.count", page.count);
+            
             return "fastfood/mypage";
         }
-        
 
         else{
             page.message = "IDかパスワードが違います";
@@ -111,9 +116,15 @@ public class LoginController {
    
         //page.hold_id = customer_id;
 
+        if(customer_id == page.getCustomer_id() && page.getLogin() == 1){
+            page.message = "すでに他の端末でログイン済みです";
+            model.addAttribute("page", page);
+            return "fastfood/login_emp";
+        }
+
         if(!(page.list.size() == 0) && page.authority == 1){
-            int login = 1;
-            page.login = LoginMapper.login_out(customer_id, login);
+            page.login = 1;
+            LoginMapper.login_out(customer_id, page.login);
 
             page.count = LoginMapper.countOrder();
             //モデルにページインスタンスを設定
@@ -124,14 +135,15 @@ public class LoginController {
 
             return "fastfood/mypage_emp";
         }
-    
 
         else{
             page.message = "IDかパスワードが違います";
             model.addAttribute("page", page);
             return "fastfood/login_emp";
         }
+
     }
+    
 
 @Transactional
     @GetMapping("mypage")
@@ -175,10 +187,14 @@ public class LoginController {
     }
 
     @GetMapping("logout/{id}")
-    public String logout(int customer_id, Model model){
+    public String logout(@PathVariable("id") int customer_id, Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
         page.message = "ログアウトしました";
+        page.list = LoginMapper.showMypage(customer_id);
+
+        page.login = 0;
+        LoginMapper.login_out(customer_id, page.login);
 
         //セッション終了
         session.invalidate();
@@ -193,12 +209,14 @@ public class LoginController {
     }
 
     @GetMapping("logout_emp/{id}")
-    public String logout_emp(Model model){
+    public String logout_emp(@PathVariable("id") int customer_id, Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
         page.message = "ログアウトしました";
+        page.list = LoginMapper.showMypage(customer_id);
 
         page.login = 0;
+        LoginMapper.login_out(customer_id, page.login);
 
         //セッション終了
         session.invalidate();
@@ -212,7 +230,33 @@ public class LoginController {
 
     }
 
-    //logout_emp/listの分も作る
+    //login/list, logout/listの分も作る
+    @GetMapping("login_emp/list")
+    public String ListEmp(Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+        page.message = "";
+
+        //モデルページにインスタンスを生成
+        model.addAttribute("page", page);
+
+        //テンプレートファイルを指定
+        return "fastfood/list";
+    }
+
+    @GetMapping("logout_emp/list")
+    public String ListEmp1(Model model){
+        //ページインスタンスを作って、タイトルを設定
+        LoginPageModel page = new LoginPageModel();
+        page.message = "";
+
+        //モデルページにインスタンスを生成
+        model.addAttribute("page", page);
+
+        //テンプレートファイルを指定
+        return "fastfood/list";
+    }
+
     @GetMapping("list")
     public String List(Model model){
         //ページインスタンスを作って、タイトルを設定
@@ -226,7 +270,7 @@ public class LoginController {
         return "fastfood/list";
     }
 
-    @GetMapping("logout_emp/list")
+    @GetMapping("logout/list")
     public String List1(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();

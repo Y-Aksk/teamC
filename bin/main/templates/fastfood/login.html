@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ログイン画面</title>
+
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
 </head>
 <body>
     <header>
         <!-- ナビゲーションメニュー（メニューバー） -->
-        <nav>
+        <nav id="menubar">
             <ul>
                 <!--シャープ（#）をページのリンクに書き換える-->
                 <li><a href="#">ホーム</a></li>
@@ -17,25 +19,19 @@
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
                 <li><a href="#">お問い合わせ</a></li>
-                <!--
-                <li><a href="#">ログイン</a></li>
-                -->
-
-                <li><a href="#"
-                    
-                    th:text = "${page.login == 0} ? ログイン : ログアウト">
-                    ログイン
-                   </a>
-               </li>
-               
+                <li th:if="${page.login} == 0"><a href="#">ログイン</a></li>
+                <li th:if="${page.login} == 1"><a href="#">ログイン!?</a></li>
             </ul>
         </nav>
     </header>
+
+    <main>
+        <section>
     <h1>ログインページ</h1>
 
         <form method = "post" action = "/fastfood/login">
             <p text = "message" th:text = "${page.message}">テキスト</p>
-            <table>
+            <table class="ta1">
                 <tr>
                     <th>ID</th>
                     <td><input type = "text" id = "customer_id" name = "customer_id"></td>
@@ -52,12 +48,16 @@
             <tr>
                 <td>
                     
-                    <a href = "sinki.html" th:href = "@{'/fastfood/shinki/'}">
+                    <a href = "list"><!-- th:href = "@{'/fastfood/shinki/'}">-->
                         新規登録はコチラ
                     </a>
                 </td>
             </tr> 
         </table>
     </form>
+
+</section>
+</main>
+    <script th:src="@{/js/fastfood.js}"></script>
 </body>
 </html>
