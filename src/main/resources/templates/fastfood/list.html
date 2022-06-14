@@ -7,8 +7,9 @@
     <title>顧客一覧</title>
 </head>
 <body>
-    <h1 th:text = "${page.title}">顧客一覧画面</h1>
-
+   
+    <h1>顧客一覧画面</h1>
+ <!--
     <form action = "/customer/search" method = "post">
         <h1>顧客検索</h1>
         <input type = "text" id = "name" name = "name" th:value = "${page.hold_name}">
@@ -27,21 +28,22 @@
             <td th:text = "${item.email}">メール</td>
             <td>
                 <a th:href = "@{'/customer/delete/{id}'(id = ${item.customer_id})} " href = "#">
-                    <!--href = "#"はページトップに飛ぶやつ、#のあとにIDを指定するとそこに飛ぶ-->
+                    <!-href = "#"はページトップに飛ぶやつ、#のあとにIDを指定するとそこに飛ぶ->
                     削除
                 </a>
 
                 <a th:href = "@{'/customer/edit/{id}'(id = ${item.customer_id})} " href = "#">
-                    <!--href = "#"はページトップに飛ぶやつ、#のあとにIDを指定するとそこに飛ぶ-->
+                    <!-href = "#"はページトップに飛ぶやつ、#のあとにIDを指定するとそこに飛ぶ->
                     編集
                 </a>
 
                 <a th:href = "@{'/customer/detail/{id}'(id = ${item.customer_id})} " href = "#">
-                    <!--href = "#"はページトップに飛ぶやつ、#のあとにIDを指定するとそこに飛ぶ-->
+                    <!-href = "#"はページトップに飛ぶやつ、#のあとにIDを指定するとそこに飛ぶ->
                     詳細
                 </a>
             </td>
         </tr>
     </table>
+-->
 </body>
 </html>

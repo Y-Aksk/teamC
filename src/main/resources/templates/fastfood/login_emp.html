@@ -19,7 +19,8 @@
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
                 <li><a href="#">お問い合わせ</a></li>
-                <li><a href="#">ログイン</a></li>
+                <li th:if="${page.login} == 0"><a href="#">ログイン!??!</a></li>
+                <li th:if="${page.login} == 1"><a href="#">ログインssssssssssss</a></li>
             </ul>
         </nav>
     </header>
@@ -27,7 +28,7 @@
     <h1>従業員用ログインページ</h1>
 
     <form method = "post" action = "/fastfood/login_emp">
-        <p text = "message" th:text = "*{message}">従業員</p>
+        <p text = "message" th:text = "${page.message}">テキスト</p>
         <table>
             <tr>
                 <th>ID</th>
@@ -45,7 +46,7 @@
 
             <tr>
                 <td>
-                    <a href = "sinki.html" ><!--th:href = "@{'/fastfood/shinki/'}">-->
+                    <a href = "list" ><!--th:href = "@{'/fastfood/shinki/'}">-->
                         新規登録はコチラ
                     </a>
                 </td>

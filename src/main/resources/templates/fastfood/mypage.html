@@ -17,7 +17,7 @@
                 <li><a href="#">メニュー</a></li>
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
-                <li><a href="#">お問い合わせ</a></li>
+                <li ><a href="#">お問い合わせ</a></li>
                 <li th:each = "item : ${page.list}">
                     <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="login">
                         ログアウト
@@ -59,9 +59,8 @@
             <td>パスワード</td>
             
             <td>
-                <span th:each="i : ${#numbers.sequence(1, #strings.length(item.password))}"
-                 th:text = "〇">
-                    ID
+                <span th:each="i : ${#numbers.sequence(1, #strings.length(item.password))}">
+                    &#9679;
                 </span>
             </td>
 
