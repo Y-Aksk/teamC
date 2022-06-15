@@ -18,6 +18,7 @@ public class LoginController {
     LoginMapper LoginMapper;
     @Autowired
     HttpSession session;
+    
 
     //顧客用ログインページへの遷移(ボタン)
     @GetMapping("login")
