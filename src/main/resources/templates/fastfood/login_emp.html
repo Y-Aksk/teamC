@@ -14,11 +14,11 @@
         <nav id="menubar">
             <ul>
                 <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="#">ホーム</a></li>
+                <li><a href="home">ホーム</a></li>
                 <li><a href="#">メニュー</a></li>
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
-                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="qa">お問い合わせ</a></li>
                 <li th:if="${page.login} == 0"><a href="#">ログイン</a></li>
                 <li th:if="${page.login} == 1"><a href="#">ログイン!?</a></li>
             </ul>
@@ -48,7 +48,7 @@
 
             <tr>
                 <td>
-                    <a href = "list" ><!--th:href = "@{'/fastfood/shinki/'}">-->
+                    <a href = "register_emp" ><!--th:href = "@{'/fastfood/shinki/'}">-->
                         新規登録はコチラ
                     </a>
                 </td>

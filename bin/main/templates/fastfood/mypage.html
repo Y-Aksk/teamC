@@ -15,11 +15,11 @@
         <nav>
             <ul id="menubar">
                 <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="#">ホーム</a></li>
+                <li><a href="home">ホーム</a></li>
                 <li><a href="#">メニュー</a></li>
                 <li><a href="#">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
-                <li ><a href="#">お問い合わせ</a></li>
+                <li ><a href="qa">お問い合わせ</a></li>
                 <li th:if="${page.login} == 1" th:each = "item : ${page.list}">
                     <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="logout">
                         ログアウト
@@ -105,7 +105,9 @@
             href = "henkou.html"
             ↓ちゃんとしたURLじゃないとだめかもしれない
             th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})} ">-->
-            <a style="display: block; width: 100%; height: 100%" href = "henkou.html">
+            <a style="display: block; width: 100%; height: 100%" href = "edit"
+            th:href = "@{edit/{id}/{login}(id = ${item.customer_id})(login = ${page.login})} ">
+            <!--th:hrefにloginも追加-->
                 登録情報の変更
             </a>
         </tr>
@@ -113,7 +115,7 @@
         <tr>
             <!--chuumonは仮名-->
             <a style="display: block; width: 100%; height: 100%"
-            href = "chuumon.html">
+            href = "chuumon">
             <!--
                 ↓ちゃんとしたURLじゃないとだめかもしれない
                 th:href = "@{'/fastfood/chuumon/'} ">

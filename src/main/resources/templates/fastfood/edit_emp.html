@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/style.css}"  rel="stylesheet">
+    <title>登録情報変更</title>
+</head>
+
+<body>
+    <main>
+    <!-- post：入力したデータを送信  action：送信するURL（追加されたらmypageページに飛ぶ） -->
+    <!-- 小林さんのと合わせたときに{id}と{login}を足す必要あるかも。
+         となるとControllerとMapperも変わる可能性アリ -->
+    <form method="post" action="/fastfood/mypage_emp" th:action="@{/fastfood/mypage_emp}" th:object="${page}">
+        <!--文字幅調整とかはCSS-->
+        <h2 th:text ="${page.title}">登録情報の編集</h2>
+        <table class="editemp_form">
+            <tr>
+                <th>姓</th>
+                <td><input type="text" th:field="${page.first_name}" required></td>
+            </tr>
+            <tr>
+                <th>名</th>
+                <td><input type="text" th:field="${page.last_name}" required></td>
+            <tr>
+                <th>電話番号（ハイフン含む半角数字）</th>
+                <td><input type="tel" pattern="\d{2,4}-\d{3,4}-\d{3,4}" th:field="${page.tell_no}" required></td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td><input type="text" th:field="${page.mail}" required></td>
+            </tr>
+
+            <tr>
+                <th>所属店舗</th>
+                <td><select class="shop_control" name="shop_name" th:field="${page.shop_name}" required>
+                    <option value="">所属店舗を選択してください</option>
+                    <div th:each="item:${page.list}">
+                        <option th:value="${item.shop_name}" th:text="${item.shop_name}"></option>
+                    </div>
+                </select></td>
+            </tr>
+
+            <!--パスワード確認-->
+            <tr>
+                <th>パスワード</th>
+                <td><input type="password" class="form_control" name="password" id="password" th:field="${page.password}" required></td>
+            </tr>
+            <tr>
+                <th>パスワード（再確認）</th>
+                <td><input type="password" class="form_control" name="confirm" oninput="CheckPassword(this)" required></td>
+            </tr>
+    
+            <!--　多分必要ない？
+            <input type="hidden" th:field="${page.customer_id}">
+            <input type="hidden" th:field="${page.login}">
+            <input type="hidden" th:field="${page.authority}">
+            -->
+            <tr>
+                <th><button type="submit">編集してマイページへ</button></th>
+            </tr>
+        </table>
+    </form>
+    </main>
+
+    <!--JavaSctipt(パスワード確認)-->
+    <script>
+        function CheckPassword(confirm){
+            // 入力値取得
+            var input1 = password.value;
+            var input2 = confirm.value;
+            // パスワード比較
+            if(input1 != input2){
+                confirm.setCustomValidity("パスワードが一致しません。");
+            }else{
+                confirm.setCustomValidity('');
+            }
+        }
+    </script>
+
+</body>
+
+<footer>
+    <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
