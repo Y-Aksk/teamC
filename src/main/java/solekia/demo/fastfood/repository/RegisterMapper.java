@@ -20,7 +20,7 @@ public interface RegisterMapper {
 /*----  お問い合わせフォーム ----*/
     //qaテーブルにデータを追加 
     //(select max(customer_id) + 1 from qa)の追加
-    @Insert("INSERT INTO qa values((select max(customer_id) + 1 from qa),#{qa_first_name}, #{qa_last_name}, #{qa_mail}, #{question})")
+    @Insert("INSERT INTO qa values((select max(qa_id) + 1 from qa),#{qa_first_name}, #{qa_last_name}, #{qa_mail}, #{question})")
     public void insertQa(
         @Param("qa_first_name")String qa_first_name,
         @Param("qa_last_name")String qa_last_name,

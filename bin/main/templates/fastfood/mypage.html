@@ -28,7 +28,7 @@
 
                 <li th:if="${page.login} == 0" th:each = "item : ${page.list}">
                     <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="login">
-                        ログアウト!!!!!!!!!!!!!
+                        ログイン!!!!!!!!!!!!!
                     </a>
                 </li>
             </ul>
@@ -99,14 +99,14 @@
 
 
     <table>
-        <tr>
+        <tr th:each = "item : ${page.list}">
             <!--henkouは仮名-->
             <!--a style="display: block; width: 100%; height: 100%"
             href = "henkou.html"
             ↓ちゃんとしたURLじゃないとだめかもしれない
             th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})} ">-->
             <a style="display: block; width: 100%; height: 100%" href = "edit"
-            th:href = "@{edit/{id}/{login}(id = ${item.customer_id})(login = ${page.login})} ">
+            th:href = "@{'/fastfood/edit/{id}'(id = ${item.customer_id})}">
             <!--th:hrefにloginも追加-->
                 登録情報の変更
             </a>

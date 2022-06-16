@@ -28,10 +28,13 @@
 
     <!-- post：入力したデータを送信  action：送信するURL（追加されたらmypageページに飛ぶ）-->
     <!-- 小林さんのと合わせたときに{id}と{login}を足す必要あるかも。となるとControllerとMapperも変わる可能性アリ -->
-    <form method="post" action="/fastfood/mypage" th:action="@{/fastfood/mypage}" th:object="${page}">
+    <form method="post" action="/fastfood/edit" th:action="@{/fastfood/edit}" th:object="${page}">
         <!--文字幅調整とかはCSSで行う-->
         <h2 th:text ="${page.title}">登録情報の編集</h2>
         <table class="editcust_form">
+            <tr><!--ID追加-->
+                <input type = "hidden" th:field = "${page.customer_id}" th:value = "${page.customer_id}">
+            </tr>
             <tr>
                 <th>姓</th>
                 <td><input type="text" th:field="${page.first_name}" required></td>
