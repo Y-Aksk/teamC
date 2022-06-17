@@ -39,11 +39,15 @@ public class RegisterController{
         //pageのtitleメソッドに処理を追加
         page.title = "ホーム(java)";
 
-        page.login=0;
-
-        //遷移先のページでセッションから値を取得する
+        //String user_id = "";
+//遷移先のページでセッションから値を取得する
         //String id = (String)
-        session.getAttribute("user_id");
+        /*if((String)session.getAttribute("user_id") != null)
+            user_id = (String)session.getAttribute("user_id");
+
+        page.login = 0;
+        if(user_id != null)*/
+            page.login = 1;
 
         //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
         page.list = registerMapper.findRank();
