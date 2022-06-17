@@ -38,7 +38,7 @@
             <td>
                 <!--商品画像を押すとログインページに飛ぶ-->
                 <a th:href = "shop"><img th:src = "${item.product_pic}" width="500"  height="500"></a></td>
-                <a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
+                <!--<a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
                     <span th:src = "${item.product_pic}">商品画像</span>-->
             <td th:text = "${item.product_name}" font size="7" color="#00ff00">メニュー名</td>
             <td><span th:text = "${item.price}" font size="7" color="#00ff00">価格</span>円</td>

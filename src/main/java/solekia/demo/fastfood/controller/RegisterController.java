@@ -43,7 +43,6 @@ public class RegisterController{
         //ログインいる版のホームページが必要になるかも
 
         int customer_id = 0;
-        System.out.println("arg0");
     
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");

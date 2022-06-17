@@ -25,7 +25,7 @@ OrderPageModel hold_id;
     @Autowired
     HttpSession session;
 
-    public int customer_id;
+    
     public String[] checked;
 
     @GetMapping("order")
@@ -70,18 +70,21 @@ OrderPageModel hold_id;
 
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
-        model.addAttribute("page", page.getChecked());
+        //model.addAttribute("page", page.getChecked());
 
         //テンプレートファイルを指定
         return "fastfood/check";
     }
 
     @GetMapping("check")
-    public String addition(@PathVariable("id")int customer_id, Model model){
+    public String addition(Model model){
         //ページインスタンスを作って、タイトルを設定
         OrderPageModel page = new OrderPageModel();
         page.web_title = "確認画面";
         hold_id = new OrderPageModel();
+        
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
         hold_id.setCustomer_id(customer_id);
 
         //モデルページにインスタンスを生成
@@ -102,7 +105,8 @@ OrderPageModel hold_id;
         //ページインスタンスを作って、タイトルを設定
         OrderPageModel page = new OrderPageModel();
         page.web_title = "確認画面";
-        int customer_id = hold_id.getCustomer_id();
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
         page.sumPrice += price;
         page.sumNumber += number;
 
