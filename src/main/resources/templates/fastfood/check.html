@@ -1,0 +1,73 @@
+<!--画面設計書26-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+    <title>確認画面</title>
+</head>
+<body>
+
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗紹介</a></li>
+                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li><a href="/fastfood/login">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+    <section>
+
+    <h1 th:text = "${page.title}">メニュー</h1>
+    
+    <table><!--class="tai"-->
+        <caption>ご注文内容の確認</caption>
+        <tr th:each = "item : ${page.list}">
+            <!-- 値を表示させる要素を記述する。resultで受け取る-->
+            <td id = "result" img th:src = "${item.product_pic}" width="500"  height="500">メニュー画像</td>
+            <td th:text = "${item.product_name}" font size="7" color="#00ff00">メニュー名</td>
+            <td><span th:text = "${item.number}" font size="7" color="#00ff00"></span>点</td>
+            <td><span th:text = "${item.price}" font size="7" color="#00ff00">価格</span>円</td>
+        </tr>
+    </table>
+
+    <p>  
+        <tr>
+            <td>合計:<span th:text = "${page.sumNumber}" font size="7" color="#00ff00"></span>点</td>
+            <td><span th:text = "${page.sumPrice}" font size="7" color="#00ff00">価格</span>円</td>
+        </tr>
+    </p>
+   
+    </section>
+
+    </main>
+
+    <button type="button" onclick="history.back()">戻る</button>
+
+    <!--確定ボタンを押すと、注文確定画面に遷移-->
+    <a href = "confirmation.html">
+    <button type="submit">確定</button>
+    </a>
+
+      <footer>
+        <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+      </footer>
+    
+      
+        <!--ページの上部へ戻るボタンとスクリプト-->
+        <p class="pagetop"><a href="#">↑</a></p>
+        <script th:src="@{/js/order.js}"></script>
+
+</body>
+</html>

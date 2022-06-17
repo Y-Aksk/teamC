@@ -39,15 +39,17 @@ public class RegisterController{
         //pageのtitleメソッドに処理を追加
         page.title = "ホーム(java)";
 
-        //String user_id = "";
-//遷移先のページでセッションから値を取得する
-        //String id = (String)
-        /*if((String)session.getAttribute("user_id") != null)
-            user_id = (String)session.getAttribute("user_id");
+        //遷移先のページでセッションから値を取得する
+        //ログインいる版のホームページが必要になるかも
 
-        page.login = 0;
-        if(user_id != null)*/
+        int customer_id = 0;
+        System.out.println("arg0");
+    
+        if(session.getAttribute("customer_id") != null){
+            customer_id = (int)session.getAttribute("customer_id");
             page.login = 1;
+        }
+
 
         //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
         page.list = registerMapper.findRank();
@@ -204,13 +206,17 @@ public class RegisterController{
 
 /*----　顧客　登録情報変更　(http://localhost:8080/fastfood/edit)　----*/
     //顧客登録情報変更画面　URL変更する必要ありそう loginとidの値はセッション保持してたらいらない…？？
-    @GetMapping("edit/{id}")
-    public String edit(@PathVariable("id") int id, Model model){
+    @GetMapping("edit")
+    public String edit(Model model){
         //ページインスタンスを作ってタイトルを設定
         RegisterPageModel page = new RegisterPageModel();
         page.title = "登録情報変更(java)";
+
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
+
         //IDをキーにデータを検索
-        var register = registerMapper.findById(id);
+        var register = registerMapper.findById(customer_id);
         //urlのloginにページのloginの値を入れる？違う気がする。
         //int login = page.login;
         //取得データをページに設定
@@ -226,7 +232,7 @@ public class RegisterController{
         page.list = registerMapper.findShop();
 
         //遷移先のページでセッションから値を取得する
-        String user_id = (String)session.getAttribute("user_id");
+        //String user_id = (String)session.getAttribute("user_id");
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
         //テンプレートファイルを指定
@@ -252,13 +258,17 @@ public class RegisterController{
 
 /*----　従業員　登録情報変更　(http://localhost:8080/fastfood/edit_emp)　----*/
     //従業員　登録情報変更　画面　URL変更する必要ありそう　loginとidの値はセッション保持してたらいらない…？？
-    @GetMapping("edit_emp/{id}/")
-    public String editEmp(@PathVariable("id") int id, Model model){
+    @GetMapping("edit_emp")
+    public String editEmp(Model model){
         //ページインスタンスを作ってタイトルを設定
         RegisterPageModel page = new RegisterPageModel();
         page.title = "登録情報変更(java)";
+
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
+
         //IDをキーにデータを検索
-        var register = registerMapper.findById(id);
+        var register = registerMapper.findById(customer_id);
         //urlのloginにページのloginの値を入れる？違う気がする。
         //login = page.login;
         //取得データをページに設定
@@ -274,7 +284,7 @@ public class RegisterController{
         page.list = registerMapper.findShop();
 
         //遷移先のページでセッションから値を取得する
-        String user_id = (String)session.getAttribute("user_id");
+        //String user_id = (String)session.getAttribute("user_id");
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
         //テンプレートファイルを指定

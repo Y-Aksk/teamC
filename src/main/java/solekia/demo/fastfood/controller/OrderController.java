@@ -1,5 +1,7 @@
 package solekia.demo.fastfood.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +22,14 @@ OrderPageModel hold_id;
     @Autowired
     OrderMapper orderMapper;
 
+    @Autowired
+    HttpSession session;
+
     public int customer_id;
     public String[] checked;
 
     @GetMapping("order")
-    public String list(@PathVariable("id")int customer_id, Model model) {
+    public String list(Model model) {
         //ページインスタンスを作って、タイトルを作成
         OrderPageModel page = new OrderPageModel();
         
@@ -48,13 +53,14 @@ OrderPageModel hold_id;
         @RequestParam("product_name") String product_name,
         @RequestParam("price") int price, 
         @RequestParam("number") int number,
-    
         Model model){
         //ページインスタンスを作って、タイトルを設定
         OrderPageModel page = new OrderPageModel();
        
         page.web_title = "商品選択画面";
         
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
         
         //リスト初期化
         OrderMapper.list(product_pic, product_name, price, number,customer_id);

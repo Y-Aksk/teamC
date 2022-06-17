@@ -67,6 +67,9 @@ public class LoginController {
 
         //ログインボタンを押したときの画面遷移の条件分岐
         if(!(page.list.size() == 0) && page.authority == 0){
+            //idをセッションの値として格納
+            session.setAttribute("customer_id", customer_id);
+
             page.login = 1;
             LoginMapper.login_out(customer_id, page.login);
 
@@ -74,8 +77,6 @@ public class LoginController {
             //モデルにページインスタンスを設定
             model.addAttribute("page", page);
 
-            //idをセッションの値として格納
-            session.setAttribute("user_id", page.getCustomer_id());
             //model.addAttribute("page.count", page.count);
             
             return "fastfood/mypage";
@@ -121,22 +122,25 @@ public class LoginController {
    
         //page.hold_id = customer_id;
 
+        /*
         if(customer_id == page.getCustomer_id() && page.getLogin() == 1){
             page.message = "すでに他の端末でログイン済みです";
             model.addAttribute("page", page);
             return "fastfood/login_emp";
         }
+        */
 
         if(!(page.list.size() == 0) && page.authority == 1){
+
+            //idをセッションの値として格納
+            session.setAttribute("user_id", page.getCustomer_id());
+
             page.login = 1;
             LoginMapper.login_out(customer_id, page.login);
 
             page.count = LoginMapper.countOrder();
             //モデルにページインスタンスを設定
             model.addAttribute("page", page);
-
-            //idをセッションの値として格納
-            session.setAttribute("user_id", page.getCustomer_id());
 
             return "fastfood/mypage_emp";
         }
@@ -152,15 +156,15 @@ public class LoginController {
 
 @Transactional
     @GetMapping("mypage")
-    public String mypage(@PathVariable("id")int customer_id, Model model){
+    public String mypage(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
 
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
+
         //リスト初期化
         page.list = LoginMapper.showMypage(customer_id);
-
-        //遷移先のページでセッションから値を取得する
-        String id = (String)session.getAttribute("user_id");
         
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
@@ -171,15 +175,15 @@ public class LoginController {
     }
 
     @GetMapping("mypage_emp")
-    public String mypage_emp(@PathVariable("id") int customer_id, Model model){
+    public String mypage_emp(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
 
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
+
         //リスト初期化
         page.list = LoginMapper.showMypage(customer_id);
-
-        //遷移先のページでセッションから値を取得する
-        String id = (String)session.getAttribute("user_id");
         
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
@@ -190,11 +194,15 @@ public class LoginController {
 
     }
 
-    @GetMapping("logout/{id}")
-    public String logout(@PathVariable("id") int customer_id, Model model){
+    @GetMapping("logout")
+    public String logout(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
         page.message = "ログアウトしました";
+
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
+
         page.list = LoginMapper.showMypage(customer_id);
 
         page.login = 0;
@@ -213,11 +221,14 @@ public class LoginController {
 
     }
 
-    @GetMapping("logout_emp/{id}")
-    public String logout_emp(@PathVariable("id") int customer_id, Model model){
+    @GetMapping("logout_emp")
+    public String logout_emp(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
         page.message = "ログアウトしました";
+
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
         page.list = LoginMapper.showMypage(customer_id);
 
         page.login = 0;
@@ -243,8 +254,15 @@ public class LoginController {
          //pageのtitleメソッドに処理を追加
          page.title = "ホーム(java)";
  
-         //page.login=0;
- 
+        //遷移先のページでセッションから値を取得する
+        //ログインいる版のホームページが必要になるかも
+
+        int customer_id = 0;
+    
+        if(session.getAttribute("customer_id") != null){
+            customer_id = (int)session.getAttribute("customer_id");
+            page.login = 1;
+        }
          //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
          page.list = registerMapper.findRank();
          //モデルにページインスタンスを設定
@@ -254,17 +272,27 @@ public class LoginController {
     }
 
     @GetMapping("check_logout_emp")
-    public String ListEmp1(Model model){
-        //ページインスタンスを作って、タイトルを設定
-        LoginPageModel page = new LoginPageModel();
-        page.message = "ログアウトしました";
+    public String checkLogoutEmp(Model model){
+        //RegisterPageModelクラスをpageとして扱う
+        RegisterPageModel page = new RegisterPageModel();
+        //pageのtitleメソッドに処理を追加
+        page.title = "ホーム(java)";
 
-        //モデルページにインスタンスを生成
-        model.addAttribute("page", page);
+       //遷移先のページでセッションから値を取得する
+       //ログインいる版のホームページが必要になるかも
 
+       int customer_id = 0;
+   
+       if(session.getAttribute("customer_id") != null){
+           customer_id = (int)session.getAttribute("customer_id");
+       }
+        //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
+        page.list = registerMapper.findRank();
+        //モデルにページインスタンスを設定
+        model.addAttribute("page",page);
         //テンプレートファイルを指定
         return "redirect:/fastfood/home";
-    }
+   }
 
     /* 
     @GetMapping("list")

@@ -15,19 +15,19 @@
         <nav>
             <ul id="menubar">
                 <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="home">ホーム</a></li>
-                <li><a href="#">メニュー</a></li>
-                <li><a href="#">店舗一覧</a></li>
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
-                <li ><a href="qa">お問い合わせ</a></li>
-                <li th:if="${page.login} == 1" th:each = "item : ${page.list}">
-                    <a th:href = "@{'/fastfood/logout/{id}'(id = ${{item.customer_id}})} " href="logout">
+                <li ><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li th:unless="${customer_id} == 0">
+                    <a  href="logout">
                         ログアウト
                     </a>
                 </li>
 
-                <li th:if="${page.login} == 0" th:each = "item : ${page.list}">
-                    <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="login">
+                <li th:if="${customer_id} == 0" >
+                    <a href="login">
                         ログイン!!!!!!!!!!!!!
                     </a>
                 </li>
@@ -105,17 +105,17 @@
             href = "henkou.html"
             ↓ちゃんとしたURLじゃないとだめかもしれない
             th:href = "@{'/fastfood/henkou/{id}'(id = ${item.customer_id})} ">-->
-            <a style="display: block; width: 100%; height: 100%" href = "edit"
-            th:href = "@{'/fastfood/edit/{id}'(id = ${item.customer_id})}">
+            <a style="display: block; width: 100%; height: 100%" href = "edit">
+            <!--th:href = "@{'/fastfood/edit/{id}'(id = ${item.customer_id})}"-->
             <!--th:hrefにloginも追加-->
                 登録情報の変更
             </a>
         </tr>
 
-        <tr>
+        <tr  th:each = "item : ${page.list}">
             <!--chuumonは仮名-->
-            <a style="display: block; width: 100%; height: 100%"
-            href = "chuumon">
+            <a style="display: block; width: 100%; height: 100%" href = "order">
+            <!--th:href = "@{'/fastfood/order/{id}'(id = ${item.customer_id})}"-->
             <!--
                 ↓ちゃんとしたURLじゃないとだめかもしれない
                 th:href = "@{'/fastfood/chuumon/'} ">

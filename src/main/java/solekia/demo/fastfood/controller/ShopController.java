@@ -34,7 +34,7 @@ public class ShopController {
     //詳細ページ
     @GetMapping("shopdetail/{id}")
     public String shopdetail(@PathVariable("id") int id,Model model) {
-        //ページインスタンスを作って、タイトルを作成
+        //ページインスタンスを作って、タイトルを作成    
         ShopPageModel shop_name = new ShopPageModel();
         
         shop_name.list = ShopMapper.findShopName(id);

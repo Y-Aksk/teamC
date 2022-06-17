@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/fastfood.css}">
+    <title>メニュー</title>
+</head>
+
+<body>
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav id="menubar">
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗紹介</a></li>
+                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li><a href="/fastfood/login">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+    
+    <section>
+    
+    <h1 th:text = "${page.web_title}">メニュー</h1>
+    
+    <table class="ta1">
+        <caption>メニュー画像, メニュー名, 価格</caption>
+        <h2>バーガー, ドリンク, サイドメニュー</h2>
+
+        <tr th:each = "item : ${page.list}">
+            <td>
+                <!--商品画像を押すとログインページに飛ぶ-->
+                <a th:href = "shop"><img th:src = "${item.product_pic}" width="500"  height="500"></a></td>
+                <a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
+                    <span th:src = "${item.product_pic}">商品画像</span>-->
+            <td th:text = "${item.product_name}" font size="7" color="#00ff00">メニュー名</td>
+            <td><span th:text = "${item.price}" font size="7" color="#00ff00">価格</span>円</td>
+            <td>
+            </td>
+        </tr>
+    </table>
+   </section>
+   </main>
+  <footer>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+  </footer>
+  
+    <!--ページの上部へ戻るボタンとスクリプト-->
+    <p class="pagetop"><a href="#">↑</a></p>
+    <script th:src="@{/js/fastfood.js}"></script>
+</body>
+</html>

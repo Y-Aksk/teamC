@@ -1,0 +1,81 @@
+<!--画面設計書25-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+    <title>商品選択画面</title>
+</head>
+<body>
+
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗紹介</a></li>
+                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li><a href="/fastfood/login">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+    <section>
+      <table class="ta1">      
+      <form method = "post" action = "/fastfood/check" th:action = "@{/fastfood/check}" th:object = "${page}">
+      <h1 th:text = "${page.web_title}">メニュー</h1>
+      <caption>ご購入する商品と個数を選択してください。</caption>
+        
+      
+      <tr th:each = "item : ${page.list}">
+      <div class="image_box">
+          <td>
+          <img class="thumbnail" th:src = "${item.product_pic}" width="500"  height="500">メニュー画像
+          <input type="checkbox" name="checks" th:field="*{checked}" th:value = "${item.key}" th:class="disabled_checkbox">
+          </td>
+      </div>
+      
+            <!-- <input type = "hidden" th:field = "${page.no}" th:value = "${page.no}"> 
+            <input type = "hidden" th:field = "${page.product_id}" th:value = "${page.product_id}"> -->
+          
+          <td th:text = "${item.product_name}" th:value = "${page.product_name}" font size="7" color="#00ff00">メニュー名</td>
+          <td><span th:text = "${item.price}" th:value = "${page.price}" font size="7" color="#00ff00">価格</span>円</td>
+          <td>個数<input type="number" min="0" max="10" th:field = "${page.number}" th:value = "${page.number}" font size="7" color="#00ff00"></td>
+      </tr>
+    
+      
+    </table>
+
+    </section>
+
+    </main>
+
+    <!--増減ボタン-->
+    <td><input type="number" min="0" max="10" value="0"></td>
+
+    <button type="button" onclick="history.back()">戻る</button>
+
+    <!--入力内容を保持したまま、確認画面に遷移-->
+    <a href = "check">
+    <button type="submit">確認</button>
+    </a>
+
+</form>
+
+    <footer>
+      <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+    </footer>
+      
+        <!--ページの上部へ戻るボタンとスクリプト-->
+        <p class="pagetop"><a href="#">↑</a></p>
+        <script th:src="@{/js/order.js}"></script>
+
+</body>
+</html>

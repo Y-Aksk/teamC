@@ -14,12 +14,12 @@
         <nav id = "menubar">
             <ul>
                 <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="home">ホーム</a></li>
-                <li><a href="#">メニュー</a></li>
-                <li><a href="#">店舗一覧</a></li>
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
                 <li><a href="#">アレルギー情報</a></li>
-                <li><a href="qa">お問い合わせ</a></li>
-                <!--<li><a href="login">ログイン</a></li>-->
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+                <!--<li><a href="login">ログイン</a></li>-
                 <li th:if="${page.login} == 1" >
                     <a href="logout">
                         ログアウト
@@ -32,7 +32,19 @@
                         ログイン
                     </a>
                 </div>
+                </li>-->
+
+                <li th:if="${page.login} != 1">
+                    <a href="login">
+                        ログイン
+                    </a>
                 </li>
+                <li th:if="${page.login} == 1">
+                    <a  href="mypage">
+                        マイページ
+                    </a>
+                </li>
+
             </ul>
         </nav>
 
