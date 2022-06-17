@@ -16,9 +16,13 @@ public class LoginController {
 
     @Autowired
     LoginMapper LoginMapper;
+
     @Autowired
     HttpSession session;
-    
+
+    @Autowired
+    //RagesterMapperをインスタンス化
+    RegisterMapper registerMapper;
 
     //顧客用ログインページへの遷移(ボタン)
     @GetMapping("login")
@@ -159,7 +163,7 @@ public class LoginController {
         model.addAttribute("page", page);
 
         //遷移先のページでセッションから値を取得する
-        session.getAttribute("user_id");
+        String id = (String)session.getAttribute("user_id");
         
 
         //テンプレートファイルを指定
@@ -205,7 +209,8 @@ public class LoginController {
     
 
         //テンプレートファイルを指定
-        return "fastfood/login";
+        // return "fastfood/login";
+        return "fastfood/check_logout";
 
     }
 
@@ -227,35 +232,39 @@ public class LoginController {
     
 
         //テンプレートファイルを指定
-        return "fastfood/login_emp";
-
+        // return "fastfood/login_emp";
+        return "fastfood/check_logout_emp";
     }
 
     //login/list, logout/listの分も作る
-    @GetMapping("login_emp/list")
-    public String ListEmp(Model model){
-        //ページインスタンスを作って、タイトルを設定
-        LoginPageModel page = new LoginPageModel();
-        page.message = "";
-
-        //モデルページにインスタンスを生成
-        model.addAttribute("page", page);
-
-        //テンプレートファイルを指定
-        return "fastfood/list";
+    @PostMapping("check_logout")
+    public String checkLogout(Model model){
+         //RegisterPageModelクラスをpageとして扱う
+         RegisterPageModel page = new RegisterPageModel();
+         //pageのtitleメソッドに処理を追加
+         page.title = "ホーム(java)";
+ 
+         //page.login=1;
+ 
+         //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
+         page.list = registerMapper.findRank();
+         //モデルにページインスタンスを設定
+         model.addAttribute("page",page);
+         //テンプレートファイルを指定
+         return "fastfood/home";
     }
 
-    @GetMapping("logout_emp/list")
+    @GetMapping("check_logout_emp")
     public String ListEmp1(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
-        page.message = "";
+        page.message = "ログアウトしました";
 
         //モデルページにインスタンスを生成
         model.addAttribute("page", page);
 
         //テンプレートファイルを指定
-        return "fastfood/list";
+        return "fastfood/home";
     }
 
     @GetMapping("list")

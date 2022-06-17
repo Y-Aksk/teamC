@@ -1,5 +1,7 @@
 package solekia.demo.fastfood.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,9 @@ public class RegisterController{
 
     @Autowired
     LoginMapper LoginMapper;
+
+    @Autowired
+    HttpSession session;
 
 /*----　↓↓小林さんと合わせるときにちゃんと動くかチェック↓↓　----*/
 
@@ -189,7 +194,7 @@ public class RegisterController{
         //IDをキーにデータを検索
         var register = registerMapper.findById(id);
         //urlのloginにページのloginの値を入れる？違う気がする。
-        int login = page.login;
+        //int login = page.login;
         //取得データをページに設定
         page.customer_id = register.customer_id;
         page.password = register.password;
@@ -213,7 +218,7 @@ public class RegisterController{
     public String edit(@ModelAttribute RegisterPageModel page, Model model){
         //画面で入力した更新データをパラメータに設定
         registerMapper.update(page.customer_id, page.password, page.first_name, page.last_name, page.tell_no, page.mail, page.shop_name, page.login);
-
+        
         LoginPageModel account = new LoginPageModel();
         //更新後のデータを取得
         account.list = LoginMapper.findAccount(page.customer_id, page.password);
@@ -227,14 +232,14 @@ public class RegisterController{
 /*----　従業員　登録情報変更　(http://localhost:8080/fastfood/edit_emp)　----*/
     //従業員　登録情報変更　画面　URL変更する必要ありそう　loginとidの値はセッション保持してたらいらない…？？
     @GetMapping("edit_emp/{id}/")
-    public String editEmp(@PathVariable("id") int id, @PathVariable("login") int login, Model model){
+    public String editEmp(@PathVariable("id") int id, Model model){
         //ページインスタンスを作ってタイトルを設定
         RegisterPageModel page = new RegisterPageModel();
         page.title = "登録情報変更(java)";
         //IDをキーにデータを検索
         var register = registerMapper.findById(id);
         //urlのloginにページのloginの値を入れる？違う気がする。
-        login = page.login;
+        //login = page.login;
         //取得データをページに設定
         page.customer_id = register.customer_id;
         page.password = register.password;
