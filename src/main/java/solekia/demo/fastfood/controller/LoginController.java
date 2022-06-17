@@ -68,7 +68,7 @@ public class LoginController {
         //ログインボタンを押したときの画面遷移の条件分岐
         if(!(page.list.size() == 0) && page.authority == 0){
             page.login = 1;
-            //LoginMapper.login_out(customer_id, login);
+            LoginMapper.login_out(customer_id, page.login);
 
             page.count = LoginMapper.countOrder();
             //モデルにページインスタンスを設定
@@ -158,13 +158,12 @@ public class LoginController {
 
         //リスト初期化
         page.list = LoginMapper.showMypage(customer_id);
-        
-        //モデルにページインスタンスを設定
-        model.addAttribute("page", page);
 
         //遷移先のページでセッションから値を取得する
         String id = (String)session.getAttribute("user_id");
         
+        //モデルにページインスタンスを設定
+        model.addAttribute("page", page);
 
         //テンプレートファイルを指定
         return "fastfood/mypage";
@@ -178,12 +177,12 @@ public class LoginController {
 
         //リスト初期化
         page.list = LoginMapper.showMypage(customer_id);
+
+        //遷移先のページでセッションから値を取得する
+        String id = (String)session.getAttribute("user_id");
         
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
-
-        //遷移先のページでセッションから値を取得する
-        session.getAttribute("user_id");
         
 
         //テンプレートファイルを指定
@@ -244,14 +243,14 @@ public class LoginController {
          //pageのtitleメソッドに処理を追加
          page.title = "ホーム(java)";
  
-         //page.login=1;
+         //page.login=0;
  
          //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
          page.list = registerMapper.findRank();
          //モデルにページインスタンスを設定
          model.addAttribute("page",page);
          //テンプレートファイルを指定
-         return "fastfood/home";
+         return "redirect:/fastfood/home";
     }
 
     @GetMapping("check_logout_emp")
@@ -264,9 +263,10 @@ public class LoginController {
         model.addAttribute("page", page);
 
         //テンプレートファイルを指定
-        return "fastfood/home";
+        return "redirect:/fastfood/home";
     }
 
+    /* 
     @GetMapping("list")
     public String List(Model model){
         //ページインスタンスを作って、タイトルを設定
@@ -292,4 +292,5 @@ public class LoginController {
         //テンプレートファイルを指定
         return "fastfood/list";
     }
+    */
 }

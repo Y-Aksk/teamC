@@ -57,8 +57,7 @@ public interface RegisterMapper {
         @Param("last_name")String last_name,
         @Param("tell_no")String tell_no,
         @Param("mail")String mail,
-        @Param("shop_name")String shop_name,
-        @Param("login")int login
+        @Param("shop_name")String shop_name
     );
 
 

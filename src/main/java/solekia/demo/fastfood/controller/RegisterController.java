@@ -39,7 +39,11 @@ public class RegisterController{
         //pageのtitleメソッドに処理を追加
         page.title = "ホーム(java)";
 
-        //page.login=1;
+        page.login=0;
+
+        //遷移先のページでセッションから値を取得する
+        //String id = (String)
+        session.getAttribute("user_id");
 
         //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
         page.list = registerMapper.findRank();
@@ -79,6 +83,7 @@ public class RegisterController{
 
 /*----　新規会員登録　(http://localhost:8080/fastfood/register)　完了----*/
     //新規会員登録　画面
+    /*
     @GetMapping("{id}/register")//先頭に{id}追加、ログアウト対策
     public String register(Model model){
         //ページインスタンスを作って、タイトルを設定
@@ -115,7 +120,8 @@ public class RegisterController{
         //テンプレートファイルを指定
         return "fastfood/login";
     }
-    
+    */
+
     @GetMapping("register")//loginから飛んだ場合、{id}は先頭に不要
     public String register2(Model model){
         //ページインスタンスを作って、タイトルを設定
@@ -169,18 +175,26 @@ public class RegisterController{
         return "fastfood/register_emp";
     }
 
-    /*
+    
     //新規従業員登録処理　URL小林さんに聞く
-    @PostMapping("login_emp")
-    public String insertEmp(@ModelAttribute RegisterPageModel page, Model model){
+    @PostMapping("register_emp")
+    public String insertEmp( @RequestParam("password") String password, 
+    @RequestParam("first_name") String first_name, 
+    @RequestParam("last_name") String last_name,
+    @RequestParam("tell_no") String tell_no,
+    @RequestParam("mail") String mail, 
+    @RequestParam("shop_name") String shop_name,
+     Model model){
+
+        LoginPageModel page = new LoginPageModel();
         //画面で入力した更新データをパラメータに設定
-        registerMapper.insertEmp(page.password, page.first_name, page.last_name, page.tell_no, page.mail, page.shop_name, page.login);
+        registerMapper.insertEmp(password, first_name, last_name, tell_no, mail, shop_name);
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
         //テンプレートファイルを指定
         return "fastfood/login_emp";
     }
- */
+ 
 
 /*----　↓↓小林さんと合わせるときにちゃんと動くかチェック↓↓　----*/
 
@@ -206,6 +220,9 @@ public class RegisterController{
         page.login = register.login;
 
         page.list = registerMapper.findShop();
+
+        //遷移先のページでセッションから値を取得する
+        String user_id = (String)session.getAttribute("user_id");
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
         //テンプレートファイルを指定
@@ -251,6 +268,9 @@ public class RegisterController{
         page.login = register.login;
 
         page.list = registerMapper.findShop();
+
+        //遷移先のページでセッションから値を取得する
+        String user_id = (String)session.getAttribute("user_id");
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
         //テンプレートファイルを指定

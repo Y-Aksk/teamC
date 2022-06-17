@@ -20,16 +20,18 @@
                 <li><a href="#">アレルギー情報</a></li>
                 <li><a href="qa">お問い合わせ</a></li>
                 <!--<li><a href="login">ログイン</a></li>-->
-                <li th:if="${page.login} == 1" th:each = "item : ${page.list}">
-                    <a th:href = "@{'/fastfood/logout/{id}'(id = ${item.customer_id})} " href="logout">
+                <li th:if="${page.login} == 1" >
+                    <a href="logout">
                         ログアウト
                     </a>
                 </li>
 
-                <li th:if="${page.login} == 0">
+                <li>
+                    <div th:if="${page.login} == 0">
                     <a href="login">
-                        ログイン!!
+                        ログイン
                     </a>
+                </div>
                 </li>
             </ul>
         </nav>
