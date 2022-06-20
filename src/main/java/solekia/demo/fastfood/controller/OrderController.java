@@ -1,5 +1,8 @@
 package solekia.demo.fastfood.controller;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,15 +44,30 @@ OrderPageModel hold_id;
         
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+        model.addAttribute("page1", getCheckBoxFood());
+        
 
         return "fastfood/order"; //テンプレートファイルを指定
     }
 
-    
+//変更
+    // Map文を使って、チェックボックスを表示させる
+    private Map<String , String> getCheckBoxFood(){
+        Map<String, String> checkBoxFood = new LinkedHashMap<String , String>();
+        OrderPageModel page = new OrderPageModel();
+
+        page.list = orderMapper.findAll();
+
+        // 拡張for文で商品画像のチェックボックスをputする
+        for(OrderModel item : page.list){
+            checkBoxFood.put(item.product_name, item.product_pic);
+        }
+        return checkBoxFood; //テンプレートファイルを指定
+    }
 
     @PostMapping("order")
     public String list(
-        @RequestParam("product_pic") String product_pic, 
+        @RequestParam("product_id") int product_id, 
         @RequestParam("product_name") String product_name,
         @RequestParam("price") int price, 
         @RequestParam("number") int number,
@@ -63,14 +81,14 @@ OrderPageModel hold_id;
         int customer_id = (int)session.getAttribute("customer_id");
         
         //リスト初期化
-        OrderMapper.list(product_pic, product_name, price, number,customer_id);
+        orderMapper.addition(product_id, product_name, price, number,customer_id);
         
         //商品選択後のデータを取得
-        page.list = orderMapper.list(customer_id);
+        page.list = orderMapper.orderList(customer_id);
 
         //モデルにページインスタンスを設定
-        model.addAttribute("page", page);
-        //model.addAttribute("page", page.getChecked());
+        //model.addAttribute("page", page);
+        model.addAttribute("page", page.getChecked());
 
         //テンプレートファイルを指定
         return "fastfood/check";
@@ -87,6 +105,8 @@ OrderPageModel hold_id;
         int customer_id = (int)session.getAttribute("customer_id");
         hold_id.setCustomer_id(customer_id);
 
+        page.list = orderMapper.list(customer_id);
+
         //モデルページにインスタンスを生成
         model.addAttribute("page", page);
 
@@ -96,7 +116,7 @@ OrderPageModel hold_id;
 
     @PostMapping("check")
     public String addition(
-        @RequestParam("product_pic") String product_pic, 
+        @RequestParam("product_id") int product_id, 
         @RequestParam("product_name") String product_name,
         @RequestParam("price") int price, 
         @RequestParam("number") int number,
@@ -112,16 +132,16 @@ OrderPageModel hold_id;
 
 
         //リスト初期化
-        OrderMapper.addition(product_pic, product_name, price, number,customer_id);
+        orderMapper.addition(product_id, product_name, price, number,customer_id);
         
         //注文確定後のデータを取得
-        page.list = orderMapper.orderList(customer_id);
+        page.list = orderMapper.list(customer_id);
 
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
 
         //テンプレートファイルを指定
-        return "fastfood/check";
+        return "fastfood/kakunin";
     }
 }
  

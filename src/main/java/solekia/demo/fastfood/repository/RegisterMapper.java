@@ -82,4 +82,8 @@ public interface RegisterMapper {
         @Param("shop_name")String shop_name,
         @Param("login")int login
     );
+
+    //registeredテーブルから顧客ごとのログイン状態を取得
+  @Select("select login from registered where customer_id = #{id}")
+  public int findById_login(int id);
 }

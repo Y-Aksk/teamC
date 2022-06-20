@@ -46,7 +46,7 @@ public class RegisterController{
     
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");
-            page.login = 1;
+            page.login = registerMapper.findById_login(customer_id);;
         }
 
 

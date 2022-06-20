@@ -48,10 +48,11 @@
             </ul>
         </nav>
 
-    <div class = "home_pic">
-        <img src="https://cdn.pixabay.com/photo/2017/08/12/18/59/snack-2635035_1280.jpg"
-        title="ハンバーガー">
-    </div>
+        <div class="mainimg">
+            <div><img src="https://cdn.pixabay.com/photo/2017/08/12/18/59/snack-2635035_1280.jpg" alt=""></div>
+            <div><img src="https://cdn.pixabay.com/photo/2019/08/02/15/10/burger-4379863_1280.jpg" alt=""></div>
+            <div><img src="https://cdn.pixabay.com/photo/2014/01/16/01/48/chicken-nuggets-246180_1280.jpg" alt=""></div>
+        </div>
 
     <main>
         <div class="orderpage_button">
@@ -115,9 +116,24 @@
     </main>
     </div>
 
-</body>
-
-<footer>
-<small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
-<span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
-</footer>
+    <footer>
+        <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
+        <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+    </footer>
+    
+    <!--/#container-->
+    
+    <!--jQueryファイルの読み込み-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!--スライドショー（slick）-->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script th:src="@{/js/slick.js}"></script>
+    
+    <!--ページの上部へ戻るボタンとスクリプト-->
+    <p class="pagetop"><a href="#">↑</a></p>
+    <script th:src="@{/js/openclose_tp.js}"></script>
+    </body>
+    </html>
+    
+    

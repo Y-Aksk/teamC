@@ -28,14 +28,14 @@
     <main>
 
     <section>
-
+<!--
     <h1 th:text = "${page.title}">メニュー</h1>
     
-    <table><!--class="tai"-->
+    <table class="tai"><!--class="tai"->
         <caption>ご注文内容の確認</caption>
         <tr th:each = "item : ${page.list}">
-            <!-- 値を表示させる要素を記述する。resultで受け取る-->
-            <td id = "result" img th:src = "${item.product_pic}" width="500"  height="500">メニュー画像</td>
+            <!-- 値を表示させる要素を記述する。resultで受け取る->
+            <td img th:src = "${item.product_pic}" width="500"  height="500">メニュー画像</td>
             <td th:text = "${item.product_name}" font size="7" color="#00ff00">メニュー名</td>
             <td><span th:text = "${item.number}" font size="7" color="#00ff00"></span>点</td>
             <td><span th:text = "${item.price}" font size="7" color="#00ff00">価格</span>円</td>
@@ -47,7 +47,7 @@
             <td>合計:<span th:text = "${page.sumNumber}" font size="7" color="#00ff00"></span>点</td>
             <td><span th:text = "${page.sumPrice}" font size="7" color="#00ff00">価格</span>円</td>
         </tr>
-    </p>
+    </p>-->
    
     </section>
 

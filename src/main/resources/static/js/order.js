@@ -84,6 +84,7 @@ $(function(){
   });
 });
 
+/*
 // checkboxをクリックしたらsessionStorageに値を保持するscript。
 // check.htmlのページでsetしたkeyの値を表示させます。
 $(function(){
@@ -129,3 +130,4 @@ $(function(){
   //     $("#result").text("false");
   //   }
   // });
+  */
