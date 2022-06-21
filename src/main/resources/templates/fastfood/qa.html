@@ -14,14 +14,31 @@
         <nav id = "menubar">
             <ul>
                 <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="home">ホーム</a></li>
-                <li><a href="#">メニュー</a></li>
-                <li><a href="#">店舗一覧</a></li>
-                <li><a href="#">アレルギー情報</a></li>
-                <li><a href="qa">お問い合わせ</a></li>
-                <li><a href="login">ログイン</a></li>
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li th:if="${page.login} != 1">
+                    <a href="login">
+                        ログイン
+                    </a>
+                </li>
+                <li th:if="${page.login} == 1 and ${page.authority} == 0">
+                    <a  href="mypage">
+                        マイページ
+                    </a>
+                </li>
+                
+                <li th:if="${page.login} == 1 and ${page.authority} == 1">
+                    <a  href="mypage_emp">
+                        マイページ
+                    </a>
+                </li>
+    
             </ul>
         </nav>
+    
 
     <!-- post：入力したデータを送信  action：送信するURL（追加されたらqaページに飛ぶ）-->
     <main>

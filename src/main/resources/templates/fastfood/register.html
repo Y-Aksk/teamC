@@ -14,14 +14,31 @@
         <nav id = "menubar">
             <ul>
                 <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="home">ホーム</a></li>
-                <li><a href="#">メニュー</a></li>
-                <li><a href="#">店舗一覧</a></li>
-                <li><a href="#">アレルギー情報</a></li>
-                <li><a href="qa">お問い合わせ</a></li>
-                <li><a href="#">ログイン</a></li>
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li th:if="${page.login} != 1">
+                    <a href="login">
+                        ログイン
+                    </a>
+                </li>
+                <li th:if="${page.login} == 1 and ${page.authority} == 0">
+                    <a  href="mypage">
+                        マイページ
+                    </a>
+                </li>
+                
+                <li th:if="${page.login} == 1 and ${page.authority} == 1">
+                    <a  href="mypage_emp">
+                        マイページ
+                    </a>
+                </li>
+    
             </ul>
         </nav>
+    
     </div>
 
     <!-- post：入力したデータを送信  action：送信するURL（追加されたらloginページに飛ぶ）-->
@@ -35,18 +52,24 @@
         <h2 th:text ="${page.title}">新規会員登録</h2>
         <table class="registercust_form">
             <tr>
-                <th>姓</th>
+                <th>姓 <br>
+                    (例:ソレキア)
+                </th>
                 <td><input type="text" id="first_name" name="first_name" required></td>
             </tr>
             <tr>
-                <th>名</th>
+                <th>名<br>
+                    (例:太郎)<br>
+                </th>
                 <td><input type="text" id="last_name" name="last_name" required></td>
             <tr>
                 <th>電話番号（ハイフン含む半角数字）</th>
                 <td><input type="tel" pattern="\d{2,4}-\d{3,4}-\d{3,4}" id="tell_no" name="tell_no" required></td>
             </tr>
             <tr>
-                <th>メールアドレス</th>
+                <th>メールアドレス<br>
+                    〇〇〇〇＠〇〇〇〇
+                </th>
                 <td><input type="text" id="mail" name="mail" required></td>
             </tr>
             <!--プルダウンメニュー-->

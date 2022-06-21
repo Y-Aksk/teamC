@@ -36,7 +36,9 @@ public class OrderPageModel {
     //商品画像のリンク
     public String product_pic;
 
+    //追加
     public int customer_id;
+    public int authority;
     
 
     public int getProduct_id(){

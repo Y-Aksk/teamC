@@ -30,6 +30,10 @@ public class ProductPageModel {
 
     //商品画像のリンク
     public String product_pic;
+
+    //追加
+    public int login;
+    public int authority;
     
 
     public int getProduct_id(){

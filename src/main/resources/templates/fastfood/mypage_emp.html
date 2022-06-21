@@ -12,29 +12,29 @@
 
     <header>
         <!-- ナビゲーションメニュー（メニューバー） -->
-        <nav id="menubar">
-            <ul>
+        <nav>
+            <ul id="menubar">
                 <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="home">ホーム</a></li>
-                <li><a href="#">メニュー</a></li>
-                <li><a href="#">店舗一覧</a></li>
-                <li><a href="#">アレルギー情報</a></li>
-                <li><a href="qa">お問い合わせ</a></li>
-                <li th:if="${page.login} == 1" th:each = "item : ${page.list}">
-                    <a th:href = "@{'/fastfood/logout_emp/{id}'(id = ${item.customer_id})} " href="login_emp">
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+                <li ><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li th:unless="${customer_id} == 0">
+                    <a  href="logout">
                         ログアウト
                     </a>
                 </li>
 
-                <li th:if="${page.login} == 0" th:each = "item : ${page.list}">
-                    <a th:href = "@{'/fastfood/logout_emp/{id}'(id = ${item.customer_id})} " href="login_emp">
-                        ログアウト!!!!!!!!!!!!!
+                <li th:if="${customer_id} == 0" >
+                    <a href="login">
+                        ログイン!!!!!!!!!!!!!
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
-    
+
     <main>
     <h1>従業員用マイページ</h1>
 
@@ -88,7 +88,7 @@
 
         <tr>
             <!--kakuninは仮名-->
-            <a style="display: block; width: 100%; height: 100%"  href = "list">
+            <a style="display: block; width: 100%; height: 100%"  href = "adoministrator_confirmation">
             <!--th:href = "@{'/fastfood/kakunin/{id}'(id = ${item.customer_id})} " href = "#">-->
                 注文状況確認画面
             </a>

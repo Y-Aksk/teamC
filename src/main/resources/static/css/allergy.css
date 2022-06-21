@@ -1,0 +1,106 @@
+
+/*------
+基礎設定
+------*/
+
+a {
+	text-decoration: none;
+  }
+
+table td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+table td text {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+table {
+    margin: 3px auto;    /* 上下3px 左右auto */
+}
+
+td, th {
+    vertical-align: middle;  /* 中央揃え */
+}
+
+table {
+	width: 800px;
+  }
+  table,th,td {
+	border: 1px solid #f7f7f7;
+  }
+
+  td {
+	text-align: center;
+	}
+
+   strong {
+	color: #ffffff;
+	}
+
+	/*-------
+	ボタン関係
+	-------*/
+
+	.back,
+	button.back {
+	  color: #fff;
+	  background-color: #eb6100;
+	  width: 80px;
+	  padding: 5px;
+	}
+	
+	.back,
+	button.back {
+	  color: #fff;
+	  background: #f56500;
+	}
+	
+	button.back {
+	   border-radius: 100vh;
+	}
+
+	button.back {
+		position: right 50;
+		}
+
+.search_button,
+button.search_button {
+  color: #fff;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+}
+
+.search_button,
+button.search_button {
+  color: #fff;
+  background: #f56500;
+}
+
+button.search_button {
+   border-radius: 100vh;
+}
+
+.ado,
+button.ado {
+  color: #fff;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+}
+
+.ado,
+button.ado {
+  color: #fff;
+  background: #f56500;
+}
+
+button.ado {
+   border-radius: 100vh;
+}
+

@@ -34,6 +34,8 @@ public class AllergyPageModel {
 
         //追加
         public Object order_list;
+        public int login;
+        public int authority;
 
 
 

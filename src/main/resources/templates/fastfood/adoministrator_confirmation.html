@@ -1,0 +1,70 @@
+<!--画面設計書33-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/style.css}"  rel="stylesheet">
+    <title>管理者確認画面</title>
+</head>
+<body>
+
+    <ul>
+    <li><a href="/fastfood/mypage_emp">管理者マイページ</a></li>
+    </ul>
+
+<main>
+
+    <h2 th:text = "${page.title}">現在の注文状況</h2>
+
+<!--カート情報を表示-->
+<div class="border">
+<table border=1>
+    <th>注文番号</th>
+    <th>お客様番号</th>
+    <th>商品名</th>
+    <th>個数</th>
+    <th>調理完了ボタン</th>
+    <th>調理状態</th>
+    <th>受け取り完了ボタン</th>
+
+    <tr th:each = "item : ${page.list}">
+
+        <div th:if="${item.order_id le 1}">
+        <td th:text = "${item.no}">注文番号</td>
+        <td th:text = "${item.customer_id}">お客様番号</td>
+        <td th:text = "${item.product_name}">商品名</td>
+        <td th:text = "${item.number}">個数</td>
+        <td>
+            <button class="ado" th:href = "@{'/fastfood/update/{no}'(no=${item.no})}" href="#">
+
+                調理完了
+            </button>
+        </td>
+
+        <td th:if="${item.order_id == 0}">
+            <a>×</a>
+        </td>
+        <td th:if="${item.order_id == 1}">
+            <a>○</a>
+        </td>
+        <td>
+            <button class="ado" th:href = "@{'/fastfood/update_end/{no}'(no=${item.no})}" href="#">
+                受取完了
+            </button>
+        </td>
+        </div>
+    </tr>
+</table>
+</div>
+</main>
+<footer>
+    <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+<!--ページの上部へ戻るボタンとスクリプト-->
+<p class="pagetop"><a href="#">↑</a></p>
+<script th:src="@{/js/openclose_tp.js}"></script>
+</body>
+</html>

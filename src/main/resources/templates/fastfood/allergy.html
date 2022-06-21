@@ -12,19 +12,32 @@
 <body>
 
     <nav id = "menubar">
-    <!-- ナビゲーションメニュー（メニューバー） -->
-    
-            <ul>
-                <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="#">ホーム</a></li>
-                <li><a href="#">メニュー</a></li>
-                <li><a href="#">店舗一覧</a></li>
-                <li><a href="http://localhost:8080/fastfood/allergy">アレルギー情報</a></li>
-                <li><a href="#">お問い合わせ</a></li>
-                <li><a href="#">ログイン</a></li>
-            </ul>
-    
+        <ul>
+            <!--シャープ（#）をページのリンクに書き換える-->
+            <li><a href="/fastfood/home">ホーム</a></li>
+            <li><a href="/fastfood/product">メニュー</a></li>
+            <li><a href="/fastfood/shop">店舗一覧</a></li>
+            <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+            <li><a href="/fastfood/qa">お問い合わせ</a></li>
+            <li th:if="${page.login} != 1">
+                <a href="login">
+                    ログイン
+                </a>
+            </li>
+            <li th:if="${page.login} == 1 and ${page.authority} == 0">
+                <a  href="mypage">
+                    マイページ
+                </a>
+            </li>
+            
+            <li th:if="${page.login} == 1 and ${page.authority} == 1">
+                <a  href="mypage_emp">
+                    マイページ
+                </a>
+            </li>
+        </ul>
     </nav>
+
 
     <main>
 
@@ -43,13 +56,14 @@
             </div>
          </select></td>
     </tr>
-    <button class="fu" type="submit">検索</button>
+    <button class="search_button" type="submit">検索</button>
     </div>
     </form>
 
     
 
     <!--アレルギー表示メニュー-->
+    <div class="border">
     <table border=1>
         <th>商品ID</th>
         <th>商品画像</th>
@@ -92,6 +106,7 @@
         </tr>
         </div>
     </table>
+    </div>
 </main>
 <footer>
     <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>

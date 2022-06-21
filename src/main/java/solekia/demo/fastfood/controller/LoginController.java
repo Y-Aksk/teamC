@@ -54,10 +54,7 @@ public class LoginController {
         //addition参照、遷移するタイミングで
         page.authority = LoginMapper.ditectAuth(customer_id);
         
-        //page.hold_id = customer_id;
 
-        model.addAttribute("page", page);
-        //model.addAttribute("page.count", page.count);
 
         if(customer_id == page.getCustomer_id() && page.login == 1){
             page.message = "すでに他の端末でログイン済みです";
@@ -82,6 +79,22 @@ public class LoginController {
             return "fastfood/mypage";
         }
 
+        else if(!(page.list.size() == 0) && page.authority == 1){
+
+            //idをセッションの値として格納
+            session.setAttribute("customer_id", customer_id);
+
+            page.login = 1;
+            LoginMapper.login_out(customer_id, page.login);
+
+            page.count = LoginMapper.countOrder();
+            //モデルにページインスタンスを設定
+            model.addAttribute("page", page);
+
+            return "fastfood/mypage_emp";
+        }
+
+
         else{
             page.message = "IDかパスワードが違います";
             model.addAttribute("page", page);
@@ -104,7 +117,7 @@ public class LoginController {
         return "fastfood/login_emp";
     }
 
-    //従業員ログイン画面
+    /*従業員ログイン画面
     @PostMapping("login_emp")
     public String login_emp(
         @RequestParam("customer_id") int customer_id, 
@@ -128,7 +141,7 @@ public class LoginController {
             model.addAttribute("page", page);
             return "fastfood/login_emp";
         }
-        */
+        *
 
         if(!(page.list.size() == 0) && page.authority == 1){
 
@@ -152,6 +165,7 @@ public class LoginController {
         }
 
     }
+    */
     
 
 @Transactional
@@ -181,6 +195,7 @@ public class LoginController {
 
         //遷移先のページでセッションから値を取得する
         int customer_id = (int)session.getAttribute("customer_id");
+        page.authority = LoginMapper.ditectAuth(customer_id);
 
         //リスト初期化
         page.list = LoginMapper.showMypage(customer_id);

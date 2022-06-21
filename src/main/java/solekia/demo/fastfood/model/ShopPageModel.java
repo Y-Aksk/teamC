@@ -22,7 +22,10 @@ public class ShopPageModel {
 
     //グーグルマップのリンク
     public String google_link;
-    
+
+    //追加
+    public int login;
+    public int authority;
 
     public int getShop_id(){
         return shop_id;

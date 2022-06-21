@@ -1,0 +1,86 @@
+<!--画面設計書28-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/style.css}"  rel="stylesheet">
+    <title>注文状況確認画面</title>
+</head>
+<body>
+
+    <nav id = "menubar">
+        <ul>
+            <!--シャープ（#）をページのリンクに書き換える-->
+            <li><a href="/fastfood/home">ホーム</a></li>
+            <li><a href="/fastfood/product">メニュー</a></li>
+            <li><a href="/fastfood/shop">店舗一覧</a></li>
+            <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+            <li><a href="/fastfood/qa">お問い合わせ</a></li>
+            <li th:if="${page.login} != 1">
+                <a href="login">
+                    ログイン
+                </a>
+            </li>
+            <li th:if="${page.login} == 1 and ${page.authority} == 0">
+                <a  href="mypage">
+                    マイページ
+                </a>
+            </li>
+            
+            <li th:if="${page.login} == 1 and ${page.authority} == 1">
+                <a  href="mypage_emp">
+                    マイページ
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <main>
+
+    <h2 th:text = "${status.title}">現在の注文状況</h2>
+
+    <table>
+        <tr>
+            <!--　<tr>の中身変更　status.listは顧客ごとの買い物かご　order_0.listはorder_idが0の注文商品　wait.listは待ち組数-->
+            <th th:if="${status.list.size == 0} or ${order_0.list.size == 0} and ${order_1.list.size == 0} and ${order_2.list.size != 0}"><a>最新の注文はありません</a></th>
+            <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 1} and ${wait.list.size le 5}"><a>10分待ちです</a></th>
+            <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 6} and ${wait.list.size le 10}"><a>20分待ちです</a></th>
+            <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 11}"><a>30分以上待ちです</a></th>
+            <th th:if="${status.list.size != 0} and ${order_0.list.size == 0} and ${order_1.list.size ge 1}"><a>受け取り可能です</a></th>
+        </tr>
+    </table>
+
+    <div class="border">
+   <table border=1>
+    <th>商品画像</th>
+    <th>商品名</th>
+    <th>個数</th>
+    <th>価格</th>
+        <tr th:each = "item : ${status.list}">
+        <div th:if="${item.order_id le 1}">
+            <td><img th:src = "${item.product_pic}"></td>
+            <td th:text = "${item.product_name}">商品名</td>
+            <td th:text = "${item.number}">個数</td>
+            <td th:text = "${item.price * item.number}">価格</td>
+        </div>
+        </tr>
+    </table> 
+</div>
+
+    
+
+    <button class="back" type="button" onclick="history.back()">戻る</button>
+
+</main>
+<footer>
+    <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+<!--ページの上部へ戻るボタンとスクリプト-->
+<p class="pagetop"><a href="#">↑</a></p>
+<script th:src="@{/js/openclose_tp.js}"></script>
+</body>
+</html>

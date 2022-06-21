@@ -1,13 +1,11 @@
 package solekia.demo.fastfood.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import solekia.demo.fastfood.model.*;
 import solekia.demo.fastfood.repository.*;
@@ -19,6 +17,16 @@ public class AllergyController {
 
     @Autowired
     AllergyMapper allergyMapper;
+
+    @Autowired
+    HttpSession session;
+
+    @Autowired
+    //RagesterMapperをインスタンス化
+    RegisterMapper registerMapper;
+
+    @Autowired
+    LoginMapper LoginMapper;
 
     //アレルギー検索
     @PostMapping("search")
@@ -32,6 +40,14 @@ public class AllergyController {
 
         page.product_name = name;
 
+        int customer_id = 0;
+        if(session.getAttribute("customer_id") != null){
+            customer_id = (int)session.getAttribute("customer_id");
+            page.login = registerMapper.findById_login(customer_id);
+            //マイページに遷移できるなら必要
+            page.authority = LoginMapper.ditectAuth(customer_id);
+        }
+
         //リストの初期化
         page.list = allergyMapper.findName("%"+name+"%");
         page2.list = allergyMapper.findAll();
@@ -41,7 +57,7 @@ public class AllergyController {
         model.addAttribute("bglist",page2.list);
 
         //テンプレートファイルを設定
-        return "fastfood/html/allergy";
+        return "fastfood/allergy";
     }
 
    //アレルギー情報一覧画面
@@ -53,17 +69,25 @@ public class AllergyController {
 
         page.title = "アレルギー情報";
 
+        int customer_id = 0;
+        if(session.getAttribute("customer_id") != null){
+            customer_id = (int)session.getAttribute("customer_id");
+            page.login = registerMapper.findById_login(customer_id);
+            //マイページに遷移できるなら必要
+            page.authority = LoginMapper.ditectAuth(customer_id);
+        }
+
         page.list = allergyMapper.findAll();
 
         model.addAttribute("page", page);
         model.addAttribute("bglist", page.list);
 
-        return "fastfood/html/allergy"; //テンプレートファイルを指定
+        return "fastfood/allergy"; //テンプレートファイルを指定
     }
 
     //注文状況確認画面
-    @GetMapping("order_status/{id}")
-    public String status (@PathVariable("id") int id,Model model) {
+    @GetMapping("order_status")
+    public String status (Model model) {
 
         //タイトルリセット
         AllergyPageModel status = new AllergyPageModel();
@@ -74,6 +98,13 @@ public class AllergyController {
         AllergyPageModel order_2 = new AllergyPageModel();
 
        status.title = "注文状況確認画面";
+
+       int id = (int)session.getAttribute("customer_id");
+
+       RegisterPageModel page = new RegisterPageModel();
+        if(session.getAttribute("customer_id") != null){
+            page.login = registerMapper.findById_login(id);
+        }
 
         //IDをキーに表示するデータを検索
         status.list = allergyMapper.findByCustId(id);
@@ -96,8 +127,9 @@ public class AllergyController {
         model.addAttribute("order_0", order_0);
         model.addAttribute("order_1", order_1);
         model.addAttribute("order_2", order_2);
+        model.addAttribute("page", page);
 
-        return "fastfood/html/order_status"; //テンプレートファイルを指定
+        return "fastfood/order_status"; //テンプレートファイルを指定
     }
 
 //管理者確認画面
@@ -113,7 +145,7 @@ public String adoministrator(Model model) {
 
     model.addAttribute("page", page);
 
-    return "fastfood/html/adoministrator_confirmation"; //テンプレートファイルを指定
+    return "fastfood/adoministrator_confirmation"; //テンプレートファイルを指定
 }
 
 @GetMapping("update/{no}")
@@ -134,7 +166,7 @@ public String update(@PathVariable("no") int no, Model model){
     model.addAttribute("page", page);
 
     //テンプレートファイルを指定
-    return "fastfood/html/adoministrator_confirmation";
+    return "fastfood/adoministrator_confirmation";
 }
 
 
@@ -157,7 +189,7 @@ public String update_end(@PathVariable("no") int no, Model model){
     model.addAttribute("page", page);
 
     //テンプレートファイルを指定
-    return "fastfood/html/adoministrator_confirmation";
+    return "fastfood/adoministrator_confirmation";
 }
 
 }

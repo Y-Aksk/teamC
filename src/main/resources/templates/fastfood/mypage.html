@@ -18,7 +18,7 @@
                 <li><a href="/fastfood/home">ホーム</a></li>
                 <li><a href="/fastfood/product">メニュー</a></li>
                 <li><a href="/fastfood/shop">店舗一覧</a></li>
-                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
                 <li ><a href="/fastfood/qa">お問い合わせ</a></li>
                 <li th:unless="${customer_id} == 0">
                     <a  href="logout">
@@ -127,7 +127,7 @@
         <tr>
             <!--kakuninは仮名-->
             <a style="display: block; width: 100%; height: 100%"
-            href = "kakunin.html">
+            href = "order_status">
             <!--
                 ↓ちゃんとしたURLじゃないとだめかもしれない
                 th:href = "@{'/fastfood/kakunin/{id}'(id = ${item.customer_id})}">

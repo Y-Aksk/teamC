@@ -46,9 +46,12 @@ public class RegisterController{
     
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");
-            page.login = registerMapper.findById_login(customer_id);;
+            page.login = registerMapper.findById_login(customer_id);
+            //マイページに遷移できるなら必要
+            page.authority = LoginMapper.ditectAuth(customer_id);
         }
 
+        
 
         //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
         page.list = registerMapper.findRank();
@@ -66,6 +69,15 @@ public class RegisterController{
         //ページインスタンスを作って、タイトルを設定
         RegisterPageModel page = new RegisterPageModel();
         page.title = "お問い合わせ(java)";
+
+        int customer_id = 0;
+        if(session.getAttribute("customer_id") != null){
+            customer_id = (int)session.getAttribute("customer_id");
+            page.login = registerMapper.findById_login(customer_id);
+            //マイページに遷移できるなら必要
+            page.authority = LoginMapper.ditectAuth(customer_id);
+        }
+
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
         //テンプレートファイルを指定

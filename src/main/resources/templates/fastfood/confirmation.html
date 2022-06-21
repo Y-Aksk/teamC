@@ -11,17 +11,34 @@
 
     <header>
         <!-- ナビゲーションメニュー（メニューバー） -->
-        <nav>
+        <nav id = "menubar">
             <ul>
                 <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="#">ホーム</a></li>
-                <li><a href="#">メニュー</a></li>
-                <li><a href="#">店舗一覧</a></li>
-                <li><a href="#">アレルギー情報</a></li>
-                <li><a href="#">お問い合わせ</a></li>
-                <li><a href="#">ログイン</a></li>
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li th:if="${page.login} != 1">
+                    <a href="login">
+                        ログイン
+                    </a>
+                </li>
+                <li th:if="${page.login} == 1 and ${page.authority} == 0">
+                    <a  href="mypage">
+                        マイページ
+                    </a>
+                </li>
+                
+                <li th:if="${page.login} == 1 and ${page.authority} == 1">
+                    <a  href="mypage_emp">
+                        マイページ
+                    </a>
+                </li>
+    
             </ul>
         </nav>
+    
     </header>
 
     <h1 th:text = "${page.title}">メニュー</h1>

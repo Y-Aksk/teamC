@@ -7,6 +7,9 @@
     <link th:href="@{/css/style.css}"  rel="stylesheet">
     <title>ハンバーガー受け取り注文</title>
 </head>
+<header>
+    <h1 id="logo">バーガーショップ</a></h1>
+</header>
 
 <body>
     <div id="container">
@@ -17,34 +20,25 @@
                 <li><a href="/fastfood/home">ホーム</a></li>
                 <li><a href="/fastfood/product">メニュー</a></li>
                 <li><a href="/fastfood/shop">店舗一覧</a></li>
-                <li><a href="#">アレルギー情報</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
                 <li><a href="/fastfood/qa">お問い合わせ</a></li>
-                <!--<li><a href="login">ログイン</a></li>-
-                <li th:if="${page.login} == 1" >
-                    <a href="logout">
-                        ログアウト
-                    </a>
-                </li>
-
-                <li>
-                    <div th:if="${page.login} == 0">
-                    <a href="login">
-                        ログイン
-                    </a>
-                </div>
-                </li>-->
-
                 <li th:if="${page.login} != 1">
                     <a href="login">
                         ログイン
                     </a>
                 </li>
-                <li th:if="${page.login} == 1">
+                <li th:if="${page.login} == 1 and ${page.authority} == 0">
                     <a  href="mypage">
                         マイページ
                     </a>
                 </li>
-
+                
+                <li th:if="${page.login} == 1 and ${page.authority} == 1">
+                    <a  href="mypage_emp">
+                        マイページ
+                    </a>
+                </li>
+            
             </ul>
         </nav>
 
@@ -55,13 +49,20 @@
         </div>
 
     <main>
-        <div class="orderpage_button">
+        
 
             <!--loginが0,1で判断 page.loginに入っている値でいいのかな？
                 page.listに入っているログイン情報でないとダメかも？→controllerとmapperの追記必要？
             （#は注文画面のURL loginはloginページの正しいURLに変える）-->
-            <a href="#" th:href="${page.login == 1}? '#' : 'login'">
+            <div class="orderpage_button" th:if="${page.authority == 0}">
+            <a href="#" th:href="${page.login == 1}? 'order' : 'login'">
             ハンバーガーの受け取り注文はコチラ</a>
+            </div>
+
+            <div class="orderpage_button" th:if="${page.authority == 1}">
+            <a href="#" th:href="${page.login == 1}? 'adoministrator_confirmation' : 'login'">
+                注文状況確認画面</a>
+            </div>
            
             <!-- ページ遷移できるかのお試し用
             <a href = "#"
@@ -70,7 +71,7 @@
             -->
 
         </table>
-        </div>
+        
 
         <h2>人気メニュー</h2>
         <div class="ranking">
