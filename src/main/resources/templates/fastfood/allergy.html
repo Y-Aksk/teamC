@@ -1,0 +1,104 @@
+<!--画面設計書19-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/style.css}"  rel="stylesheet">
+    <title>アレルギー情報</title>
+</head>
+
+<body>
+
+    <nav id = "menubar">
+    <!-- ナビゲーションメニュー（メニューバー） -->
+    
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">メニュー</a></li>
+                <li><a href="#">店舗一覧</a></li>
+                <li><a href="http://localhost:8080/fastfood/allergy">アレルギー情報</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+                <li><a href="#">ログイン</a></li>
+            </ul>
+    
+    </nav>
+
+    <main>
+
+    <h2 th:text = "${page.title}">アレルギー情報</h2>
+
+    <div id="container">
+
+    <form action="/fastfood/search" method="post">    
+
+        <h4>※〇が含む,✕が含まれない</h4>
+    <tr>
+        <td><select class="product_control" id="product_name" name="product_name" required>
+            <option value="">商品を選択してください</option>
+            <div th:each="item:${bglist}">
+                <option th:value="${item.product_name}" th:text="${item.product_name}"></option>
+            </div>
+         </select></td>
+    </tr>
+    <button class="fu" type="submit">検索</button>
+    </div>
+    </form>
+
+    
+
+    <!--アレルギー表示メニュー-->
+    <table border=1>
+        <th>商品ID</th>
+        <th>商品画像</th>
+        <th>商品名</th>
+        <th>小麦</th>
+        <th>卵</th>
+        <th>乳</th>
+        <th>エビ</th>
+        <th>カニ</th>
+        <th>落花生</th>
+        <div id="container">
+        <tr th:each="item : ${page.list}">
+            <td th:text="${item.product_id}">商品ID</td>
+            <td><img th:src = "${item.product_pic}"></td>
+            <td th:text="${item.product_name}">商品名</td>
+            <!-- 小麦がTrueの場合 -->
+            <td th:if="${item.flour}">&#9675;</td>
+            <!-- 小麦がFalseの場合 -->
+            <td th:if="${!item.flour}">&#10005;</td>
+            <!-- 卵がTrueの場合 -->
+            <td th:if="${item.egg}">&#9675;</td>
+            <!-- 卵がFalseの場合 -->
+            <td th:if="${!item.egg}">&#10005;</td>
+            <!-- 乳がTrueの場合 -->
+            <td th:if="${item.milk}">&#9675;</td>
+            <!-- 乳がFalseの場合 -->
+            <td th:if="${!item.milk}">&#10005;</td>
+            <!-- エビがTrueの場合 -->
+            <td th:if="${item.shrimp}">&#9675;</td>
+            <!-- エビがFalseの場合 -->
+            <td th:if="${!item.shrimp}">&#10005;</td>
+            <!-- カニがTrueの場合 -->
+            <td th:if="${item.crab}">&#9675;</td>
+            <!-- カニがFalseの場合 -->
+            <td th:if="${!item.crab}">&#10005;</td>
+            <!-- 落花生がTrueの場合 -->
+            <td th:if="${item.peanut}">&#9675;</td>
+            <!-- 落花生がFalseの場合 -->
+            <td th:if="${!item.peanut}">&#10005;</td>
+        </tr>
+        </div>
+    </table>
+</main>
+<footer>
+    <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+<!--ページの上部へ戻るボタンとスクリプト-->
+<p class="pagetop"><a href="#">↑</a></p>
+<script th:src="@{/js/openclose_tp.js}"></script>
+</body>
+</html>
