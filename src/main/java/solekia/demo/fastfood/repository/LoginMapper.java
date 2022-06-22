@@ -33,4 +33,7 @@ public interface LoginMapper {
     //ok
     @Select("select count(*) from cart where order_id is not null;")
     public int countOrder();
+
+    @Delete("delete from registered where customer_id = #{id}")
+    public void delete(int id);
 }

@@ -65,15 +65,15 @@
     <!--アレルギー表示メニュー-->
     <div class="border">
     <table border=1>
-        <th>商品ID</th>
-        <th>商品画像</th>
-        <th>商品名</th>
-        <th>小麦</th>
-        <th>卵</th>
-        <th>乳</th>
-        <th>エビ</th>
-        <th>カニ</th>
-        <th>落花生</th>
+        <th id="p_60">商品ID</th>
+        <th id="p_100">商品画像</th>
+        <th id="p_280">商品名</th>
+        <th id="p_60">小麦</th>
+        <th id="p_60">卵</th>
+        <th id="p_60">乳</th>
+        <th id="p_60">エビ</th>
+        <th id="p_60">カニ</th>
+        <th id="p_60">落花生</th>
         <div id="container">
         <tr th:each="item : ${page.list}">
             <td th:text="${item.product_id}">商品ID</td>

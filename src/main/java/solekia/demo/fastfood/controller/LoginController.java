@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import solekia.demo.fastfood.model.*;
@@ -52,16 +54,9 @@ public class LoginController {
         page.list = LoginMapper.findAccount(customer_id, password);
 
         //addition参照、遷移するタイミングで
-        page.authority = LoginMapper.ditectAuth(customer_id);
+        if(!(page.list.size() == 0))
+            page.authority = LoginMapper.ditectAuth(customer_id);
         
-
-
-        if(customer_id == page.getCustomer_id() && page.login == 1){
-            page.message = "すでに他の端末でログイン済みです";
-            model.addAttribute("page", page);
-            return "fastfood/login_emp";
-        }
-
         //ログインボタンを押したときの画面遷移の条件分岐
         if(!(page.list.size() == 0) && page.authority == 0){
             //idをセッションの値として格納
@@ -93,7 +88,6 @@ public class LoginController {
 
             return "fastfood/mypage_emp";
         }
-
 
         else{
             page.message = "IDかパスワードが違います";
@@ -261,7 +255,7 @@ public class LoginController {
         return "fastfood/check_logout_emp";
     }
 
-    //login/list, logout/listの分も作る
+
     @PostMapping("check_logout")
     public String checkLogout(Model model){
          //RegisterPageModelクラスをpageとして扱う
@@ -309,31 +303,32 @@ public class LoginController {
         return "redirect:/fastfood/home";
    }
 
-    /* 
-    @GetMapping("list")
-    public String List(Model model){
+   @GetMapping("delete")
+    public String delete(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
-        page.message = "";
+        page.message = "退会しますか？";
 
-        //モデルページにインスタンスを生成
+        //遷移先のページでセッションから値を取得する
+        int customer_id = (int)session.getAttribute("customer_id");
+        page.authority = LoginMapper.ditectAuth(customer_id);
+
+        //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+    
 
         //テンプレートファイルを指定
-        return "fastfood/list";
+        return "fastfood/delete";
     }
 
-    @GetMapping("logout/list")
-    public String List1(Model model){
-        //ページインスタンスを作って、タイトルを設定
-        LoginPageModel page = new LoginPageModel();
-        page.message = "";
-
-        //モデルページにインスタンスを生成
-        model.addAttribute("page", page);
-
-        //テンプレートファイルを指定
-        return "fastfood/list";
+    @GetMapping("deleted")
+    public String deleted(Model model) {
+        int customer_id = (int)session.getAttribute("customer_id");
+        LoginMapper.delete(customer_id);
+        //セッション終了
+        session.invalidate();
+        return "redirect:/fastfood/home";
     }
-    */
+
+ 
 }

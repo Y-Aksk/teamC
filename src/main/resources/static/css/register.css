@@ -1,3 +1,4 @@
+
 @charset"UTF-8";
 
 /*----
@@ -26,9 +27,10 @@ form input{
     padding: 0.5em;   
     font-size: 13px;
     background-color: snow;
-    border: 1.5px solid peru;
+    border: 1.5px solid orange;
     box-shadow: 0 0 0 1000px snow inset; /*入力フォームの背景が青くなるのを防ぐ*/
     color: saddlebrown;
+    border-radius: 10px;
 }
 
 form select{
@@ -39,8 +41,42 @@ form select{
     cursor: pointer;
     padding: 0.3em;
     background-color: snow;
-    border: 1.5px solid peru;
+    border: 1.5px solid orange;
     color: saddlebrown;
+    border-radius: 10px;
+}
+
+/*----
+お問い合わせフォーム
+----*/
+.qa_form #question{
+    width: 400px;
+    height: 200px;
+    margin-bottom: 5px;
+    overflow: scroll;
+    resize: both;
+    font-family: sans-serif;
+    font-size: 13px;
+    padding: 0.5em;
+    background-color: snow;
+    border: 1.5px solid orange;
+    color: saddlebrown;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: snow;
+    border-radius: 10px;
+  }
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
 }
 
 /*----
@@ -61,6 +97,7 @@ form select{
     cursor: pointer;
   }
 
+/*
 .orderpage_button a {
     color: darkorange;
     background: white;
@@ -69,12 +106,51 @@ form select{
     width: 1200px;
     padding: 10px 0px;
     font-weight: bold;
+    transition: background 0.5s;
+    transition: transform 0.5s;
 }
 
 .orderpage_button a:hover {
-    color: chocolate;
-    background: floralwhite;
+    color: white;
+    background: sandybrown;
+    box-shadow: 0 5px 10px chocolate;
+    transform: translate(0, -5px);
+    
 }
+*/
+
+.orderpage_button a {
+    background:linear-gradient(45deg, darkorange,chocolate);
+    /*グラデーションを定義*/
+    background-size: 200% 200%;
+    animation: bggradient 10s ease infinite;
+    border-radius: 10px;
+    width: 1200px;
+    padding: 10px 0px;
+    font-weight: bold;
+    transition: background 0.5s;
+    transition: transform 0.5s;
+}
+
+.orderpage_button a:hover {
+    color: white;
+    background: sandybrown;
+    box-shadow: 0 5px 10px chocolate;
+    transform: translate(0, -5px);
+    
+}
+
+@keyframes bggradient{
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 
 .ranking table tr{
   float: left;
@@ -100,30 +176,54 @@ form select{
     margin: 10px;
     background: white;
     box-shadow: 0px 0px 0px 10px white;
-    border: dashed 2px moccasin;
+    border: dashed 2px orange;
 }
 
 /*----
-お問い合わせフォーム
+ボタン関連
 ----*/
-.qa_form #question{
-    width: 400px;
-    height: 200px;
-    margin-bottom: 5px;
-    overflow: scroll;
-    resize: both;
-    font-family: sans-serif;
-    font-size: 13px;
-    padding: 0.3em;
-    background-color: snow;
-    border: 1.5px solid peru;
-    color: saddlebrown;
+
+/*登録変更ボタン*/
+button.edit_b {
+    cursor: pointer;
+    color: #fff;
+    background-color: #eb6100;
+    width: 180px;
+    padding: 5px;
+    border: 1.5px solid rgb(255, 248, 248);
+    border-radius: 100vh;
+  }
+  
+button.edit_b:hover {
+    background-color: #c55505;
 }
 
-/*----
-古屋さんのcss付け足し
-----*/
-.border table {
-    background-color: darkorange;
-    
+/*新規登録ボタン*/
+button.register_b {
+    cursor: pointer;
+    color: #fff;
+    background-color: #eb6100;
+    width: 200px;
+    padding: 5px;
+    border: 1.5px solid rgb(255, 248, 248);
+    border-radius: 100vh;
+  }
+
+/*お問い合わせボタン*/
+button.register_b:hover {
+    background-color: #c55505;
+}
+
+button.qa_b {
+    cursor: pointer;
+    color: #fff;
+    background-color: #eb6100;
+    width: 80px;
+    padding: 5px;
+    border: 1.5px solid rgb(255, 248, 248);
+    border-radius: 100vh;
+  }
+  
+button.qa_b:hover {
+    background-color: #c55505;
 }

@@ -1,106 +1,118 @@
-
 /*------
-基礎設定
+枠線付きのテーブル
 ------*/
+
+.border table #p_60{
+  width: 60px;
+}
+
+.border table #p_100{
+  width: 100px;
+}
+
+.border table #p_280{
+  width: 280px;
+}
+
 
 a {
 	text-decoration: none;
-  }
+}
 
-table td img {
+.border table td img {
     width: 100px;
     height: 100px;
     object-fit: cover;
 }
 
-table td text {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-}
 
-table {
+.border table {
     margin: 3px auto;    /* 上下3px 左右auto */
+    width: 800px;
+    background-color: darkorange;
 }
 
-td, th {
+.border table td, .border table th {
     vertical-align: middle;  /* 中央揃え */
+    border: 1px solid #f7f7f7;
 }
 
-table {
-	width: 800px;
-  }
-  table,th,td {
-	border: 1px solid #f7f7f7;
-  }
+.border table td {
+  text-align: center;
+}
 
-  td {
-	text-align: center;
-	}
+/*-------
+ボタン関係
+-------*/
 
-   strong {
-	color: #ffffff;
-	}
+/*2文字のボタン*/
 
-	/*-------
-	ボタン関係
-	-------*/
-
-	.back,
-	button.back {
-	  color: #fff;
-	  background-color: #eb6100;
-	  width: 80px;
-	  padding: 5px;
-	}
-	
-	.back,
-	button.back {
-	  color: #fff;
-	  background: #f56500;
-	}
-	
-	button.back {
-	   border-radius: 100vh;
-	}
-
-	button.back {
-		position: right 50;
-		}
-
-.search_button,
-button.search_button {
+button {
+  cursor: pointer;
   color: #fff;
   background-color: #eb6100;
   width: 80px;
   padding: 5px;
+  border: 1.5px solid rgb(255, 248, 248);
+  border-radius: 100vh;
+}
+  
+button:hover {
+  background-color: #c55505;
 }
 
-.search_button,
-button.search_button {
-  color: #fff;
-  background: #f56500;
-}
-
-button.search_button {
-   border-radius: 100vh;
-}
-
-.ado,
-button.ado {
+/*戻る*/
+button.back {
+  cursor: pointer;
   color: #fff;
   background-color: #eb6100;
   width: 80px;
   padding: 5px;
-}
+  border: 1.5px solid rgb(255, 248, 248);
+  border-radius: 100vh;
+  position: relative; /* relativeを指定 */
+  left: 1020px; /* 左から1020px移動 */
+	}
 
-.ado,
-button.ado {
+/*検索*/
+button.search_button {
+  cursor: pointer;
   color: #fff;
-  background: #f56500;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 248, 248);
+  border-radius: 100vh;
+  position: relative; /* relativeを指定 */
+  left: 10px; /* 左から10px移動 */
+	}
+
+	button.search_button:hover {
+		background-color: #c55505;
+		  }
+
+/*〇×説明*/
+
+.ox {
+  position: relative; /* relativeを指定 */
+  top: 60px;
+  left: 745px; /* 左から745px移動 */
 }
 
+/*完了*/
 button.ado {
-   border-radius: 100vh;
+  cursor: pointer;
+  color: #fff;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 248, 248);
+  border-radius: 100vh;
+  position: relative; /* relativeを指定 */
+  top: -2px;
 }
 
+button.ado:hover {
+	background-color: #c55505;
+}
+  

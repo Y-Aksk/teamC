@@ -1,4 +1,4 @@
-package com.example.demo;
+package solekia.demo.fastfood.repository;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,14 +25,17 @@ public class LoginFilter implements Filter {
         System.out.println("init!!");
 
         //☆☆ここにログインしていなくても開けるページ☆☆
+        urls.add("^/fastfood/home");
         urls.add("^/fastfood/login");
         urls.add("^/fastfood/login_emp");
-        urls.add("^/fastfood/login/list");
-        urls.add("^/fastfood/login_emp/list");
-        urls.add("^/fastfood/logout/");
+        urls.add("^/fastfood/logout");
         urls.add("^/fastfood/logout_emp");
-        urls.add("^/fastfood/list");
-        urls.add("^/fastfood/logout/list");
+        urls.add("^/fastfood/product");
+        urls.add("^/fastfood/qa");
+        urls.add("^/fastfood/deleted");
+        urls.add("^/fastfood/allergy");
+        urls.add("^/fastfood/check_logout");
+        urls.add("^/fastfood/check_logout_emp");
     }
 
     private List<String> urls = new  ArrayList<String>();

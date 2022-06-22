@@ -438,8 +438,8 @@ form{
 }
 
 form input{
-    width: 250px;
-    height: 25px;
+    width: 260px;
+    height: 30px;
     font-size: 15px;
 }
 
@@ -453,13 +453,66 @@ form input{
 }
 
 form select{
-    width: 250px;
-    height: 25px;
+    width: 260px;
+    height: 30px;
     font-size: 15px;
     cursor: pointer;
 }
 
+/*登録変更*/
+.edit_b,
+button.edit_b {
+  color: #fff;
+  background-color: #eb6100;
+  width: 180px;
+  padding: 5px;
+}
 
+.edit_b,
+button.edit_b {
+  color: #fff;
+  background: #f56500;
+}
+
+button.edit_b {
+   border-radius: 100vh;
+}
+
+/*新規登録*/
+.register_b,
+button.register_b {
+  color: #fff;
+  background-color: #eb6100;
+  width: 200px;
+  padding: 5px;
+}
+
+.register_b,
+button.register_b {
+  color: #fff;
+  background: #f56500;
+}
+
+button.register_b {
+   border-radius: 100vh;
+}
+
+/*２文字ボタン*/
+button {
+    color: #fff;
+    background-color: #eb6100;
+    width: 80px;
+    padding: 5px;
+  }
+  
+  button {
+    color: #fff;
+    background: #f56500;
+  }
+  
+  button {
+     border-radius: 100vh;
+  }
 
 /*---------------------------------------------------------------------------
 ここから下は画面幅600px以上の追加指定

@@ -52,14 +52,12 @@
         <h2 th:text ="${page.title}">新規会員登録</h2>
         <table class="registercust_form">
             <tr>
-                <th>姓 <br>
-                    (例:ソレキア)
+                <th>姓（例:ソレキア）
                 </th>
                 <td><input type="text" id="first_name" name="first_name" required></td>
             </tr>
             <tr>
-                <th>名<br>
-                    (例:太郎)<br>
+                <th>名（例:太郎）
                 </th>
                 <td><input type="text" id="last_name" name="last_name" required></td>
             <tr>
@@ -67,9 +65,7 @@
                 <td><input type="tel" pattern="\d{2,4}-\d{3,4}-\d{3,4}" id="tell_no" name="tell_no" required></td>
             </tr>
             <tr>
-                <th>メールアドレス<br>
-                    〇〇〇〇＠〇〇〇〇
-                </th>
+                <th>メールアドレス</th>
                 <td><input type="text" id="mail" name="mail" required></td>
             </tr>
             <!--プルダウンメニュー-->
@@ -93,7 +89,7 @@
                 <td><input type="password" class="form_control" name="confirm" oninput="CheckPassword(this)" required></td>
             </tr>
             <tr>
-                <th><button type="submit">登録してログインページへ</button></th>
+                <th><button class="register_b" type="submit">登録してログインページへ</button></th>
             </tr>
         </table>
     </form>

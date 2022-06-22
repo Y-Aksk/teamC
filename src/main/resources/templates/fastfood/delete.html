@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>退会確認画面</title>
+
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
+</head>
+<body>
+    <main>
+    <form method = "post" action="/fastfood/delete" th:action="@{/fastfood/delete}" th:object="${page}">
+        <p text = "message" th:text = "*{message}">テキスト</p>
+
+        <table class="ta1">
+            <tr>
+                <td>
+                    <a type = "submit" href = "/fastfood/deleted">
+                        退会する
+                    </a>
+                </td>
+                
+                <td th:if="${page.authority} == 0">
+                    <a type = "submit" href = "/fastfood/mypage">
+                        マイページに戻る
+                    </a>
+                </td>
+
+                <td th:if="${page.authority} == 1">
+                    <a type = "submit" href = "/fastfood/mypage_emp">
+                        マイページに戻る
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </main>
+</body>
+
+<footer>
+    <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+</html>
