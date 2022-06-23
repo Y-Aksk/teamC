@@ -56,8 +56,8 @@
                 <a th:href = "@{'/fastfood/shopdetail/{id}'(id = ${item.shop_id})}" href = "shopdetail.html">
                 <span th:text = "${item.shop_name}">店舗名</span>
                 </a>
-            <td th:text = "${item.address}">住所</td>
-            <td>
+            </td>
+                <td id="shop_add" th:text = "${item.address}">住所
             </td>
         </tr>
     </table>

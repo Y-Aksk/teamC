@@ -20,6 +20,9 @@ public class LoginController {
     LoginMapper LoginMapper;
 
     @Autowired
+    AllergyMapper allergyMapper;
+
+    @Autowired
     HttpSession session;
 
     @Autowired
@@ -65,13 +68,7 @@ public class LoginController {
             page.login = 1;
             LoginMapper.login_out(customer_id, page.login);
 
-            page.count = LoginMapper.countOrder();
-            //モデルにページインスタンスを設定
-            model.addAttribute("page", page);
-
-            //model.addAttribute("page.count", page.count);
-            
-            return "fastfood/mypage";
+            return mypage(model);
         }
 
         else if(!(page.list.size() == 0) && page.authority == 1){
@@ -167,12 +164,41 @@ public class LoginController {
     public String mypage(Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
+        AllergyPageModel status = new AllergyPageModel();
+        //下４行追加
+        AllergyPageModel wait = new AllergyPageModel();
+        AllergyPageModel order_0 = new AllergyPageModel();
+        AllergyPageModel order_1 = new AllergyPageModel();
+        AllergyPageModel order_2 = new AllergyPageModel();
 
         //遷移先のページでセッションから値を取得する
         int customer_id = (int)session.getAttribute("customer_id");
 
+        //IDをキーに表示するデータを検索
+        status.list = allergyMapper.findByCustId(customer_id);
+
+        //待ち組数を数える用のcustomer_idを格納する
+        wait.list = allergyMapper.findGroup();
+
+        //変更　オーダーID＝0の数を数える
+        order_0.list = allergyMapper.findGroupOrder(customer_id);
+
+        //追加　オーダーID＝1の数を数える
+        order_1.list = allergyMapper.findGroupOrder1(customer_id);
+
+        //追加　オーダーID＝2の数を数える
+        order_2.list = allergyMapper.findGroupOrder2(customer_id);
+
         //リスト初期化
         page.list = LoginMapper.showMypage(customer_id);
+
+        model.addAttribute("status", status);
+        //下4行追加
+        model.addAttribute("wait", wait);
+        model.addAttribute("order_0", order_0);
+        model.addAttribute("order_1", order_1);
+        model.addAttribute("order_2", order_2);
+        
         
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);

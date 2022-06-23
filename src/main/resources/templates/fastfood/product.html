@@ -48,17 +48,52 @@
     <h1 th:text = "${page.web_title}">メニュー</h1>
     
     <table class="ta1">
-        <caption>メニュー画像, メニュー名, 価格</caption>
-        <h2>バーガー, ドリンク, サイドメニュー</h2>
+        <h2><a href="#burger">バーガー</a><a>　|　</a><a href="#drink">ドリンク</a><a>　|　</a><a href="#side">サイドメニュー</a></h2>
+        <caption id="burger">バーガー</caption>
 
-        <tr th:each = "item : ${page.list}">
+        <tr th:each = "i : ${#numbers.sequence(0, 4)}">
+            <th:block th:if="${#lists.size(page.list) gt __${i}__}"></th:block>
             <td>
                 <!--商品画像を押すとログインページに飛ぶ-->
-                <a th:href = "shop"><img th:src = "${item.product_pic}" width="500"  height="500"></a></td>
+                <a th:href = "login"><img th:src = "${page.list[__${i}__].product_pic}"></a></td>
                 <!--<a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
                     <span th:src = "${item.product_pic}">商品画像</span>-->
-            <td th:text = "${item.product_name}" font size="7" color="#00ff00">メニュー名</td>
-            <td><span th:text = "${item.price}" font size="7" color="#00ff00">価格</span>円</td>
+            <td th:text = "${page.list[__${i}__].product_name}" font size="7" color="#00ff00">メニュー名</td>
+            <td><span th:text = "${page.list[__${i}__].price}" font size="7" color="#00ff00">価格</span>円</td>
+            <td>
+            </td>
+        </tr>
+    </table>
+
+    <table class="ta1">
+        <caption id="drink">ドリンク</caption>
+
+        <tr th:each = "i : ${#numbers.sequence(5, 9)}">
+            <th:block th:if="${#lists.size(page.list) gt __${i}__}"></th:block>
+            <td>
+                <!--商品画像を押すとログインページに飛ぶ-->
+                <a th:href = "login"><img th:src = "${page.list[__${i}__].product_pic}"></a></td>
+                <!--<a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
+                    <span th:src = "${item.product_pic}">商品画像</span>-->
+            <td th:text = "${page.list[__${i}__].product_name}" font size="7" color="#00ff00">メニュー名</td>
+            <td><span th:text = "${page.list[__${i}__].price}" font size="7" color="#00ff00">価格</span>円</td>
+            <td>
+            </td>
+        </tr>
+    </table>
+
+    <table class="ta1">
+        <caption id="side">サイドメニュー</caption>
+
+        <tr th:each = "i : ${#numbers.sequence(10, 14)}">
+            <th:block th:if="${#lists.size(page.list) gt __${i}__}"></th:block>
+            <td>
+                <!--商品画像を押すとログインページに飛ぶ-->
+                <a th:href = "login"><img th:src = "${page.list[__${i}__].product_pic}"></a></td>
+                <!--<a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
+                    <span th:src = "${item.product_pic}">商品画像</span>-->
+            <td th:text = "${page.list[__${i}__].product_name}" font size="7" color="#00ff00">メニュー名</td>
+            <td><span th:text = "${page.list[__${i}__].price}" font size="7" color="#00ff00">価格</span>円</td>
             <td>
             </td>
         </tr>

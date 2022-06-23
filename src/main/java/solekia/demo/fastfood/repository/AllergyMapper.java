@@ -21,7 +21,11 @@ public interface AllergyMapper {
     public List<AllergyModel> findAdo();
 
     //変更してます。丸々変えてください。：待ち組数数える
-    @Select ("select customer_id, count(customer_id) from cart WHERE order_id = 0 Group by customer_id")
+    @Select ("SELECT cart.customer_id, count(cart.customer_id) FROM cart "+
+    "INNER JOIN registered ON registered.customer_id = cart.customer_id "+
+    "JOIN shop ON registered.shop_name = shop.shop_name WHERE cart.order_id = 0 and shop.shop_id = "+
+    "(select shop_id from shop join registered on registered.shop_name = shop.shop_name where customer_id = #{id}) "+
+    "GROUP BY cart.customer_id")
     public List<AllergyModel> findGroup();
 
      //マイページのボタンを押したとき　顧客IDごとに表示を変える

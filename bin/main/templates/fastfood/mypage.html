@@ -89,9 +89,17 @@
         </tr>
 
         <tr>
-            <td></td>
-            <td th:text = "${page.count} <= 3 ? 'もうすぐで受け取り可能です。' : (${page.count} <= 5 ? '5分以内に受け取り可能です。' : 'もうしばらくお待ちください。')">
-                countOrder
+            
+            <td>
+                <!--<tr>の中身変更　status.listは顧客ごとの買い物かご　order_0.listはorder_idが0の注文商品　wait.listは待ち組数-->
+                
+                    <th th:if="${wait.list.size == 0}">すぐ受け取れます。</th>
+                    <th th:if="${wait.list.size >= 1} and ${wait.list.size <= 5}">10分待ちです</th>
+                    <th th:if="${wait.list.size >= 6} and ${wait.list.size <= 10}">20分待ちです</th>
+                    <th th:if="${wait.list.size >= 11}">30分以上待ちです</th>
+                    <th th:text=""></th>
+                
+                <th class="uketori" th:if="${status.list.size != 0} and ${order_0.list.size == 0} and ${order_1.list.size >= 1}"><a>受け取り可能です</a></th> 
             </td>
         </tr>
         

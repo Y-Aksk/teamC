@@ -47,7 +47,7 @@
 
     <form action="/fastfood/search" method="post">    
 
-        <h4>※〇が含む,✕が含まれない</h4>
+        <h4 class="ox">※<span style = "color: red;">〇</span>が含む,<span style = "color: rgb(0, 0, 255);">✕</span>が含まれない</h4>
     <tr>
         <td><select class="product_control" id="product_name" name="product_name" required>
             <option value="">商品を選択してください</option>
@@ -80,29 +80,30 @@
             <td><img th:src = "${item.product_pic}"></td>
             <td th:text="${item.product_name}">商品名</td>
             <!-- 小麦がTrueの場合 -->
-            <td th:if="${item.flour}">&#9675;</td>
+            <td class="maru" th:if="${item.flour}">&#9675;</td>
             <!-- 小麦がFalseの場合 -->
-            <td th:if="${!item.flour}">&#10005;</td>
+            <td class="batu" th:if="${!item.flour}">&#10005;</td>
             <!-- 卵がTrueの場合 -->
-            <td th:if="${item.egg}">&#9675;</td>
+            <td class="maru" th:if="${item.egg}">&#9675;</td>
             <!-- 卵がFalseの場合 -->
-            <td th:if="${!item.egg}">&#10005;</td>
+            <td class="batu" th:if="${!item.egg}">&#10005;</td>
             <!-- 乳がTrueの場合 -->
-            <td th:if="${item.milk}">&#9675;</td>
+            <td class="maru" th:if="${item.milk}">&#9675;</td>
             <!-- 乳がFalseの場合 -->
-            <td th:if="${!item.milk}">&#10005;</td>
+            <td class="batu" th:if="${!item.milk}">&#10005;</td>
             <!-- エビがTrueの場合 -->
-            <td th:if="${item.shrimp}">&#9675;</td>
+            <td class="maru" th:if="${item.shrimp}">&#9675;</td>
             <!-- エビがFalseの場合 -->
-            <td th:if="${!item.shrimp}">&#10005;</td>
+            <td class="batu" th:if="${!item.shrimp}">&#10005;</td>
             <!-- カニがTrueの場合 -->
-            <td th:if="${item.crab}">&#9675;</td>
+            <td class="maru" th:if="${item.crab}">&#9675;</td>
             <!-- カニがFalseの場合 -->
-            <td th:if="${!item.crab}">&#10005;</td>
+            <td class="batu" th:if="${!item.crab}">&#10005;</td>
             <!-- 落花生がTrueの場合 -->
-            <td th:if="${item.peanut}">&#9675;</td>
+            <td class="maru" th:if="${item.peanut}">&#9675;</td>
             <!-- 落花生がFalseの場合 -->
-            <td th:if="${!item.peanut}">&#10005;</td>
+            <td class="batu" th:if="${!item.peanut}">&#10005;</td>
+
         </tr>
         </div>
     </table>

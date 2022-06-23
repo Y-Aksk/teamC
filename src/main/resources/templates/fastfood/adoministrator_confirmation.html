@@ -37,22 +37,22 @@
         <td th:text = "${item.product_name}">商品名</td>
         <td th:text = "${item.number}">個数</td>
         <td>
-            <button class="ado" th:href = "@{'/fastfood/update/{no}'(no=${item.no})}" href="#">
-
-                調理完了
-            </button>
+            <a  th:href = "@{'/fastfood/update/{no}'(no=${item.no})}" href="#">
+                <!--ボタン追加-->
+                <button class="ado" type="submit">調理完了</button>
+            </a>
         </td>
 
         <td th:if="${item.order_id == 0}">
-            <a>×</a>
+            <a class="batu">&#10005;</a>
         </td>
         <td th:if="${item.order_id == 1}">
-            <a>○</a>
+            <a class="maru">&#9675;</a>
         </td>
         <td>
-            <button class="ado" th:href = "@{'/fastfood/update_end/{no}'(no=${item.no})}" href="#">
-                受取完了
-            </button>
+            <a th:href = "@{'/fastfood/update_end/{no}'(no=${item.no})}" href="#">
+                <button class="ado" type="submit">受取完了</button>
+            </a>
         </td>
         </div>
     </tr>

@@ -49,8 +49,7 @@
             <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 1} and ${wait.list.size le 5}"><a>10分待ちです</a></th>
             <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 6} and ${wait.list.size le 10}"><a>20分待ちです</a></th>
             <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 11}"><a>30分以上待ちです</a></th>
-            <th th:if="${status.list.size != 0} and ${order_0.list.size == 0} and ${order_1.list.size ge 1}"><a>受け取り可能です</a></th>
-        </tr>
+            <th class="uketori" th:if="${status.list.size != 0} and ${order_0.list.size == 0} and ${order_1.list.size ge 1}"><a>受け取り可能です</a></th>  </tr>
     </table>
 
     <div class="border">
