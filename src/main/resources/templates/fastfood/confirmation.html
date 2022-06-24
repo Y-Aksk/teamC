@@ -5,51 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>注文確定画面</title>
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+    <title>確認画面</title>
 </head>
 <body>
 
-    <header>
-        <!-- ナビゲーションメニュー（メニューバー） -->
-        <nav id = "menubar">
-            <ul>
-                <!--シャープ（#）をページのリンクに書き換える-->
-                <li><a href="/fastfood/home">ホーム</a></li>
-                <li><a href="/fastfood/product">メニュー</a></li>
-                <li><a href="/fastfood/shop">店舗一覧</a></li>
-                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
-                <li><a href="/fastfood/qa">お問い合わせ</a></li>
-                <li th:if="${page.login} != 1">
-                    <a href="login">
-                        ログイン
-                    </a>
-                </li>
-                <li th:if="${page.login} == 1 and ${page.authority} == 0">
-                    <a  href="mypage">
-                        マイページ
-                    </a>
-                </li>
-                
-                <li th:if="${page.login} == 1 and ${page.authority} == 1">
-                    <a  href="mypage_emp">
-                        マイページ
-                    </a>
-                </li>
     
-            </ul>
-        </nav>
+<p>注文が確定しました。</p>
+      <footer>
+        <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+      </footer>
     
-    </header>
-
-    <h1 th:text = "${page.title}">メニュー</h1>
-
-    <h3>注文が確定しました</h3>
-    <h3>ご利用ありがとうございます</h3>
-
-    <!--マイページに遷移-->
-    <a href="マイページのURL">
-        <button type="button">マイページに戻る</button>
-    </a>
+      
+        <!--ページの上部へ戻るボタンとスクリプト-->
+        <p class="pagetop"><a href="#">↑</a></p>
+        <script th:src="@{/js/order.js}"></script>
 
 </body>
 </html>

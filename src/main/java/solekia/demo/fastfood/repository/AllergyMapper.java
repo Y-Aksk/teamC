@@ -26,7 +26,7 @@ public interface AllergyMapper {
     "JOIN shop ON registered.shop_name = shop.shop_name WHERE cart.order_id = 0 and shop.shop_id = "+
     "(select shop_id from shop join registered on registered.shop_name = shop.shop_name where customer_id = #{id}) "+
     "GROUP BY cart.customer_id")
-    public List<AllergyModel> findGroup();
+    public List<AllergyModel> findGroup(int id);
 
      //マイページのボタンを押したとき　顧客IDごとに表示を変える
      //cartとproductを内部結合　写真を持ってくる

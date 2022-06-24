@@ -110,7 +110,7 @@ public class AllergyController {
         status.list = allergyMapper.findByCustId(id);
 
         //待ち組数を数える用のcustomer_idを格納する
-        wait.list = allergyMapper.findGroup();
+        wait.list = allergyMapper.findGroup(id);
 
         //変更　オーダーID＝0の数を数える
         order_0.list = allergyMapper.findGroupOrder(id);

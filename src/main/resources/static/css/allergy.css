@@ -53,13 +53,13 @@ button {
   background-color: #eb6100;
   width: 80px;
   padding: 5px;
-  border: 1.5px solid rgb(255, 248, 248);
+  border: 1.5px solid rgb(255, 255, 255);
   border-radius: 100vh;
 }
-  
+
 button:hover {
-  background-color: #c55505;
-}
+	background-color: #c55505;
+	  }
 
 /*戻る*/
 button.back {
@@ -68,7 +68,7 @@ button.back {
   background-color: #eb6100;
   width: 80px;
   padding: 5px;
-  border: 1.5px solid rgb(255, 248, 248);
+  border: 1.5px solid rgb(255, 255, 255);
   border-radius: 100vh;
   position: relative; /* relativeを指定 */
   left: 1020px; /* 左から1020px移動 */
@@ -81,11 +81,16 @@ button.search_button {
   background-color: #eb6100;
   width: 80px;
   padding: 5px;
-  border: 1.5px solid rgb(255, 248, 248);
+  border: 1.5px solid rgb(255, 255, 255);
   border-radius: 100vh;
   position: relative; /* relativeを指定 */
-  left: 10px; /* 左から10px移動 */
+  top: -30px;
+  left: 160px; /* 左からpx移動 */
 	}
+
+	button.search_button:hover {
+		background-color: #c55505;
+		  }
 
 	button.search_button:hover {
 		background-color: #c55505;
@@ -97,7 +102,31 @@ button.search_button {
   position: relative; /* relativeを指定 */
   top: 60px;
   left: 745px; /* 左から745px移動 */
+	}
+
+.maru{
+  color: rgb(255, 0, 0);
+  font-weight:800;
 }
+
+.batu{
+  color: rgb(4, 0, 255);
+  font-weight:400;
+}
+
+/*プルダウンメニュー*/
+.product_control {
+  position: relative; /* relativeを指定 */
+  top: -30px;
+  left: 160px; /* 左から160px移動 */
+	}
+
+/*受け取り表示*/
+.uketori{
+  background-color: #eb6100;
+  border: 1.5px solid rgb(255, 255, 255);
+}
+
 
 /*完了*/
 button.ado {
@@ -106,11 +135,15 @@ button.ado {
   background-color: #eb6100;
   width: 80px;
   padding: 5px;
-  border: 1.5px solid rgb(255, 248, 248);
+  border: 1.5px solid rgb(255, 255, 255);
   border-radius: 100vh;
   position: relative; /* relativeを指定 */
   top: -2px;
 }
+
+button.ado:hover {
+	background-color: #c55505;
+	  }
 
 button.ado:hover {
 	background-color: #c55505;

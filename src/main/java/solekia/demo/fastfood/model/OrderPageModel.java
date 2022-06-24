@@ -15,7 +15,13 @@ public class OrderPageModel {
     public List<OrderModel> list;
 
     //チェックボックスはStringの配列で受け取れるらしい
-    public String[] checked;
+    // public String[] checked;
+    public List<String> checked;
+    public List<String> orderCnt;
+    public List<String> proIds;
+    public List<String> bgNames;
+    public List<String> prices;
+    // public List<String> orderCntTrue;
 
     //商品のIDと名前
     public int product_id;
@@ -36,11 +42,9 @@ public class OrderPageModel {
     //商品画像のリンク
     public String product_pic;
 
-    //追加
     public int customer_id;
-    public int authority;
+    public int number;
     
-
     public int getProduct_id(){
         return product_id;
     }
@@ -137,11 +141,64 @@ public class OrderPageModel {
         this.customer_id = customer_id;
     }
 
-    public String[] getChecked() {
+    public List<String> getChecked() {
         return checked;
     }
 
-    public void setChecked(String[] checked) {
+    public void setChecked(List<String> checked) {
         this.checked = checked;
+    }
+
+    public List<String> getOrderCnt(){
+        return orderCnt;
+    }
+
+    public void setOrderCnt(List<String> orderCnt){
+        this.orderCnt = orderCnt;
+    }
+    public int getNumber(){
+        return number;
+    }
+
+    public void setNumber(int number){
+        this.number = number;
+    }
+
+    public List<String> getProIds(){
+        return proIds;
+    }
+    public void setProIds(List<String> proIds){
+        this.proIds = proIds;
+    }
+
+    public List<String> getBgNames(){
+        return bgNames;
+    }
+
+    public void setBgNames(List<String> bgNames){
+        this.bgNames = bgNames;
+    }
+        
+    public List<String> getPrices(){
+        return prices;
+    }
+    public void setPrices(List<String> prices){
+        this.prices = prices;
+    }
+
+    public int getSumPrice(){
+        return sumPrice;
+    }
+
+    public void setSumPrice(int sumPrice){
+        this.sumPrice = sumPrice;
+    }
+
+    public int getSumNumber(){
+        return sumNumber;
+    }
+
+    public void setSumNumber(int sumNumber){
+        this.sumNumber = sumNumber;
     }
 }

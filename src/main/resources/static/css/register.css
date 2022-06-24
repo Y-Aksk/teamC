@@ -1,15 +1,4 @@
-
 @charset"UTF-8";
-
-/*----
-画像　全体設定
-----*/
-
-img{
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-}
 
 /*----
 フォーム　全体設定
@@ -28,7 +17,7 @@ form input{
     font-size: 13px;
     background-color: snow;
     border: 1.5px solid orange;
-    box-shadow: 0 0 0 1000px snow inset; /*入力フォームの背景が青くなるのを防ぐ*/
+    box-shadow: snow inset; /*入力フォームの背景が青くなるのを防ぐ*/
     color: saddlebrown;
     border-radius: 10px;
 }
@@ -80,7 +69,7 @@ form select{
 }
 
 /*----
-ホーム画面
+ホーム画面　画像
 ----*/
 
 .mainimg img{
@@ -88,6 +77,10 @@ form select{
     width: 1200px;
     object-fit: cover;
 }
+
+/*----
+ホーム画面　注文画面へのボタン
+----*/
 
 .orderpage_button {
     display: flex;
@@ -97,39 +90,18 @@ form select{
     cursor: pointer;
   }
 
-/*
-.orderpage_button a {
-    color: darkorange;
-    background: white;
-    text-decoration: none;
-    border-radius: 10px;
-    width: 1200px;
-    padding: 10px 0px;
-    font-weight: bold;
-    transition: background 0.5s;
-    transition: transform 0.5s;
-}
-
-.orderpage_button a:hover {
-    color: white;
-    background: sandybrown;
-    box-shadow: 0 5px 10px chocolate;
-    transform: translate(0, -5px);
-    
-}
-*/
-
 .orderpage_button a {
     background:linear-gradient(45deg, darkorange,chocolate);
     /*グラデーションを定義*/
     background-size: 200% 200%;
-    animation: bggradient 10s ease infinite;
+    animation: bggradient 3s ease infinite;
     border-radius: 10px;
     width: 1200px;
     padding: 10px 0px;
     font-weight: bold;
     transition: background 0.5s;
     transition: transform 0.5s;
+    border: 2px solid sandybrown;
 }
 
 .orderpage_button a:hover {
@@ -137,7 +109,7 @@ form select{
     background: sandybrown;
     box-shadow: 0 5px 10px chocolate;
     transform: translate(0, -5px);
-    
+    border: none;
 }
 
 @keyframes bggradient{
@@ -152,9 +124,13 @@ form select{
     }
   }
 
+/*----
+ホーム画面　ランキング
+----*/
+
 .ranking table tr{
   float: left;
-  margin-right: 180px;
+  margin-right: 150px;
   margin-bottom: 30px;
 }
 
@@ -168,15 +144,30 @@ form select{
 }
 
 .ranking table td img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px;
     padding: 10px 10px;
     margin: 10px;
     background: white;
     box-shadow: 0px 0px 0px 10px white;
-    border: dashed 2px orange;
+    border: dashed 2.5px orange ;
+}
+
+.ranking table td img:hover{
+  animation-name:rotateXAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+}
+
+@keyframes rotateXAnime{
+  from{
+    transform: rotateX(0);
+    }
+  to{
+    transform: rotateX(-360deg);
+    }
 }
 
 /*----
@@ -184,36 +175,50 @@ form select{
 ----*/
 
 /*登録変更ボタン*/
+/*登録変更*/
 button.edit_b {
-    cursor: pointer;
-    color: #fff;
-    background-color: #eb6100;
-    width: 180px;
-    padding: 5px;
-    border: 1.5px solid rgb(255, 248, 248);
-    border-radius: 100vh;
-  }
-  
-button.edit_b:hover {
-    background-color: #c55505;
+  cursor: pointer;
+  color: #fff;
+  background-color: #eb6100;
+  width: 180px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 100vh;
 }
+
+button.edit_b:hover {
+	background-color: #c55505;
+	  }
 
 /*新規登録ボタン*/
 button.register_b {
-    cursor: pointer;
-    color: #fff;
-    background-color: #eb6100;
-    width: 200px;
-    padding: 5px;
-    border: 1.5px solid rgb(255, 248, 248);
-    border-radius: 100vh;
-  }
-
-/*お問い合わせボタン*/
-button.register_b:hover {
-    background-color: #c55505;
+  cursor: pointer;
+  color: #fff;
+  background-color: #eb6100;
+  width: 200px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 100vh;
 }
 
+button.register_b:hover {
+	background-color: #c55505;
+	  }
+
+/*お問い合わせ画面*/
+button.qa_b {
+  cursor: pointer;
+  color: #fff;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 100vh;
+}
+
+button.qa_b:hover {
+	background-color: #c55505;
+	  }
 button.qa_b {
     cursor: pointer;
     color: #fff;
@@ -226,4 +231,47 @@ button.qa_b {
   
 button.qa_b:hover {
     background-color: #c55505;
+}
+
+/*----
+店舗一覧
+----*/
+.ta1 #shop_add{
+  width: 600px;
+  text-align: left;
+}
+
+.ta1 #shop_na{
+  width: 200px;
+  text-align: left;
+}
+
+/*----
+メニュー　オーダー画面
+----*/
+
+.ta1 td img{
+  width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin: 10px;
+    background: white;
+    box-shadow: 0px 0px 0px 10px white;
+    border: dashed 2.5px orange ;
+}
+
+.ta1 td img:hover{
+  transform:rotate(5deg);
+}
+
+.ta1 td input[name="checked"]{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.ta1 td input[type="number"]{
+  width: 100px;
 }

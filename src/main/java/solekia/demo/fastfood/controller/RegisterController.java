@@ -44,10 +44,13 @@ public class RegisterController{
 
         int customer_id = 0;
     
+        //値がある（ログインしている）場合
         if(session.getAttribute("customer_id") != null){
+            //ログインしているIDの識別
             customer_id = (int)session.getAttribute("customer_id");
+            //ログイン状態を把握
             page.login = registerMapper.findById_login(customer_id);
-            //マイページに遷移できるなら必要
+            //管理者かどうかの把握
             page.authority = LoginMapper.ditectAuth(customer_id);
         }
 

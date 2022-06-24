@@ -61,31 +61,35 @@ public class LoginController {
             page.authority = LoginMapper.ditectAuth(customer_id);
         
         //ログインボタンを押したときの画面遷移の条件分岐
+        //顧客用
         if(!(page.list.size() == 0) && page.authority == 0){
             //idをセッションの値として格納
             session.setAttribute("customer_id", customer_id);
 
+            //ログイン状態の記録
             page.login = 1;
             LoginMapper.login_out(customer_id, page.login);
 
+            //マイページへ遷移
             return mypage(model);
         }
-
+        //従業員用
         else if(!(page.list.size() == 0) && page.authority == 1){
 
             //idをセッションの値として格納
             session.setAttribute("customer_id", customer_id);
 
+            //ログイン状態の記録
             page.login = 1;
             LoginMapper.login_out(customer_id, page.login);
 
-            page.count = LoginMapper.countOrder();
             //モデルにページインスタンスを設定
             model.addAttribute("page", page);
 
+            //マイページへ遷移
             return "fastfood/mypage_emp";
         }
-
+        //IDかパスワードが不一致だった場合
         else{
             page.message = "IDかパスワードが違います";
             model.addAttribute("page", page);
@@ -178,7 +182,7 @@ public class LoginController {
         status.list = allergyMapper.findByCustId(customer_id);
 
         //待ち組数を数える用のcustomer_idを格納する
-        wait.list = allergyMapper.findGroup();
+        wait.list = allergyMapper.findGroup(customer_id);
 
         //変更　オーダーID＝0の数を数える
         order_0.list = allergyMapper.findGroupOrder(customer_id);

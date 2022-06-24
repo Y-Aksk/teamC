@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+@import url(register.css);
+@import url(allergy.css);
 
 
 /*リセットCSS（sanitize.css）の読み込み
@@ -415,7 +417,7 @@ main {
 /*th（左側）、td（右側）の共通設定*/
 .ta1 th, .ta1 td {
 	padding: 20px 15px;		/*上下、左右へのボックス内の余白*/
-	font-size: 25px; color: rgb(15, 0, 0);
+	font-size: 25px; color: white;
 }
 
 /*th（左側）のみの設定*/

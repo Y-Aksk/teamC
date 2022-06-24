@@ -9,8 +9,8 @@ public interface OrderMapper {
     @Select("select * from product order by product_id")
     public List<OrderModel> findAll();
 
-
-    @Insert("insert into cart values((select max(no) + 1 from cart), #{product_id}, #{product_name}, #{price}, #{number}, #{customer_id} ")
+    @Insert("insert into cart values((select max(no) + 1 from cart), #{product_id}, #{product_name}, #{price}, #{number}, #{customer_id}, 0)")
+    // @Insert("insert into cart values(2, 1, 'test', 999, 5, 1)")
     public void addition( 
     @Param("product_id")int product_id,
     @Param("product_name")String product_name,
