@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import solekia.demo.fastfood.model.*;
@@ -51,7 +50,7 @@ public class LoginController {
         Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
-        page.title = "マイページ画面(Java)";
+        page.title = "マイページ画面";
 
         //リスト初期化(IDとパスワード分けないといけないかも)
         page.list = LoginMapper.findAccount(customer_id, password);
@@ -112,55 +111,48 @@ public class LoginController {
         return "fastfood/login_emp";
     }
 
-    /*従業員ログイン画面
     @PostMapping("login_emp")
     public String login_emp(
-        @RequestParam("customer_id") int customer_id, 
-        @RequestParam("password") String password, 
+        @RequestParam("customer_id")int customer_id, 
+        @RequestParam("password") String password,
         Model model){
         //ページインスタンスを作って、タイトルを設定
         LoginPageModel page = new LoginPageModel();
-        page.title = "ログイン画面(Java)";
+        page.title = "マイページ画面";
 
         //リスト初期化(IDとパスワード分けないといけないかも)
         page.list = LoginMapper.findAccount(customer_id, password);
 
         //addition参照、遷移するタイミングで
-        page.authority = LoginMapper.ditectAuth(customer_id);
-   
-        //page.hold_id = customer_id;
-
-        /*
-        if(customer_id == page.getCustomer_id() && page.getLogin() == 1){
-            page.message = "すでに他の端末でログイン済みです";
-            model.addAttribute("page", page);
-            return "fastfood/login_emp";
-        }
-        *
-
+        if(!(page.list.size() == 0))
+            page.authority = LoginMapper.ditectAuth(customer_id);
+        
+        //ログインボタンを押したときの画面遷移の条件分岐
+        //従業員用
         if(!(page.list.size() == 0) && page.authority == 1){
 
             //idをセッションの値として格納
-            session.setAttribute("user_id", page.getCustomer_id());
+            session.setAttribute("customer_id", customer_id);
 
+            //ログイン状態の記録
             page.login = 1;
             LoginMapper.login_out(customer_id, page.login);
 
-            page.count = LoginMapper.countOrder();
             //モデルにページインスタンスを設定
             model.addAttribute("page", page);
 
+            //マイページへ遷移
             return "fastfood/mypage_emp";
         }
-
+        //IDかパスワードが不一致だった場合
         else{
             page.message = "IDかパスワードが違います";
             model.addAttribute("page", page);
-            return "fastfood/login_emp";
+            return "fastfood/login";
         }
-
+        
     }
-    */
+
     
 
 @Transactional
@@ -291,7 +283,7 @@ public class LoginController {
          //RegisterPageModelクラスをpageとして扱う
          RegisterPageModel page = new RegisterPageModel();
          //pageのtitleメソッドに処理を追加
-         page.title = "ホーム(java)";
+         page.title = "ホーム";
  
         //遷移先のページでセッションから値を取得する
         //ログインいる版のホームページが必要になるかも
@@ -315,7 +307,7 @@ public class LoginController {
         //RegisterPageModelクラスをpageとして扱う
         RegisterPageModel page = new RegisterPageModel();
         //pageのtitleメソッドに処理を追加
-        page.title = "ホーム(java)";
+        page.title = "ホーム";
 
        //遷移先のページでセッションから値を取得する
        //ログインいる版のホームページが必要になるかも

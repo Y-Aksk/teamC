@@ -1,4 +1,3 @@
-
 // メインメニュー用の開閉処理
 $(function() {
 	$('#menubar_hdr').click(function() {

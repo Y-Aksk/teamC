@@ -1,4 +1,4 @@
- package solekia.demo.fastfood.model;
+package solekia.demo.fastfood.model;
 
 /**
  * OrderIF

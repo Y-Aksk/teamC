@@ -141,7 +141,8 @@ public String adoministrator(Model model) {
 
     page.title = "管理者確認画面";
 
-    page.list = allergyMapper.findAdo();
+    int customer_id = (int)session.getAttribute("customer_id");
+    page.list = allergyMapper.findAdo(customer_id);
 
     model.addAttribute("page", page);
 
@@ -154,13 +155,14 @@ public String update(@PathVariable("no") int no, Model model){
     //ページインスタンスを作って、タイトルを設定
     AllergyPageModel page = new AllergyPageModel();
 
-    page.title = "管理者確認画面(update)";
+    page.title = "管理者確認画面";
 
     //noをキーにデータを更新
     allergyMapper.update(no);
 
+    int customer_id = (int)session.getAttribute("customer_id");
     //リストを初期化
-    page.list = allergyMapper.findAdo();
+    page.list = allergyMapper.findAdo(customer_id);
 
     //モデルにページインスタンスを設定
     model.addAttribute("page", page);
@@ -177,13 +179,14 @@ public String update_end(@PathVariable("no") int no, Model model){
     //ページインスタンスを作って、タイトルを設定
     AllergyPageModel page = new AllergyPageModel();
 
-    page.title = "管理者確認画面(update)";
+    page.title = "管理者確認画面";
 
     //noをキーにデータを更新
     allergyMapper.update_end(no);
 
+    int customer_id = (int)session.getAttribute("customer_id");
     //リストを初期化
-    page.list = allergyMapper.findAdo();
+    page.list = allergyMapper.findAdo(customer_id);
 
     //モデルにページインスタンスを設定
     model.addAttribute("page", page);

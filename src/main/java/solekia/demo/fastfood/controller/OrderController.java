@@ -28,10 +28,6 @@ OrderPageModel hold_id;
     @Autowired
     OrderMapper orderMapper;
 
-    @Autowired
-    //RagesterMapperをインスタンス化
-    RegisterMapper registerMapper;
-
 
     @Autowired
     HttpSession session;
@@ -45,12 +41,7 @@ OrderPageModel hold_id;
         
         page.web_title = "商品選択画面";
         
-        int id = (int)session.getAttribute("customer_id");
-
-        RegisterPageModel login = new RegisterPageModel();
-         if(session.getAttribute("customer_id") != null){
-            login.login = registerMapper.findById_login(id);
-         }
+        int customer_id = (int)session.getAttribute("customer_id");
 
         //リストを初期化
         page.list = orderMapper.findAll();
@@ -60,7 +51,6 @@ OrderPageModel hold_id;
         // MAPの下りは不要
         //model.addAttribute("page", getCheckBoxFood());
         model.addAttribute("page", page);
-        model.addAttribute("login", login);
         
         return "fastfood/order"; //テンプレートファイルを指定
     }
@@ -106,14 +96,15 @@ OrderPageModel hold_id;
         List<String> bgList= new ArrayList<String>();
         List<String> priceList= new ArrayList<String>();
         
+        try {
+        
         // 個数の入力がないものを省く
-        //
-        // sumPrice += kakePrice;
+        //// sumPrice += kakePrice;
         int sumNumber = 0;
         int kakePrice = 0;
         for (int i=0 ; i < maxCnt; i++ ){
             if (orderCntList.get(i).length() > 0){
-                dispKosuList.add(orderCntList.get(i));
+                dispKosuList.add(orderCntList.get(i)); 
                 proIdList.add(page.proIds.get(i));  
                 bgList.add(page.bgNames.get(i));      
                 priceList.add(page.prices.get(i)); 
@@ -136,21 +127,16 @@ OrderPageModel hold_id;
         //商品選択後のデータを取得
         //page.list = orderMapper.list(customer_id);
         //checking.getChecked();
-
-        int id = (int)session.getAttribute("customer_id");
-
-        RegisterPageModel login = new RegisterPageModel();
-         if(session.getAttribute("customer_id") != null){
-            login.login = registerMapper.findById_login(id);
-         }
         //モデルにページインスタンスを設定
         model.addAttribute("page", orderif);
         model.addAttribute("sumNumber", sumNumber);
         model.addAttribute("kakePrice", kakePrice);
         // model.addAttribute("orderCntList", orderCntList);
-        model.addAttribute("login", login);
-        model.addAttribute("page", page);
-
+        
+        //model.addAttribute("page", page);
+    } catch (Exception e) {
+        return "fastfood/ngPage";
+    }
         //テンプレートファイルを指定
         return "fastfood/check";
     }

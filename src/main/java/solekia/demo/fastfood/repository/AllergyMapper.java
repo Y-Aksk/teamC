@@ -17,8 +17,11 @@ public interface AllergyMapper {
     public List<AllergyModel> findStatus();
 
     //追加：cartとorder by の間に　number != 0を追加
-    @Select("select * from cart where number != 0 order by no")
-    public List<AllergyModel> findAdo();
+    @Select("SELECT cart.* FROM cart "+
+    "INNER JOIN registered ON registered.customer_id = cart.customer_id "+
+    "JOIN shop ON registered.shop_name = shop.shop_name WHERE cart.order_id = 0 and shop.shop_id = "+
+    "(select shop_id from shop join registered on registered.shop_name = shop.shop_name where customer_id = #{id})")
+    public List<AllergyModel> findAdo(int id);
 
     //変更してます。丸々変えてください。：待ち組数数える
     @Select ("SELECT cart.customer_id, count(cart.customer_id) FROM cart "+

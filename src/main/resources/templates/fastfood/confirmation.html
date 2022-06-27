@@ -11,15 +11,19 @@
 <body>
 
     
-<p>注文が確定しました。</p>
-      <footer>
-        <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
-      </footer>
-    
+  <p>注文が確定しました。</p>
+  <!--マイページに戻るボタンを押すと、マイページに遷移-->
+  <a href = "mypage">
+      <button type="submit" form="form1">マイページに戻る</button>
+  </a>
+        <footer>
+          <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+        </footer>
       
-        <!--ページの上部へ戻るボタンとスクリプト-->
-        <p class="pagetop"><a href="#">↑</a></p>
-        <script th:src="@{/js/order.js}"></script>
-
-</body>
-</html>
+        
+          <!--ページの上部へ戻るボタンとスクリプト-->
+          <p class="pagetop"><a href="#">↑</a></p>
+          <script th:src="@{/js/style.js}"></script>
+  
+  </body>
+  </html>
