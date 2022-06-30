@@ -17,5 +17,7 @@ public class AllergyModel {
     public int order_id;
     public int no;
     public String product_pic;
+    public int sum;
+
 
 }

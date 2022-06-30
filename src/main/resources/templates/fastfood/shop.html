@@ -51,7 +51,7 @@
     <table class="ta1">
         <caption>各店舗情報</caption>
         <tr th:each = "item : ${page.list}">
-            <td>
+            <td id="shop_na">
                 <!--店舗名を押すと店舗詳細ページに飛ぶ-->
                 <a th:href = "@{'/fastfood/shopdetail/{id}'(id = ${item.shop_id})}" href = "shopdetail.html">
                 <span th:text = "${item.shop_name}">店舗名</span>

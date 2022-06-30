@@ -15,6 +15,7 @@ import solekia.demo.fastfood.repository.*;
 public class AllergyController {
 
 
+    //Autowiredはクラス型変数内にある関数を自動的に呼び出す機能
     @Autowired
     AllergyMapper allergyMapper;
 
@@ -22,7 +23,6 @@ public class AllergyController {
     HttpSession session;
 
     @Autowired
-    //RagesterMapperをインスタンス化
     RegisterMapper registerMapper;
 
     @Autowired
@@ -32,19 +32,20 @@ public class AllergyController {
     @PostMapping("search")
     public String search(@RequestParam("product_name")String name,Model model)
     {
-        //タイトルリセット　変数を使えるようにしている
+        //インスタンス化
         AllergyPageModel page = new AllergyPageModel();
         AllergyPageModel page2 = new AllergyPageModel();
         
+        //タイトルリセット　変数を使えるようにしている
         page.title = "アレルギー情報";
 
         page.product_name = name;
 
+        //マイページに遷移できるなら必要
         int customer_id = 0;
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");
             page.login = registerMapper.findById_login(customer_id);
-            //マイページに遷移できるなら必要
             page.authority = LoginMapper.ditectAuth(customer_id);
         }
 
@@ -66,14 +67,13 @@ public class AllergyController {
 
         //タイトルリセット
         AllergyPageModel page = new AllergyPageModel();
-
         page.title = "アレルギー情報";
 
+        //マイページに遷移できるなら必要
         int customer_id = 0;
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");
             page.login = registerMapper.findById_login(customer_id);
-            //マイページに遷移できるなら必要
             page.authority = LoginMapper.ditectAuth(customer_id);
         }
 
@@ -89,22 +89,25 @@ public class AllergyController {
     @GetMapping("order_status")
     public String status (Model model) {
 
-        //タイトルリセット
+        
         AllergyPageModel status = new AllergyPageModel();
-        //下４行追加
+        //waitは待機している組数、orderはオーダーの状態
         AllergyPageModel wait = new AllergyPageModel();
         AllergyPageModel order_0 = new AllergyPageModel();
         AllergyPageModel order_1 = new AllergyPageModel();
         AllergyPageModel order_2 = new AllergyPageModel();
 
+        //タイトルリセット
        status.title = "注文状況確認画面";
 
        int id = (int)session.getAttribute("customer_id");
-
        RegisterPageModel page = new RegisterPageModel();
         if(session.getAttribute("customer_id") != null){
             page.login = registerMapper.findById_login(id);
         }
+
+        //IDをキーに合計額を取得
+        status.sum = allergyMapper.findSum(id);
 
         //IDをキーに表示するデータを検索
         status.list = allergyMapper.findByCustId(id);
@@ -122,7 +125,6 @@ public class AllergyController {
         order_2.list = allergyMapper.findGroupOrder2(id);
 
         model.addAttribute("status", status);
-        //下4行追加
         model.addAttribute("wait", wait);
         model.addAttribute("order_0", order_0);
         model.addAttribute("order_1", order_1);
@@ -138,7 +140,6 @@ public String adoministrator(Model model) {
 
     //タイトルリセット
     AllergyPageModel page = new AllergyPageModel();
-
     page.title = "管理者確認画面";
 
     int customer_id = (int)session.getAttribute("customer_id");
@@ -154,13 +155,14 @@ public String update(@PathVariable("no") int no, Model model){
     
     //ページインスタンスを作って、タイトルを設定
     AllergyPageModel page = new AllergyPageModel();
-
     page.title = "管理者確認画面";
 
     //noをキーにデータを更新
     allergyMapper.update(no);
 
+    //ログイン中のID呼び出し
     int customer_id = (int)session.getAttribute("customer_id");
+
     //リストを初期化
     page.list = allergyMapper.findAdo(customer_id);
 
@@ -178,13 +180,14 @@ public String update_end(@PathVariable("no") int no, Model model){
     
     //ページインスタンスを作って、タイトルを設定
     AllergyPageModel page = new AllergyPageModel();
-
     page.title = "管理者確認画面";
 
     //noをキーにデータを更新
     allergyMapper.update_end(no);
 
+    //ログイン中のID呼び出し
     int customer_id = (int)session.getAttribute("customer_id");
+    
     //リストを初期化
     page.list = allergyMapper.findAdo(customer_id);
 

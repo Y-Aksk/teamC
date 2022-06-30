@@ -11,8 +11,6 @@
 <body>
     <main>
     <!-- post：入力したデータを送信  action：送信するURL（追加されたらmypageページに飛ぶ） -->
-    <!-- 小林さんのと合わせたときに{id}と{login}を足す必要あるかも。
-         となるとControllerとMapperも変わる可能性アリ -->
     <form method="post" action="/fastfood/mypage_emp" th:action="@{/fastfood/mypage_emp}" th:object="${page}">
         <!--文字幅調整とかはCSS-->
         <h2 th:text ="${page.title}">登録情報の編集</h2>
@@ -82,5 +80,9 @@
     <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
     <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
 </footer>
+
+<!--ページの上部へ戻るボタンとスクリプト-->
+<p class="pagetop"><a href="#">↑</a></p>
+<script th:src="@{/js/fastfood.js}"></script>
 </body>
 </html>

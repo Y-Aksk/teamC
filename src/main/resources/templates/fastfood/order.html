@@ -20,16 +20,11 @@
                 <li><a href="/fastfood/shop">店舗紹介</a></li>
                 <li><a href="/fastfood/allergy">アレルギー情報</a></li>
                 <li><a href="/fastfood/qa">お問い合わせ</a></li>
-                <!--<li th:if="${login.login} != 1">
-                  <a href="login">
-                      ログイン
-                  </a>
-              </li>
-              <li th:if="${login.login} == 1">
+              <li>
                   <a  href="mypage">
                       マイページ
                   </a>
-              </li>-->
+              </li>
             </ul>
         </nav>
     </header>
@@ -47,19 +42,12 @@
           
         <tr th:each = "item : ${page.list}" th:object = "${page}">
         <div class="image_box">
-          <!-- <ul class="image_list">
-          <li> -->
             <td>
             <img class="thumbnail" th:src = "${item.product_pic}" width="500"  height="500" alt="foo">
-            <!--変更name属性は今回はいらないかもしれない)-->
             <input type="checkbox" name = "checked" th:value = "${item.product_pic}" th:field = "*{checked}" class="disabled_checkbox">
             </td> 
-          <!-- </li>
-          </ul> -->
         </div>
-              <!-- おそらく不要 <input type = "hidden" th:field = "${page.no}" th:value = "${page.no}"> 
-              <input type = dden" th:f"hiield = "${page.product_id}" th:value = "${page.product_id}">  -->
-            
+          
             <td>
               <span th:text = "${item.product_name}" th:value = "${item.product_name}" font size="7" color="#00ff00">メニュー名
   
@@ -77,7 +65,6 @@
         </tr>
       </table>
       </form>
-      <!-- th:value = "${item.number}" -->
       </section>
   
       </main>

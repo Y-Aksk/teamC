@@ -19,8 +19,8 @@ public interface AllergyMapper {
     //追加：cartとorder by の間に　number != 0を追加
     @Select("SELECT cart.* FROM cart "+
     "INNER JOIN registered ON registered.customer_id = cart.customer_id "+
-    "JOIN shop ON registered.shop_name = shop.shop_name WHERE cart.order_id = 0 and shop.shop_id = "+
-    "(select shop_id from shop join registered on registered.shop_name = shop.shop_name where customer_id = #{id})")
+    "JOIN shop ON registered.shop_name = shop.shop_name WHERE cart.order_id < 2 and shop.shop_id = "+
+    "(select shop_id from shop join registered on registered.shop_name = shop.shop_name where customer_id = #{id}) order by cart.no;")
     public List<AllergyModel> findAdo(int id);
 
     //変更してます。丸々変えてください。：待ち組数数える
@@ -55,4 +55,8 @@ public interface AllergyMapper {
     //追加　オーダーIDが2のものをリストに入れる  and number != 0を一番後ろに追加
     @Select ("select order_id from cart where order_id = 2 and customer_id = #{id} and number != 0")
     public List<AllergyModel> findGroupOrder2(int id);
+
+    //現在の注文の合計額
+    @Select("select coalesce (sum(number * price),0) as sum from cart where order_id <=1 and customer_id = #{id}")
+    public int findSum(int id);
 }

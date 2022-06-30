@@ -52,6 +52,14 @@
             <th class="uketori" th:if="${status.list.size != 0} and ${order_0.list.size == 0} and ${order_1.list.size ge 1}"><a>受け取り可能です</a></th>  </tr>
     </table>
 
+    <table>
+        <tr>
+            <div th:if="${status.sum != 0}">
+                <th>合計額：<a th:text = "${status.sum}"></a><a>円</a></th>
+            </div>
+        </tr>
+    </table>
+
     <div class="border">
    <table border=1>
     <th>商品画像</th>

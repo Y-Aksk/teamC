@@ -1,8 +1,6 @@
 package solekia.demo.fastfood.repository;
 import java.util.List;
 import org.apache.ibatis.annotations.*;
-import org.springframework.boot.web.servlet.ServletComponentScan;
-
 
 /**
  * ActorMapper

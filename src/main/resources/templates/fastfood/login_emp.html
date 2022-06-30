@@ -28,7 +28,7 @@
     <main>
     <h1>従業員用ログインページ</h1>
 
-       <!--<section></section>--> 
+    
     <form method = "post" action = "/fastfood/login_emp">
         <p text = "message" th:text = "${page.message}">テキスト</p>
         <table class="ta1">
@@ -48,8 +48,17 @@
 
             <tr>
                 <td>
-                    <a href = "register_emp" ><!--th:href = "@{'/fastfood/shinki/'}">-->
+                    <a href = "register_emp" >
                         新規登録はコチラ
+                    </a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    
+                    <a href = "login">
+                        一般のログインページへ戻る
                     </a>
                 </td>
             </tr>
@@ -57,5 +66,13 @@
     </form>
 
 </main>
+<footer>
+    <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+
+<!--ページの上部へ戻るボタンとスクリプト-->
+<p class="pagetop"><a href="#">↑</a></p>
+<script th:src="@{/js/fastfood.js}"></script>
 </body>
 </html>

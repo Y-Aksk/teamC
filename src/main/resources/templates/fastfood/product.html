@@ -56,8 +56,6 @@
             <td>
                 <!--商品画像を押すとログインページに飛ぶ-->
                 <a th:href = "login"><img th:src = "${page.list[__${i}__].product_pic}"></a></td>
-                <!--<a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
-                    <span th:src = "${item.product_pic}">商品画像</span>-->
             <td th:text = "${page.list[__${i}__].product_name}" font size="7" color="#00ff00">メニュー名</td>
             <td><span th:text = "${page.list[__${i}__].price}" font size="7" color="#00ff00">価格</span>円</td>
             <td>
@@ -73,8 +71,6 @@
             <td>
                 <!--商品画像を押すとログインページに飛ぶ-->
                 <a th:href = "login"><img th:src = "${page.list[__${i}__].product_pic}"></a></td>
-                <!--<a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
-                    <span th:src = "${item.product_pic}">商品画像</span>-->
             <td th:text = "${page.list[__${i}__].product_name}" font size="7" color="#00ff00">メニュー名</td>
             <td><span th:text = "${page.list[__${i}__].price}" font size="7" color="#00ff00">価格</span>円</td>
             <td>
@@ -90,9 +86,7 @@
             <td>
                 <!--商品画像を押すとログインページに飛ぶ-->
                 <a th:href = "login"><img th:src = "${page.list[__${i}__].product_pic}"></a></td>
-                <!--<a th:href = "@{'/fastfood/login/{id}'(id = ${item.customer_id})}" href = "login">
-                    <span th:src = "${item.product_pic}">商品画像</span>-->
-            <td th:text = "${page.list[__${i}__].product_name}" font size="7" color="#00ff00">メニュー名</td>
+                <td th:text = "${page.list[__${i}__].product_name}" font size="7" color="#00ff00">メニュー名</td>
             <td><span th:text = "${page.list[__${i}__].price}" font size="7" color="#00ff00">価格</span>円</td>
             <td>
             </td>

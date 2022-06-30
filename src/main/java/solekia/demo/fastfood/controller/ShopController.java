@@ -34,11 +34,11 @@ public class ShopController {
         ShopPageModel page = new ShopPageModel();
         page.web_title = "店舗一覧";
 
+        //マイページに遷移できるなら必要
         int customer_id = 0;
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");
             page.login = registerMapper.findById_login(customer_id);
-            //マイページに遷移できるなら必要
             page.authority = LoginMapper.ditectAuth(customer_id);
         }
 

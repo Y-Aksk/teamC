@@ -57,8 +57,17 @@
             <tr>
                 <td>
                     
-                    <a href = "register"><!-- th:href = "@{'/fastfood/shinki/'}">-->
+                    <a href = "register">
                         新規登録はコチラ
+                    </a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    
+                    <a href = "login_emp">
+                        従業員はコチラ
                     </a>
                 </td>
             </tr> 
@@ -68,10 +77,15 @@
 </section>
 </main>
     <script th:src="@{/js/fastfood.js}"></script>
-</body>
+
 
 <footer>
     <small>Copyright&copy; <a href="index.html">Sample Company</a> All Rights Reserved.</small>
     <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
 </footer>
+
+<!--ページの上部へ戻るボタンとスクリプト-->
+<p class="pagetop"><a href="#">↑</a></p>
+<script th:src="@{/js/fastfood.js}"></script>
+</body>
 </html>

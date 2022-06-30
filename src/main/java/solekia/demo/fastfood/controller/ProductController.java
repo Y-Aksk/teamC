@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import solekia.demo.fastfood.model.*;
 import solekia.demo.fastfood.repository.*;
 
-//localhost:8080/fastfood/product
 @Controller
 // 処理対象のフォルダーを指定(fastfood)
 
@@ -40,7 +39,6 @@ public class ProductController {
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");
             page.login = registerMapper.findById_login(customer_id);
-            //マイページに遷移できるなら必要
             page.authority = LoginMapper.ditectAuth(customer_id);
         }
 

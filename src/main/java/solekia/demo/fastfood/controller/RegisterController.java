@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import solekia.demo.fastfood.controller.*;
 import solekia.demo.fastfood.model.*;
 import solekia.demo.fastfood.repository.*;
 
@@ -20,7 +19,6 @@ public class RegisterController{
 
     //テーブルのアクセス用クラスを追加
     @Autowired
-    //RagesterMapperをインスタンス化
     RegisterMapper registerMapper;
 
     @Autowired
@@ -32,9 +30,6 @@ public class RegisterController{
     @Autowired
     HttpSession session;
 
-/*----　↓↓小林さんと合わせるときにちゃんと動くかチェック↓↓　----*/
-
-/*----　ホーム画面　(http://localhost:8080/fastfood/home)　----*/
     //人気メニュートップ3の表示
     @GetMapping("home")
     public String home(Model model){
@@ -45,9 +40,7 @@ public class RegisterController{
 
         //遷移先のページでセッションから値を取得する
         //ログインいる版のホームページが必要になるかも
-
         int customer_id = 0;
-    
         //値がある（ログインしている）場合
         if(session.getAttribute("customer_id") != null){
             //ログインしているIDの識別
@@ -77,11 +70,11 @@ public class RegisterController{
         RegisterPageModel page = new RegisterPageModel();
         page.title = "お問い合わせ";
 
+        //マイページに遷移できるなら必要
         int customer_id = 0;
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");
             page.login = registerMapper.findById_login(customer_id);
-            //マイページに遷移できるなら必要
             page.authority = LoginMapper.ditectAuth(customer_id);
         }
 
@@ -97,10 +90,13 @@ public class RegisterController{
 
         //タイトルを設定
         page.title = "お問い合わせ";
+
         //画面で入力した更新データをパラメータに設定
         registerMapper.insertQa(page.qa_first_name, page.qa_last_name, page.question, page.qa_mail);
+
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+
         //テンプレートファイルを指定
         return "fastfood/qa";
     }
@@ -110,20 +106,20 @@ public class RegisterController{
         //ページインスタンスを作って、タイトルを設定
         RegisterPageModel page = new RegisterPageModel();
         page.title = "新規会員登録";
+
         //pageのlistにfinShop()メソッドの値を格納
         page.list = registerMapper.findShop(); 
+
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+
         //テンプレートファイルを指定
         return "fastfood/register";
     }
 
-    
-    //新規会員登録　処理　URL小林さんに聞く。
-    //loginから飛んだ場合、{id}は先頭に不要
+
     @PostMapping("register")
     public String insertCust2(
-        //@ModelAttribute RegisterPageModel page, Model model){
         @RequestParam("password") String password, 
         @RequestParam("first_name") String first_name, 
         @RequestParam("last_name") String last_name,
@@ -134,10 +130,13 @@ public class RegisterController{
     ){
         //追加
         LoginPageModel page = new LoginPageModel();
+
         //画面で入力した更新データをパラメータに設定
         registerMapper.insertCust(password, first_name, last_name, tell_no, mail, shop_name);
+
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+
         //テンプレートファイルを指定
         return "fastfood/login";
     }
@@ -150,10 +149,13 @@ public class RegisterController{
         //ページインスタンスを作って、タイトルを設定
         RegisterPageModel page = new RegisterPageModel();
         page.title = "新規従業員登録";
+
         //pageのlistにfinShop()メソッドの値を格納
         page.list = registerMapper.findShop(); 
+
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+
         //テンプレートファイルを指定
         return "fastfood/register_emp";
     }
@@ -170,10 +172,13 @@ public class RegisterController{
      Model model){
 
         LoginPageModel page = new LoginPageModel();
+
         //画面で入力した更新データをパラメータに設定
         registerMapper.insertEmp(password, first_name, last_name, tell_no, mail, shop_name);
+
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
+
         //テンプレートファイルを指定
         return "fastfood/login_emp";
     }
@@ -194,8 +199,7 @@ public class RegisterController{
 
         //IDをキーにデータを検索
         var register = registerMapper.findById(customer_id);
-        //urlのloginにページのloginの値を入れる？違う気がする。
-        //int login = page.login;
+
         //取得データをページに設定
         page.customer_id = register.customer_id;
         page.password = register.password;
@@ -208,8 +212,6 @@ public class RegisterController{
 
         page.list = registerMapper.findShop();
 
-        //遷移先のページでセッションから値を取得する
-        //String user_id = (String)session.getAttribute("user_id");
         //モデルにページインスタンスを設定
         model.addAttribute("page", page);
         //テンプレートファイルを指定
@@ -308,11 +310,14 @@ public class RegisterController{
     public String editEmp(@ModelAttribute RegisterPageModel page, Model model){
         //画面で入力した更新データをパラメータに設定
         registerMapper.update(page.customer_id, page.password, page.first_name, page.last_name, page.tell_no, page.mail, page.shop_name, page.login);
+        
         //更新後のデータを取得
         LoginPageModel account = new LoginPageModel();
         account.list = LoginMapper.findAccount(page.customer_id, page.password);
+        
         //モデルにページインスタンスを設定
         model.addAttribute("page", account);
+        
         //テンプレートファイルを指定
         return "fastfood/mypage_emp";
     }

@@ -72,22 +72,7 @@ public class LoginController {
             //マイページへ遷移
             return mypage(model);
         }
-        //従業員用
-        else if(!(page.list.size() == 0) && page.authority == 1){
-
-            //idをセッションの値として格納
-            session.setAttribute("customer_id", customer_id);
-
-            //ログイン状態の記録
-            page.login = 1;
-            LoginMapper.login_out(customer_id, page.login);
-
-            //モデルにページインスタンスを設定
-            model.addAttribute("page", page);
-
-            //マイページへ遷移
-            return "fastfood/mypage_emp";
-        }
+    
         //IDかパスワードが不一致だった場合
         else{
             page.message = "IDかパスワードが違います";
@@ -148,7 +133,7 @@ public class LoginController {
         else{
             page.message = "IDかパスワードが違います";
             model.addAttribute("page", page);
-            return "fastfood/login";
+            return "fastfood/login_emp";
         }
         
     }
@@ -273,7 +258,6 @@ public class LoginController {
     
 
         //テンプレートファイルを指定
-        // return "fastfood/login_emp";
         return "fastfood/check_logout_emp";
     }
 
@@ -287,17 +271,17 @@ public class LoginController {
  
         //遷移先のページでセッションから値を取得する
         //ログインいる版のホームページが必要になるかも
-
         int customer_id = 0;
-    
         if(session.getAttribute("customer_id") != null){
             customer_id = (int)session.getAttribute("customer_id");
             page.login = 1;
         }
          //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
          page.list = registerMapper.findRank();
+
          //モデルにページインスタンスを設定
          model.addAttribute("page",page);
+
          //テンプレートファイルを指定
          return "redirect:/fastfood/home";
     }
@@ -306,21 +290,23 @@ public class LoginController {
     public String checkLogoutEmp(Model model){
         //RegisterPageModelクラスをpageとして扱う
         RegisterPageModel page = new RegisterPageModel();
+
         //pageのtitleメソッドに処理を追加
         page.title = "ホーム";
 
        //遷移先のページでセッションから値を取得する
        //ログインいる版のホームページが必要になるかも
-
        int customer_id = 0;
-   
        if(session.getAttribute("customer_id") != null){
            customer_id = (int)session.getAttribute("customer_id");
        }
+
         //pageのlistにRegisterMapperクラスのfindRank()メソッドの値を格納
         page.list = registerMapper.findRank();
+
         //モデルにページインスタンスを設定
         model.addAttribute("page",page);
+        
         //テンプレートファイルを指定
         return "redirect:/fastfood/home";
    }

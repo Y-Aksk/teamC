@@ -2,8 +2,6 @@ package solekia.demo.fastfood.model;
 
 import java.util.List;
 
-import javax.websocket.Decoder.Text;
-
 import solekia.demo.fastfood.repository.AllergyModel;
 
 public class AllergyPageModel {
@@ -23,6 +21,8 @@ public class AllergyPageModel {
         public int order_id;
         public int no;
         public int all;
+        public int sum;
+
 
         public String name;
 

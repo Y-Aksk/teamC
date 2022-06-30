@@ -155,20 +155,6 @@ form select{
     border: dashed 2.5px orange ;
 }
 
-.ranking table td img:hover{
-  animation-name:rotateXAnime;
-  animation-duration:1s;
-  animation-fill-mode:forwards;
-}
-
-@keyframes rotateXAnime{
-  from{
-    transform: rotateX(0);
-    }
-  to{
-    transform: rotateX(-360deg);
-    }
-}
 
 /*----
 ボタン関連
@@ -251,8 +237,8 @@ button.qa_b:hover {
 ----*/
 
 .ta1 td img{
-  width: 200px;
-    height: 200px;
+  width: 150px;
+    height: 150px;
     object-fit: cover;
     border-radius: 10px;
     padding: 10px 10px;
