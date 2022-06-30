@@ -24,4 +24,7 @@ public interface OrderMapper {
 
     @Select("select * from cart left join product on product.product_id = cart.product_id where customer_id = #{customer_id}")
     public List<OrderModel> orderList(int customer_id);
+
+    @Update("update product set sales = sales + #{sales} where product_id = #{product_id};")
+    public int addSales(@Param("product_id")int product_id, @Param("sales")int sales);
 }

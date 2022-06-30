@@ -261,3 +261,8 @@ button.qa_b:hover {
 .ta1 td input[type="number"]{
   width: 100px;
 }
+
+input:-webkit-autofill{
+	box-shadow: 0 0 0px 1000px snow inset;
+  -webkit-text-fill-color: saddlebrown !important;
+}

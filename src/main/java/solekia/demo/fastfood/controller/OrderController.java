@@ -122,7 +122,14 @@ OrderPageModel hold_id;
           Integer.parseInt(page.prices.get(i)),
           Integer.parseInt(page.orderCnt.get(i)),
           customer_id);
+
+        orderMapper.addSales(
+            Integer.parseInt(page.proIds.get(i)), 
+            Integer.parseInt(page.orderCnt.get(i))
+            );
     }
+
+        
         //テンプレートファイルを指定
         return "fastfood/confirmation";
     }
