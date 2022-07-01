@@ -264,10 +264,10 @@ public class LoginController {
 
     @PostMapping("check_logout")
     public String checkLogout(Model model){
-         //RegisterPageModelクラスをpageとして扱う
-         RegisterPageModel page = new RegisterPageModel();
-         //pageのtitleメソッドに処理を追加
-         page.title = "ホーム";
+        //RegisterPageModelクラスをpageとして扱う
+        RegisterPageModel page = new RegisterPageModel();
+        //pageのtitleメソッドに処理を追加
+        page.title = "ホーム";
  
         //遷移先のページでセッションから値を取得する
         //ログインいる版のホームページが必要になるかも
@@ -306,7 +306,7 @@ public class LoginController {
 
         //モデルにページインスタンスを設定
         model.addAttribute("page",page);
-        
+
         //テンプレートファイルを指定
         return "redirect:/fastfood/home";
    }

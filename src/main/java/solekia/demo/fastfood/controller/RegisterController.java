@@ -35,6 +35,7 @@ public class RegisterController{
     public String home(Model model){
         //RegisterPageModelクラスをpageとして扱う
         RegisterPageModel page = new RegisterPageModel();
+        
         //pageのtitleメソッドに処理を追加
         page.title = "ホーム";
 

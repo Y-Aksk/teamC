@@ -24,9 +24,13 @@ public interface AllergyMapper {
     public List<AllergyModel> findAdo(int id);
 
     //変更してます。丸々変えてください。：待ち組数数える
+    //カスタマーIDとそのカウント数を表示
     @Select ("SELECT cart.customer_id, count(cart.customer_id) FROM cart "+
+    //内部結合でregisteredテーブルとcartテーブルをcustomer_idで結合
     "INNER JOIN registered ON registered.customer_id = cart.customer_id "+
+    //上記で結合されたテーブルとshopテーブルをshop_nameで結合
     "JOIN shop ON registered.shop_name = shop.shop_name WHERE cart.order_id = 0 and shop.shop_id = "+
+    //whereでorder_idが0、引数idが一致するshop_id、自身より先に注文した人数の3つを指定する
     "(select shop_id from shop join registered on registered.shop_name = shop.shop_name where customer_id = #{id}) "+
     "and cart.no <= (select max(no) from cart where customer_id = #{id} ) "+
     "GROUP BY cart.customer_id")
