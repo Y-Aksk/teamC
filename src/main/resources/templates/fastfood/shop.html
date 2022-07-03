@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>店舗</title>
+</head>
+
+<body>
+
+<header>
+    <!-- ナビゲーションメニュー（メニューバー） -->
+    <nav id = "menubar">
+        <ul>
+            <!--シャープ（#）をページのリンクに書き換える-->
+            <li><a href="/fastfood/home">ホーム</a></li>
+            <li><a href="/fastfood/product">メニュー</a></li>
+            <li><a href="/fastfood/shop">店舗一覧</a></li>
+            <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+            <li><a href="/fastfood/qa">お問い合わせ</a></li>
+            <li th:if="${page.login} != 1">
+                <a href="login">
+                    ログイン
+                </a>
+            </li>
+            <li th:if="${page.login} == 1 and ${page.authority} == 0">
+                <a  href="mypage">
+                    マイページ
+                </a>
+            </li>
+            
+            <li th:if="${page.login} == 1 and ${page.authority} == 1">
+                <a  href="mypage_emp">
+                    マイページ
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+</header>
+    
+    <main>
+    
+    <section>
+    
+    <h1 th:text = "${page.web_title}">店舗一覧</h1>
+    
+    <table class="ta1">
+        <caption>各店舗情報</caption>
+        <tr th:each = "item : ${page.list}">
+            <td id="shop_na">
+                <!--店舗名を押すと店舗詳細ページに飛ぶ-->
+                <a th:href = "@{'/fastfood/shopdetail/{id}'(id = ${item.shop_id})}" href = "shopdetail.html">
+                <span th:text = "${item.shop_name}">店舗名</span>
+                </a>
+            </td>
+                <td id="shop_add" th:text = "${item.address}">住所
+            </td>
+        </tr>
+    </table>
+</section>
+</main>
+<footer>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+
+    <!--ページの上部へ戻るボタンとスクリプト-->
+    <p class="pagetop"><a href="#">↑</a></p>
+    <script th:src="@{/js/fastfood.js}"></script>
+</body>
+</html>

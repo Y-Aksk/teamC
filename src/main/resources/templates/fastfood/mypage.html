@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>マイページ(顧客)</title>
+
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
+</head>
+
+<body>
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav>
+            <ul id="menubar">
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+                <li ><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li th:unless="${customer_id} == 0">
+                    <a  href="logout">
+                        ログアウト
+                    </a>
+                </li>
+
+                <li th:if="${customer_id} == 0" >
+                    <a href="login">
+                        ログイン!!!!!!!!!!!!!
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+   
+
+   <main>
+   <h1>マイページ</h1>
+
+    <table class="ta1">
+        
+        <tr th:each = "item : ${page.list}">
+            <td>ID</td>
+            <td th:text = "${item.customer_id}">ID</td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td>パスワード</td>
+            
+            <td>
+                <span th:each="i : ${#numbers.sequence(1, #strings.length(item.password))}">
+                    &#9679;
+                </span>
+            </td>
+
+        <tr th:each = "item : ${page.list}">
+            <td>氏名</td>
+            <td>
+            <span th:text = "${item.first_name}">first_name</span>
+            <span th:text = "${item.last_name}">last_name</span>
+            </td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td>電話番号</td>
+            <td th:text = "${item.tell_No}">tell</td>
+        </tr>
+
+        <tr th:each = "item : ${page.list}">
+            <td>メール</td>
+            <td th:text = "${item.mail}">mail</td>
+        </tr>
+        
+        <tr th:each = "item : ${page.list}">
+            <td>お気に入り店舗状況&emsp;</td>
+            <td th:text = "${item.shop_name}">shop</td>
+        </tr>
+
+        <tr>
+            
+            <td>
+                <!--<tr>の中身変更　status.listは顧客ごとの買い物かご　order_0.listはorder_idが0の注文商品　wait.listは待ち組数-->
+                    <th th:if="${status.list.size == 0} or ${order_0.list.size == 0} and ${order_1.list.size == 0} and ${order_2.list.size != 0}"><a>最新の注文はありません</a></th>
+                    <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 1} and ${wait.list.size le 5}"><a>10分待ちです</a></th>
+                    <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 6} and ${wait.list.size le 10}"><a>20分待ちです</a></th>
+                    <th th:if="${status.list.size != 0} and ${order_0.list.size != 0} and ${wait.list.size ge 11}"><a>30分以上待ちです</a></th>
+                    <th class="uketori" th:if="${status.list.size != 0} and ${order_0.list.size == 0} and ${order_1.list.size ge 1}"><a>受け取り可能です</a></th> 
+            </td>
+        </tr>
+        
+    </table>
+
+
+    <table>
+        <tr th:each = "item : ${page.list}">
+           
+            <a style="display: block; width: 100%; height: 100%" href = "edit">
+                登録情報の変更
+            </a>
+        </tr>
+
+        <tr  th:each = "item : ${page.list}">
+            
+            <a style="display: block; width: 100%; height: 100%" href = "order">
+                ハンバーガーの受け取り注文はこちら！！
+            </a>
+        </tr>
+
+        <tr>
+            
+            <a style="display: block; width: 100%; height: 100%"
+            href = "order_status">
+                注文状況確認画面
+            </a>
+        </tr>
+
+        <tr>
+            <a style="display: block; width: 100%; height: 100%"
+            href = "delete">
+                退会する
+            </a>
+        </tr>
+    </table>
+
+    <p text = "message" th:text = "${page.message}">テキスト</p>
+
+</main>
+
+
+<footer>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+
+<!--ページの上部へ戻るボタンとスクリプト-->
+<p class="pagetop"><a href="#">↑</a></p>
+<script th:src="@{/js/fastfood.js}"></script>
+</body>
+</html>

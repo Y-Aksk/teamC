@@ -1,0 +1,151 @@
+/*------
+枠線付きのテーブル
+------*/
+
+.border table #p_60{
+  width: 60px;
+}
+
+.border table #p_100{
+  width: 100px;
+}
+
+.border table #p_280{
+  width: 280px;
+}
+
+
+a {
+	text-decoration: none;
+}
+
+.border table td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+
+.border table {
+    margin: 3px auto;    /* 上下3px 左右auto */
+    width: 800px;
+    background-color: darkorange;
+}
+
+.border table td, .border table th {
+    vertical-align: middle;  /* 中央揃え */
+    border: 1px solid #f7f7f7;
+}
+
+.border table td {
+  text-align: center;
+}
+
+/*-------
+ボタン関係
+-------*/
+
+/*2文字のボタン*/
+
+button {
+  cursor: pointer;
+  color: #fff;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 100vh;
+}
+
+button:hover {
+	background-color: #c55505;
+	  }
+
+/*戻る*/
+button.back {
+  cursor: pointer;
+  color: #fff;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 100vh;
+  position: relative; /* relativeを指定 */
+  left: 1020px; /* 左から1020px移動 */
+	}
+
+/*検索*/
+button.search_button {
+  cursor: pointer;
+  color: #fff;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 100vh;
+  position: relative; /* relativeを指定 */
+  top: -30px;
+  left: 160px; /* 左からpx移動 */
+	}
+
+	button.search_button:hover {
+		background-color: #c55505;
+		  }
+
+	button.search_button:hover {
+		background-color: #c55505;
+		  }
+
+/*〇×説明*/
+
+.ox {
+  position: relative; /* relativeを指定 */
+  top: 60px;
+  left: 745px; /* 左から745px移動 */
+	}
+
+.maru{
+  color: rgb(255, 0, 0);
+  font-weight:800;
+}
+
+.batu{
+  color: rgb(4, 0, 255);
+  font-weight:400;
+}
+
+/*プルダウンメニュー*/
+.product_control {
+  position: relative; /* relativeを指定 */
+  top: -30px;
+  left: 160px; /* 左から160px移動 */
+	}
+
+/*受け取り表示*/
+.uketori{
+  background-color: #eb6100;
+  border: 1.5px solid rgb(255, 255, 255);
+}
+
+
+/*完了*/
+button.ado {
+  cursor: pointer;
+  color: #fff;
+  background-color: #eb6100;
+  width: 80px;
+  padding: 5px;
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 100vh;
+  position: relative; /* relativeを指定 */
+  top: -2px;
+}
+
+button.ado:hover {
+	background-color: #c55505;
+	  }
+
+button.ado:hover {
+	background-color: #c55505;
+}
+  

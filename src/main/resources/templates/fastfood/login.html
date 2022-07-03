@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ログイン画面</title>
+
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
+</head>
+<body>
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav id = "menubar">
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+                <li th:if="${page.login} != 1">
+                    <a href="login">
+                        ログイン
+                    </a>
+                </li>
+                <li th:if="${page.login} == 1">
+                    <a  href="mypage">
+                        マイページ
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+    <h1>ログインページ</h1>
+
+        <form method = "post" action = "/fastfood/login">
+            <p text = "message" th:text = "${page.message}">テキスト</p>
+            <table class="ta1">
+                <tr>
+                    <th>ID</th>
+                    <td><input type = "text" id = "customer_id" name = "customer_id" required></td>
+                </tr>
+    
+                <tr>
+                    <th>パスワード</th>
+                    <td><input type = "password" id = "password" name = "password" required></td>
+                </tr>
+    
+                <tr>
+                    <td><button type = "submit">ログイン</button></td>
+                </tr>
+            <tr>
+                <td>
+                    
+                    <a href = "register">
+                        新規登録はコチラ
+                    </a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    
+                    <a href = "login_emp">
+                        従業員はコチラ
+                    </a>
+                </td>
+            </tr> 
+        </table>
+    </form>
+
+</section>
+</main>
+    <script th:src="@{/js/fastfood.js}"></script>
+
+
+<footer>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+
+<!--ページの上部へ戻るボタンとスクリプト-->
+<p class="pagetop"><a href="#">↑</a></p>
+<script th:src="@{/js/fastfood.js}"></script>
+</body>
+</html>

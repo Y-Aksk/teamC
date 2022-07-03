@@ -1,0 +1,89 @@
+<!--画面設計書25-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+    <title>商品選択画面</title>
+</head>
+<body>
+
+    <header>
+        <!-- ナビゲーションメニュー（メニューバー） -->
+        <nav id = "menubar">
+            <ul>
+                <!--シャープ（#）をページのリンクに書き換える-->
+                <li><a href="/fastfood/home">ホーム</a></li>
+                <li><a href="/fastfood/product">メニュー</a></li>
+                <li><a href="/fastfood/shop">店舗一覧</a></li>
+                <li><a href="/fastfood/allergy">アレルギー情報</a></li>
+                <li><a href="/fastfood/qa">お問い合わせ</a></li>
+              <li>
+                  <a  href="mypage">
+                      マイページ
+                  </a>
+              </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+      <section>
+        
+          
+        <!--変更-->
+      <form method = "post" action = "/fastfood/order" th:action = "@{/fastfood/order}" id = "form1" >
+      <table class="ta1"> 
+        <h1>メニュー</h1>
+        <caption>ご購入する商品と個数を選択してください。</caption>
+          
+        <tr th:each = "item : ${page.list}" th:object = "${page}">
+        <div class="image_box">
+            <td>
+            <img class="thumbnail" th:src = "${item.product_pic}" width="500"  height="500" alt="foo">
+            <input type="checkbox" name = "checked" th:value = "${item.product_pic}" th:field = "*{checked}" class="disabled_checkbox">
+            </td> 
+        </div>
+          
+            <td>
+              <span th:text = "${item.product_name}" th:value = "${item.product_name}" font size="7" color="#00ff00">メニュー名
+  
+            </td>
+            <td>
+              <span th:text = "${item.price}" th:value = "${item.price}" font size="7" color="#00ff00">価格</span>円
+            </td>
+  
+            <td>個数<input type="number" min="0" max="10" th:field = "*{orderCnt}"  font size="7" color="#00ff00"></td>
+            <td>
+              <input type="hidden" name="proIds" th:value = "${item.product_id}">
+              <input type="hidden" name="bgNames" th:value = "${item.product_name}">
+              <input type="hidden" name="prices" th:value = "${item.price}" >
+            </td>
+        </tr>
+      </table>
+      </form>
+      </section>
+  
+      </main>
+      
+      <button type="button" onclick="history.back()">戻る</button>
+  
+      <!--入力内容を保持したまま、確認画面に遷移-->
+      <a href = "check.html">
+          <button type="submit" id="btn" form="form1">確認</button>
+      </a>
+  
+      <footer>
+        <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+      </footer>
+        
+          <!--ページの上部へ戻るボタンとスクリプト-->
+          <p class="pagetop"><a href="#">↑</a></p>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script th:src="@{/js/order.js}"></script>
+  
+  </body>
+  </html>

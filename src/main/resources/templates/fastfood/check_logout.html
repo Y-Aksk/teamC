@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ログアウト確認画面</title>
+
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
+</head>
+<body>
+    <main>
+    <form method = "post" action="/fastfood/check_logout" th:action="@{/fastfood/check_logout}" th:object="${page}">
+        <p text = "message" th:text = "${page.message}">テキスト</p>
+
+        <table class="ta1">
+            <tr>
+                <td><button type = "submit">HOMEへ</button></td>
+            </tr>
+        </table>
+    </main>
+</body>
+
+<footer>
+    <span class="pr"><a href="https://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+</footer>
+</html>
